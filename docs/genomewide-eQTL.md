@@ -14,7 +14,7 @@ When we run genome-wide association tests for identifying eQTLs, we can run anal
 - Same as Step 1 - cis-eQTL for each gene
 
 * step 1 can be run independently for each gene, so each gene job can use one CPU.
-* You may SKIP the following step 1 jobs and download the generated step 1 output from XX and store tham to ./output
+* You may SKIP the following step 1 jobs and download the generated step 1 output from [here](https://drive.google.com/file/d/1zV4l6f6YUCSJcTwXZUrL2PZ6N0_ly_XU/view?usp=sharing) and store tham to ./output
 
     ```
     for i in {1..100}

@@ -13,7 +13,7 @@ parent: Installation
 
 1. Create a conda environment using
 
-     * conda environment file is in the SAIGE folder: ./conda_env/environment-RSAIGE.yml
+     * conda environment file is in the folder: ./conda_env/environment-RSAIGE.yml
 
      * After downloading environment-RSAIGE.yml, run following command
 
@@ -31,21 +31,21 @@ parent: Installation
      ```
 Please make sure to set up the LDFLAGS and CPPFLAGS using export (the last two command lines), so libraries can be linked correctly when the SAIGE source code is compiled.
 
-Note: [Here](https://github.com/saigegit/SAIGE/blob/main/conda_env/createCondaEnvSAIGE_steps.txt) are the steps to create the conda environment file
+Note: [Here](https://github.com/weizhou0/qtl/blob/main/conda_env/createCondaEnvSAIGE_steps.txt) are the steps to create the conda environment file
 
 
-3. Install SAIGE from the source code.
+3. Install SAIGEQTL from the source code.
 
      ```
        src_branch=main
-       repo_src_url=https://github.com/saigegit/SAIGE
+       repo_src_url=https://github.com/weizhou0/qtl
        git clone --depth 1 -b $src_branch $repo_src_url
-       Rscript ./SAIGE/extdata/install_packages.R
-       R CMD INSTALL --library=path_to_final_SAIGE_library SAIGE
+       Rscript ./qtl/extdata/install_packages.R
+       R CMD INSTALL --library=path_to_final_SAIGEQTL_library qtl
      ```
 
-     When call SAIGE in R, set lib.loc=path_to_final_SAIGE_library
+     When call SAIGEQTL in R, set lib.loc=path_to_final_SAIGEQTL_library
 
      ```
-       library(SAIGE, lib.loc=path_to_final_SAIGE_library)
+       library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)
      ```
