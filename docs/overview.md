@@ -7,4 +7,3 @@ has_children: true
 has_toc: false
 ---
 
-<img src="{{site.baseurl | prepend: site.url}}assets/img/saige-siage-gene-outline.png">
