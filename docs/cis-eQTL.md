@@ -1,6 +1,6 @@
 ---
 layout: default
-title: cis-eQTL test 
+title: cis-eQTL test: common variants 
 nav_order: 4
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
 has_children: true

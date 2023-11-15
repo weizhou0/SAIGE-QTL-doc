@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Step 2 - single variant test
-nav_order: 1
+nav_order: 2
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
-parent: common variants
+parent: cis-eQTL test: common variants
 ---
 
 ## Step 2: performing single-variant association tests
