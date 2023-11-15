@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Step 3 - gene p-values
+title: Step 3 - gene p-values (common variants)
 nav_order: 2
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
-parent: common variants
+parent: cis-eQTL test
 ---
 
 ## Step 3: obtaining gene-level p-values using a ACAT tests
