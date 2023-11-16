@@ -11,12 +11,12 @@ description: "Just the Docs is a responsive Jekyll theme with built-in search th
 
 * The example scripts are located in the ./extdata folder [https://github.com/weizhou0/qtl/tree/main/extdata](https://github.com/weizhou0/qtl/tree/main/extdata)
 
-```
+```bash
 #go to the folder
 cd extdata
 ```
 
-```
+```bash
 #check the help info for step 1
 Rscript step1_fitNULLGLMM_qtl.R --help
 ```
@@ -28,7 +28,7 @@ Rscript step1_fitNULLGLMM_qtl.R --help
 * specify covariates in the model using --covarColList=
 * specify covariates for samples, which have the same values for all cells from the same invidiual, using --sampleCovarColList=. Note that covariates in --sampleCovarColList= need to be specified in --covarColList= 
 
-```
+```bash
 Rscript step1_fitNULLGLMM_qtl.R \
         --useSparseGRMtoFitNULL=FALSE  \
         --useGRMtoFitNULL=FALSE \
@@ -50,12 +50,13 @@ Rscript step1_fitNULLGLMM_qtl.R \
 ```
 
 ### Input files
+
 1. **(Required)** Phenotype file (contains covariates if any, such as gender and age)
 The file can be either space or tab-delimited with a header. It is required that the file contains one column for sample IDs and one column for the phenotype. It may contain columns for covariates. <br/>
 
-<!---
-<img src="{{site.baseurl | prepend: site.url}}/assets/img/pheno_head.png" width="300">
---->
+        <!---
+        <img src="{{site.baseurl | prepend: site.url}}/assets/img/pheno_head.png" width="300">
+        --->
 
 
     ```
