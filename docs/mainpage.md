@@ -22,8 +22,7 @@ The package takes genotype file input in the following formats
 ## Logs 
 
 Please find logs for bugs fixed
-[https://github.com/weizhou0/SAIGE-QTL-doc/docs/Installation.html](https://github.com/weizhou0/SAIGE-QTL-doc/docs/Installation.html)
-
+[https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation.html](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation.html)
 
 
 ## Citation
