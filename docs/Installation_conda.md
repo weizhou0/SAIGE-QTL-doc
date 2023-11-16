@@ -34,7 +34,7 @@ parent: Installation
     Note: [Here](https://github.com/weizhou0/qtl/blob/main/conda_env/createCondaEnvSAIGE_steps.txt) are the steps to create the conda environment file
 
 
-3. Install SAIGEQTL from the source code.
+3. Install SAIGE-QTL from the source code.
 
      ```
        src_branch=main
@@ -46,6 +46,6 @@ parent: Installation
 
      When call SAIGEQTL in R, set lib.loc=path_to_final_SAIGEQTL_library
 
-     ```
+     ```R
        library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)
      ```
