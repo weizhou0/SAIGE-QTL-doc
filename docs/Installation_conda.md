@@ -29,9 +29,9 @@ parent: Installation
        export LDFLAGS="-L${FLAGPATH}/lib"
        export CPPFLAGS="-I${FLAGPATH}/include"
      ```
-Please make sure to set up the LDFLAGS and CPPFLAGS using export (the last two command lines), so libraries can be linked correctly when the SAIGE source code is compiled.
+     Please make sure to set up the LDFLAGS and CPPFLAGS using export (the last two command lines), so libraries can be linked correctly when the SAIGE source code is     compiled.
 
-Note: [Here](https://github.com/weizhou0/qtl/blob/main/conda_env/createCondaEnvSAIGE_steps.txt) are the steps to create the conda environment file
+    Note: [Here](https://github.com/weizhou0/qtl/blob/main/conda_env/createCondaEnvSAIGE_steps.txt) are the steps to create the conda environment file
 
 
 3. Install SAIGEQTL from the source code.
