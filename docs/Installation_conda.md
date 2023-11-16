@@ -6,7 +6,7 @@ description: "Just the Docs is a responsive Jekyll theme with built-in search th
 parent: Installation
 ---
 
-###  Install SAIGE using the conda environment
+###  Install SAIGE-QTL using the conda environment
 
 0. Download and install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
