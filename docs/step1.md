@@ -9,7 +9,7 @@ description: "Just the Docs is a responsive Jekyll theme with built-in search th
 ## Step 1: fitting the null Poisson mixed model
 
 
-* The example scripts are located in the *extdata* folder [https://github.com/weizhou0/qtl/tree/main/extdata]
+* The example scripts are located in the ./extdata folder [https://github.com/weizhou0/qtl/tree/main/extdata](https://github.com/weizhou0/qtl/tree/main/extdata)
 
 ```
 #go to the folder
@@ -23,10 +23,10 @@ Rscript step1_fitNULLGLMM_qtl.R --help
 
 ### Fit the null model 
 
-#### the data set does not have sample relatedness **--useSparseGRMtoFitNULL=FALSE** and **--useGRMtoFitNULL=FALSE** 
-#### fit a Poisson mixed model **--traitType=count**
-#### specify covariates in the model using **--covarColList=**
-#### specify covariates for samples, which have the same values for all cells from the same invidiual, using **--sampleCovarColList=**. Note that covariates in **--sampleCovarColList=** need to be specified in **--covarColList=** 
+* the data set does not have sample relatedness --useSparseGRMtoFitNULL=FALSE and --useGRMtoFitNULL=FALSE 
+* fit a Poisson mixed model --traitType=count
+* specify covariates in the model using --covarColList=
+* specify covariates for samples, which have the same values for all cells from the same invidiual, using --sampleCovarColList=. Note that covariates in --sampleCovarColList= need to be specified in --covarColList= 
 
 ```
 Rscript step1_fitNULLGLMM_qtl.R \
