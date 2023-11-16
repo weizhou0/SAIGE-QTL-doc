@@ -53,7 +53,10 @@ Rscript step1_fitNULLGLMM_qtl.R \
 1. **(Required)** Phenotype file (contains covariates if any, such as gender and age)
 The file can be either space or tab-delimited with a header. It is required that the file contains one column for sample IDs and one column for the phenotype. It may contain columns for covariates. <br/>
 
+<!---
 <img src="{{site.baseurl | prepend: site.url}}/assets/img/pheno_head.png" width="300">
+--->
+
 
     ```
     less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
@@ -80,7 +83,10 @@ Estimating variance ratio with random markers.
     modglmm$theta
 
     ```
+<!---
 <img src="{{site.baseurl | prepend: site.url}}/assets/img/SAIGE-step1-output.png" width="500">
+--->
+
 
 2. variance ratio file (**if variance ratio is estiamted in Step 1, this will be input for Step 2**)
 

@@ -185,7 +185,11 @@ NOTE:
 head -n 1 output/genotype_100markers_marker_vcf_cond.txt
 ```
 
+<!---
 <img src="{{site.baseurl | prepend: site.url}}/assets/img/SAIGE-step2-output-header.png" width="500">
+--->
+
+
 
 ```
 CHR: chromosome
