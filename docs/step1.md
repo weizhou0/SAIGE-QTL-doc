@@ -54,9 +54,9 @@ Rscript step1_fitNULLGLMM_qtl.R \
 1. **(Required)** Phenotype file (contains covariates if any, such as gender and age)
 The file can be either space or tab-delimited with a header. It is required that the file contains one column for sample IDs and one column for the phenotype. It may contain columns for covariates. <br/>
 
-        <!---
-        <img src="{{site.baseurl | prepend: site.url}}/assets/img/pheno_head.png" width="300">
-        --->
+<!---
+<img src="{{site.baseurl | prepend: site.url}}/assets/img/pheno_head.png" width="300">
+--->
 
 
     ```
