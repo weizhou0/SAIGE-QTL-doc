@@ -7,4 +7,4 @@ has_children: true
 has_toc: false
 ---
 
-test
+<img src="{{site.baseurl | prepend: site.url}}assets/img/SAIGEQTL_steps_overview.png">
