@@ -23,10 +23,12 @@ Rscript step1_fitNULLGLMM_qtl.R --help
 
 ### Fit the null model 
 
+With the following settings / assumptions:
+
 * the data set does not have sample relatedness --useSparseGRMtoFitNULL=FALSE and --useGRMtoFitNULL=FALSE 
 * fit a Poisson mixed model --traitType=count
 * specify covariates in the model using --covarColList=
-* specify covariates for samples, which have the same values for all cells from the same invidiual, using --sampleCovarColList=. Note that covariates in --sampleCovarColList= need to be specified in --covarColList= 
+* specify covariates for samples, which have the same values for all cells from the same individual, using --sampleCovarColList=. Note that covariates in --sampleCovarColList= need to also be specified in --covarColList= 
 
 ```bash
 Rscript step1_fitNULLGLMM_qtl.R \
@@ -51,7 +53,7 @@ Rscript step1_fitNULLGLMM_qtl.R \
 
 ### Input files
 
-1. **(Required)** Phenotype file (contains covariates if any, such as gender and age)
+1. **(Required)** Phenotype file (contains covariates if any, such as gender and age).
 The file can be either space or tab-delimited with a header. It is required that the file contains one column for sample IDs and one column for the phenotype. It may contain columns for covariates. <br/>
 
 <!---
@@ -63,7 +65,8 @@ The file can be either space or tab-delimited with a header. It is required that
     less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
     ```
 
-2. **(Required)** Plink file 
+2. **(Required)** Plink file
+   
 Estimating variance ratio with random markers. 
 * Use --skipVarianceRatioEstimation=FALSE
 * Specify the plink file containing markers that will be used for variance ratio estimation with --plinkFile. e.g. **--plinkFile=./input/n.indep_100_n.cell_1_01.step1**
@@ -89,7 +92,7 @@ Estimating variance ratio with random markers.
 --->
 
 
-2. variance ratio file (**if variance ratio is estiamted in Step 1, this will be input for Step 2**)
+2. variance ratio file (**if variance ratio is estimated in Step 1, this will be an input for Step 2**)
 
     ```
     less -S ./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.varianceRatio.txt
