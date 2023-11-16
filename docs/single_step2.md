@@ -9,13 +9,13 @@ parent: cis-eQTL test
 ## Step 2: performing single-variant association tests
 
 * File formats for dosages/genotypes of genetic variants to be tested can be used: PLINK, VCF, [BGEN](https://bitbucket.org/gavinband/bgen/overview), [SAV](https://github.com/statgen/savvy)
-* Conditional analysis based summary stats can be performed (--condition) can be performed in Step 2 
+* Conditional analysis based summary stats can be performed (using the --condition flag) in Step 2, see below 
 * To query and test a subset of markers 
 * * both variant IDs (chr:pos:ref:alt) and range of chromosome positions (chr start end) (--idstoIncludeFile=./input/includeID.list_1, --rangestoIncludeFile=./input/includerange.txt)
 * * for VCF and SAV input, when query with chromosome range,  only one range of chromosome positions can be specified (--rangestoIncludeFile=./input/includerange_oneline.txt)
 * --markers_per_chunk can be used to specify the number of markers to test and output as one chunk. default=10000. Note that a small number may slow down the job. It is required that this number is >= 1000.  
 * For VCF/BCF/SAV input, --vcfField=DS to test dosages and  --vcfField=GT to test genotypes. Use --vcfFile to specify VCF, BCF or SAV files. For VCF and BCF input, a .csi index file is required in the same directory. For SAV input, a .s1r index file created with savvy is required in the same directory. Index files need to have the same name as the VCF, BCF, or SAV files with suffix: csi or s1r. Note: --vcfFileIndex is used to specify the index file. This option will be removed in the next version (v1.1.4). 
-* By default, missing genotypes/dosages will be imputed as the best guessed gentoypes/dosages (as round(2*freq) with --impute_method=best_guess). Note that currently dropping samples with missing genotypes/dosages is not supported
+* By default, missing genotypes/dosages will be imputed as the best guessed gentoypes/dosages (as round(2*freq) with --impute_method=best_guess). Note that currently dropping samples with missing genotypes/dosages is not supported.
 * --sampleFile is used specify a file with sample IDs for bgen file. 
 
 ```
@@ -23,7 +23,7 @@ parent: cis-eQTL test
 Rscript step2_tests_qtl.R --help
 ```
 
-* --SPAcutoff=2. if chi-sqaure stat > 4 (approximately equivalent to p-value < 0.05), saddlepoint approximation is used to obtain accurte p-values than Normal approximation
+* --SPAcutoff=2. if chi-square stat > 4 (approximately equivalent to p-value < 0.05), saddlepoint approximation is used to obtain accurate p-values than Normal approximation
 *--rangestoIncludeFile= is used to specify the range of chromosome positions to be tested, which can correspond to the cis region of the gene
 
 ```
@@ -67,6 +67,7 @@ Rscript step2_tests_qtl.R       \
 
 * --condition = Genetic marker ids (**chr:pos:ref:alt**) separated by comma. e.g.chr3:101651171:C:T,chr3:101651186:G:A
 * conditioning markers MUST be specified in the same order as stored in the dosage file (e.g. in the VCF file)
+  
 ```
 Rscript step2_tests_qtl.R       \
         --bedFile=./input/n.indep_100_n.cell_1.bed      \
