@@ -11,17 +11,17 @@ parent: Installation
 0. Download and install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
 
-1. Create a conda environment using
+1. Create a conda environment as follows:
 
-     * conda environment file is in the folder: ./conda_env/environment-RSAIGE.yml
+     * the conda environment file can be found in the folder: ```./conda_env/environment-RSAIGE.yml```
 
-     * After downloading environment-RSAIGE.yml, run following command
+     * After downloading ```environment-RSAIGE.yml```, run the following command to create a new conda environment:
 
      ```bash
        conda env create -f environment-RSAIGE.yml
      ```
 
-2. Activate the conda environment RSAIGE
+2. Activate the conda environment RSAIGE, by running:
 
      ```bash
        conda activate RSAIGE
@@ -32,10 +32,10 @@ parent: Installation
      
      Please make sure to set up the LDFLAGS and CPPFLAGS using export (the last two command lines), so libraries can be linked correctly when the SAIGE source code is compiled.
 
-    Note: [Here](https://github.com/weizhou0/qtl/blob/main/conda_env/createCondaEnvSAIGE_steps.txt) are the steps to create the conda environment file
+    Note: [Here](https://github.com/weizhou0/qtl/blob/main/conda_env/createCondaEnvSAIGE_steps.txt) are the steps to create the conda environment file.
 
 
-3. Install SAIGE-QTL from the source code.
+3. Install SAIGE-QTL from the source code, by running:
 
      ```bash
        src_branch=main
