@@ -47,7 +47,7 @@ parent: Installation
 
      This will have installed all necessary dependencies as well as SAIGE-QTL itself, including the example data and the R wrappers.
    To use these wrapper Rscripts (e.g., ```step1_fitNULLGLMM_qtl.R```), you will need to specify the location where you just installed SAIGE-QTL at the top of the script,
-   so change ```R library(SAIGEQTL``` to the library you just installed the package to, as:
+   so change ```R library(SAIGEQTL)``` to the library you just installed the package to, as:
 
      ```R
        library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)
