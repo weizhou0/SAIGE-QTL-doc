@@ -19,6 +19,9 @@ The method
 The package takes genotype file input in the following formats
 - PLINK (bed, bim, fam), BGEN, VCF, BCF, SAV
 
+Please note that accounting for total read counts per cell is critical in single-cell eQTL mapping. The SCTransform in the SCTransform function in the Seurat R package and/or including log(total read counts) and percentage of MT read counts for each cell as covariates in the Step 1 null model can be used.  
+
+
 ## Logs 
 
 Please find logs for bugs fixed
