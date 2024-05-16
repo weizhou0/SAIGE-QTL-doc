@@ -7,10 +7,10 @@ parent: genomewide-eQTL test
 ---
 
 
-## Step 2: performing genome-wide set-based association tests. Multiple genes are tested simutaneously for computation speed-up
+## Step 2: performing genome-wide set-based association tests. Multiple genes are tested simultaneously for computation speed-up
 
 * Same as the genome-wide single-variant tests, --GMMATmodel_varianceRatio_multiTraits_File can be used  
-* Additional input --groupFile= is needed with the following parameters to run set-based tests
+* Additional input --groupFile= is needed with the following parameters to run set-based tests:
 
 ```
 	--maxMAF_in_groupTest=0.1   \
@@ -25,4 +25,4 @@ parent: genomewide-eQTL test
 
 ## Output files
 
-The program will generate one output file for each of the tested gene. 
+The program will generate one output file for each of the tested genes. 

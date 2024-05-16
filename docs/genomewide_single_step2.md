@@ -6,11 +6,11 @@ description: "Just the Docs is a responsive Jekyll theme with built-in search th
 parent: genomewide-eQTL test
 ---
 
-## Step 2: performing genome-wide single-variant association tests. Multiple genes are tested simutaneously for computation speed-up
+## Step 2: performing genome-wide single-variant association tests. Multiple genes are tested simultaneously for computation speed-up
 
-* e.g. test eQTLs on chromosome 2  for all 100 genes#use --GMMATmodel_varianceRatio_multiTraits_File
+* e.g. test eQTLs on chromosome 2  for all 100 genes 
 * use --GMMATmodel_varianceRatio_multiTraits_File
-    * first create the file containing 3 columns: phenotype name, model file, and variance ratio file. Each line is for one phenotype. This file is used when multiple phenotypes are analyzed simutaneously
+    * first create the file containing 3 columns: phenotype name, model file, and variance ratio file. Each line is for one phenotype. This file is used when multiple phenotypes are analyzed simultaneously.
 
     ```
     ##commands to create a file that contains path to step 1 output for all 100 genes
@@ -42,4 +42,4 @@ parent: genomewide-eQTL test
 
 ## Output files
 
-The program will generate one output file for each of the tested gene. 
+The program will generate one output file for each of the tested genes. 

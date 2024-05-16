@@ -18,7 +18,7 @@ echo -e "2\t300001\t610001" > ${regionFile}
 ```
 
 
-* The commands are the same as the step 2 for single-variant assoc tests, except that
+* The commands are the same as the step 2 for single-variant assoc tests, except for:
     * A group file contains the genetic marker IDs, annotations and weights (if any) for each set/gene to be tested
 
 ```
@@ -41,15 +41,15 @@ Rscript makeGroupFile.R \
 * In the step 2 job for rare variants
     * --groupFile is used to specify the group file
 
-* Allows for multiple maskes for each set (gene or region)
-    * Use --annotation_in_groupTest to list different annotations, seperated by comma. Within each annotation combination, annotations are seperated by ':'
+* Allows for multiple masks for each set (gene or region)
+    * Use --annotation_in_groupTest to list different annotations, seperated by comma. Within each annotation combination, annotations are separated by ':'
         * e.g. "lof,missense:lof,missense:lof:synonymous" is to test lof only, missense+lof, and missense+lof+synonymous
     * Use --maxMAF_in_groupTest and --minMAF_in_groupTest_Exclude to specify the maximum and minimun MAF cutoffs to test the rare variants
         * e.g. --maxMAF_in_groupTest=0.1 and --minMAF_in_groupTest_Exclude=0 are specified to tests all variants with 0 < MAF <= 0.1
 
 * Allows for multiple weight settings
-    * By default, the program first check if per-marker-weight is provided in the group file. If not, the program calcuates weights based on MAF from the Beta distribution with paraemters weights.beta. By default --weights.beta=1;25, which means weights are calculated using Beta(MAF, 1, 25) that weights rarer weights more
-    * --is_equal_weight_in_groupTest=TRUE can be specified to use equal weights for variants
+    * By default, the program first checks if per-marker-weight is provided in the group file. If not, the program calcuates weights based on MAF from the Beta distribution with parameters weights.beta. By default --weights.beta=1;25, which means weights are calculated using Beta(MAF, 1, 25) that weights rarer weights more
+    * --is_equal_weight_in_groupTest=TRUE can be specified to use equal weights for all variants
 
     
 
@@ -115,13 +115,14 @@ Rscript step2_tests_qtl.R       \
 
 
 ## Input files
-* Please Refer to the Single-variant test Step 2 input files for details. In addition, there are additonal input files required for the set-based tests
+
+* Please refer to the Single-variant test Step 2 input files for details. In addition, there are additonal input files required for the set-based tests
 
 1. (Required. Specific for set-based tests)** Group file containing marker IDs, annotations, and/or weights for each set (gene or region).
         * The first column contains the set name.
         * Group file has 2 or 3 lines for each set.
         * marker IDs and annotations are required and weights are optional.
-        * The second column has var (indicating the line is for marker IDs), anno (indicating the line is for annotations), and weight (indicating the line is for weights of markers used in the set-based tests)
+        * The second column has var (indicating the line is for marker IDs), anno (indicating the line is for annotations), and weight (indicating the line is for weights of markers used in the set-based tests).
 
     ```
     ##group file example
@@ -165,13 +166,14 @@ Number_ultra_rare: number of markers that are ultra-rare with MAC <= MACCutoff_t
 ```
 
 * A file with association test results for single markers in the set-based tests
-    ** Please Refer to the Single-variant test Step 2 output files for details.
+    ** Please refer to the Single-variant test Step 2 output files for details.
 
     ```
     less -S ./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis_rare.singleAssoc.txt
     ```
 
 * A file with marker lists for region/set-based tests (--is_output_markerList_in_groupTest=TRUE)
+  
     ```
     less -S ./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis_rare.markerList.txt
     ```

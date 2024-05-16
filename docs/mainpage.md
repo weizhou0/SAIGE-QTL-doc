@@ -7,14 +7,13 @@ permalink: /
 ---
 
 
-SAIGE-QTL is an R package developed with Rcpp for scalable and accurate expression quantitative trait locus mapping for single-cell studies at the single-cell resolution
+SAIGE-QTL is an R package developed with Rcpp for scalable and accurate expression quantitative trait locus (QTL) mapping for single-cell studies.
 
 The method
-- Model repeat and complex data structure, due to multiple cells per individual and relatedness between individuals
-- Model discrete read counts
-- Fast and scalable for large data, test 20k genes, 200 cell types, millions of cells, millions of variants
-- Test rare variations. Single-variant test is underpowered
-
+- Models repeated and complex data structure, due to multiple cells per individual and relatedness between individuals
+- Models discrete read counts
+- Is fast and scalable for large data, can test 20k genes, tens to hundreds of cell types, millions of cells, millions of genetic variants
+- Can test for the effects of rare variation, for which the single-variant test is underpowered (uses set-based tests instead).
 
 The package takes genotype file input in the following formats
 - PLINK (bed, bim, fam), BGEN, VCF, BCF, SAV
@@ -31,7 +30,7 @@ Please find logs for bugs fixed
 ## Citation
 
 ### SAIGE-QTL
-- preprint comes out soon
+- preprint coming out soon!
 
 ## License
 SAIGE-QTL is distributed under an MIT license.
@@ -39,4 +38,4 @@ SAIGE-QTL is distributed under an MIT license.
 
 ## Contact
 If you have any questions about SAIGE-QTL please contact
-wzhou@broadinstitute.org
+wzhou@broadinstitute.org.
