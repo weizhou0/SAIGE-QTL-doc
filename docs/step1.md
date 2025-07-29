@@ -2,7 +2,7 @@
 layout: default
 title: Step 1
 nav_order: 4
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+description: "Step 1: fitting the null Poisson mixed model."
 ---
 
 
@@ -29,6 +29,8 @@ With the following settings / assumptions:
 * fit a Poisson mixed model --traitType=count
 * specify covariates in the model using --covarColList=
 * specify covariates for samples, which have the same values for all cells from the same individual, using --sampleCovarColList=. Note that covariates in --sampleCovarColList= need to also be specified in --covarColList= 
+* specify offsets in the model using --offsetCol=. For example, --offsetCol=log_total_read_counts.  
+
 
 ```bash
 Rscript step1_fitNULLGLMM_qtl.R \
