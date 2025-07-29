@@ -16,7 +16,7 @@ Note: These steps can be found in the [Dockerfile](https://github.com/weizhou0/q
 
 ```
 src_branch=main
-repo_src_url=https://github.com/weizhou0/qt
+repo_src_url=https://github.com/weizhou0/qtl
 git clone -b $src_branch $repo_src_url
 
 ```
