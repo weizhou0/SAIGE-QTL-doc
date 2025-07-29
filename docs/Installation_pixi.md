@@ -80,7 +80,7 @@ When calling SAIGE-QTL in R, set the library location:
 library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)
 ```
 
-**Chnage the library(SAIGEQTL) to library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)** in the wrapper files
+**Change the library(SAIGEQTL) to library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)** in the wrapper files
 
 ```
 ./SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R
@@ -88,3 +88,46 @@ library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)
 ./SAIGEQTL/extdata/step3_gene_pvalue_qtl.R
 ./SAIGEQTL/extdata/makeGroupFile.R
 ```
+
+## What Gets Installed
+
+### SAIGE-QTL Source Code
+- **Repository**: https://github.com/weizhou0/SAIGEQTL
+- **Branch**: main (latest stable version)
+- **Local directory**: `SAIGEQTL/` (created by git clone)
+
+### Core Dependencies (from pixi.toml)
+- **Statistical Computing**: R with numerical libraries (OpenBLAS, SuperLU)
+- **R Packages**:
+  - Statistical genetics: MetaSKAT, SKAT, SPAtest
+  - Data manipulation: data.table, dplyr, dbplyr
+  - Parallel computing: RcppParallel, furrr
+  - Numerical computing: RcppArmadillo, RcppEigen, RcppNumerical
+- **System Libraries**: boost-cpp, zlib, zstd, savvy
+
+### Additional R Packages
+- **lintools**: Linear programming and optimization tools
+- **remotes**: For installing packages from GitHub
+- **fastSave**: Fast saving/loading of R objects (from GitHub)
+
+## Verification
+
+After installation, verify the setup:
+
+```bash
+# Navigate to the SAIGEQTL directory if not already there
+cd SAIGEQTL
+
+# Check if pixi environment is working
+pixi run R --version
+
+# Test SAIGE-QTL installation
+pixi run Rscript -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
+
+# Check key dependencies
+pixi run Rscript -e 'library(SKAT); library(MetaSKAT); library(data.table)'
+```
+
+
+
+
