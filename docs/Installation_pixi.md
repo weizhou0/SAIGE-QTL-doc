@@ -19,7 +19,7 @@ parent: Installation
 Note: These steps can be found in the [Dockerfile](https://github.com/weizhou0/qtl/blob/main/docker/Dockerfile).
 
 
-0. Download the SAIGE-QTL package from github
+### 0. Download the SAIGE-QTL package from github
 
 ```bash
 src_branch=main
@@ -28,7 +28,7 @@ git clone -b $src_branch $repo_src_url
 
 ```
 
-1. Install pixi and the R packages 
+### 1. Install pixi and the R packages 
 ##### Option A: User-space Installation (No root required)
 
 #### For Users Without Root Access (Recommended)
