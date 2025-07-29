@@ -28,11 +28,12 @@ git clone -b $src_branch $repo_src_url
 
 View available parameters and their descriptions:
 
-#### Standard Installation
+#### Pixi Installation
 ```bash
 # Navigate to the extdata folder in the SAIGEQTL directory first
-cd SAIGEQTL/extdata
-Rscript step1_fitNULLGLMM_qtl.R --help
+cd ./SAIGEQTL
+pixi run --manifest-path=/full/path/to/SAIGEQTL/pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
+
 ```
 
 #### Docker Installation
@@ -47,12 +48,14 @@ singularity exec --bind /data:/extdata /path/to/saigeqtl_0.3.2.sif \
     Rscript /usr/local/bin/step1_fitNULLGLMM_qtl.R --help
 ```
 
-#### Pixi Installation
+
+#### Standard Installation
 ```bash
 # Navigate to the extdata folder in the SAIGEQTL directory first
 cd SAIGEQTL/extdata
-pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R --help
+Rscript step1_fitNULLGLMM_qtl.R --help
 ```
+
 
 ## Fitting the Null Model
 
@@ -66,6 +69,33 @@ The example uses the following settings and assumptions:
 - **Offset terms**: `--offsetCol=` for normalization (e.g., log total read counts)
 
 ### Running Step 1
+
+
+#### Pixi Installation
+```bash
+# Navigate to SAIGEQTL directory first
+cd SAIGEQTL/extdata
+
+pixi run --manifest-path=/full/path/to/SAIGEQTL/pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
+    --useSparseGRMtoFitNULL=FALSE \
+    --useGRMtoFitNULL=FALSE \
+    --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
+    --phenoCol=gene_1 \
+    --covarColList=X1,X2,pf1,pf2 \
+    --sampleCovarColList=X1,X2 \
+    --sampleIDColinphenoFile=IND_ID \
+    --traitType=count \
+    --outputPrefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --skipVarianceRatioEstimation=FALSE \
+    --isRemoveZerosinPheno=FALSE \
+    --isCovariateOffset=FALSE \
+    --isCovariateTransform=TRUE \
+    --skipModelFitting=FALSE \
+    --tol=0.00001 \
+    --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
+    --IsOverwriteVarianceRatioFile=TRUE
+```
+
 
 #### Standard Installation
 ```bash
@@ -92,7 +122,9 @@ Rscript step1_fitNULLGLMM_qtl.R \
 
 #### Docker Installation
 ```bash
-docker run -v /host/data:/SAIGEQTL wzhou88/saigeqtl:0.3.2 \
+cd ./SAIGEQTL/extdata
+
+docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 \
     step1_fitNULLGLMM_qtl.R \
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
@@ -115,24 +147,25 @@ docker run -v /host/data:/SAIGEQTL wzhou88/saigeqtl:0.3.2 \
 
 #### Singularity Installation
 ```bash
-singularity exec --bind /data:/SAIGEQTL /path/to/saigeqtl_0.3.2.sif \
-    Rscript /usr/local/bin/step1_fitNULLGLMM_qtl.R \
+cd ./SAIGEQTL/extdata
+singularity exec --bind $PWD:/extdata saigeqtl_0.3.2.sif	\
+    Rscript /extdata/step1_fitNULLGLMM_qtl.R	\
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
-    --phenoFile=/extdata/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
+    --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
     --phenoCol=gene_1 \
     --covarColList=X1,X2,pf1,pf2 \
     --sampleCovarColList=X1,X2 \
     --sampleIDColinphenoFile=IND_ID \
     --traitType=count \
-    --outputPrefix=/extdata/output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --outputPrefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
     --skipVarianceRatioEstimation=FALSE \
     --isRemoveZerosinPheno=FALSE \
     --isCovariateOffset=FALSE \
     --isCovariateTransform=TRUE \
     --skipModelFitting=FALSE \
     --tol=0.00001 \
-    --plinkFile=/extdata/input/n.indep_100_n.cell_1_01.step1 \
+    --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
     --IsOverwriteVarianceRatioFile=TRUE
 ```
 
@@ -179,13 +212,13 @@ less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Pois
 
 #### Docker Installation
 ```bash
-docker run -v /host/data:/container/data wzhou88/saigeqtl:0.3.2 \
-    less -S /container/data/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
+docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 \
+    less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
 ```
 
 #### Singularity Installation
 ```bash
-singularity exec --bind /data:/data /path/to/saigeqtl_0.3.2.sif \
+singularity exec --bind $PWD:/extdata saigeqtl_0.3.2.sif        \
     less -S /data/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
 ```
 
@@ -218,31 +251,13 @@ Contains the fitted null model parameters:
 
 #### Load and Inspect Model File
 
-##### Standard/Pixi Installation
-```bash
+```R
 # In R session
 load("./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.rda")
 names(modglmm)
 modglmm$theta
 ```
 
-##### Docker Installation
-```bash
-docker run -v /host/data:/SAIGEQTL/extdata wzhou88/saigeqtl:0.3.2 \
-    Rscript -e "load('/SAIGEQTL/extdata/output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.rda'); names(modglmm); modglmm\$theta"
-```
-
-##### Singularity Installation
-```bash
-singularity exec --bind /data:/SAIGEQTL/extdata /path/to/saigeqtl_0.3.2.sif \
-    Rscript -e "load('/SAIGEQTL/extdata/output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.rda'); names(modglmm); modglmm\$theta"
-```
-
-##### Pixi Installation
-```bash
-cd SAIGEQTL/extdata
-pixi run Rscript -e "load('./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.rda'); names(modglmm); modglmm\$theta"
-```
 
 ### 2. Variance Ratio File (Required for Step 2 if estimated)
 
@@ -253,24 +268,6 @@ Contains variance component estimates:
 ##### Standard/Pixi Installation
 ```bash
 cd /SAIGEQTL/extdata
-less -S ./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.varianceRatio.txt
-```
-
-##### Docker Installation
-```bash
-docker run -v /host/data:/SAIGEQTL/extdata wzhou88/saigeqtl:0.3.2 \
-    less -S /SAIGEQTL/extdata/output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.varianceRatio.txt
-```
-
-##### Singularity Installation
-```bash
-singularity exec --bind /data:/SAIGEQTL/extdata /path/to/saigeqtl_0.3.2.sif \
-    less -S /SAIGEQTL/extdata/output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.varianceRatio.txt
-```
-
-##### Pixi Installation
-```bash
-cd SAIGEQTL/extdata/
 less -S ./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1.varianceRatio.txt
 ```
 

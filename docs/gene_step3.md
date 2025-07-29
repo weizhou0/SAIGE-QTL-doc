@@ -9,19 +9,27 @@ parent: cis-eQTL test
 ## Step 3: obtaining gene-level p-values using the ACAT test
 
 ### check Help Information and the job scripts should use the corresponding command to call the wrapper function **step3_gene_pvalue_qtl.R**
-**Check Step 1 and Step 2 for example header code
+**Check Step 1 and Step 2 for example header codes
 
 
 ```
 #check the help info for step 3
-Rscript step3_gene_pvalue_qtl.R --help
+
+### Check Help Information and the job scripts should use the corresponding command to call the wrapper function **step2_tests_qtl.R**
+
+Note: Pixi script is showing here for examples
+
+#### Pixi Installation
+```bash
+cd SAIGEQTL/extdata/
+pixi run --manifest-path=../pixi.toml Rscript step3_gene_pvalue_qtl.R --help
 ```
 
 * --assocFile= is used to specify the step 2 output with single-variant association test results from step 2.
 
 
 ```
-Rscript step3_gene_pvalue_qtl.R \
+pixi run --manifest-path=../pixi.toml Rscript step3_gene_pvalue_qtl.R	\
         --assocFile=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis        \
         --geneName=gene_1       \
         --genePval_outputFile=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis_genePval

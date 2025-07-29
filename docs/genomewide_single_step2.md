@@ -13,6 +13,7 @@ parent: genomewide-eQTL test
     * first create the file containing 3 columns: phenotype name, model file, and variance ratio file. Each line is for one phenotype. This file is used when multiple phenotypes are analyzed simultaneously.
 
     ```
+    cd SAIGEQTL/extdata/
     ##commands to create a file that contains path to step 1 output for all 100 genes
     touch ./input/step1_output_formultigenes.txt
     rm ./input/step1_output_formultigenes.txt
@@ -27,7 +28,7 @@ parent: genomewide-eQTL test
     ```
     #run step 2 for all 100 genes 
     step2prefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_chr2
-    Rscript step2_tests_qtl.R       \
+    pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R       \
         --bedFile=./input/n.indep_100_n.cell_1.bed      \
         --bimFile=./input/n.indep_100_n.cell_1.bim      \
         --famFile=./input/n.indep_100_n.cell_1.fam      \

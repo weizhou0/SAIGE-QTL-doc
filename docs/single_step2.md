@@ -31,24 +31,14 @@ SAIGE-QTL supports multiple formats for dosages/genotypes:
 
 ### Check Help Information and the job scripts should use the corresponding command to call the wrapper function **step2_tests_qtl.R**
 
+Note: Pixi script is showing here for examples
+
 #### Pixi Installation
 ```bash
 # Navigate to SAIGEQTL directory first
 cd SAIGEQTL/extdata/
 pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R --help
 ```
-
-#### Docker Installation
-```bash
-docker run wzhou88/saigeqtl:0.3.2 step2_tests_qtl.R --help
-```
-
-#### Singularity Installation
-```bash
-singularity exec --bind /data:/SAIGEQTL/extdata /path/to/saigeqtl_0.3.2.sif \
-    Rscript /usr/local/bin/step2_tests_qtl.R --help
-```
-
 
 ## Basic Association Testing
 
