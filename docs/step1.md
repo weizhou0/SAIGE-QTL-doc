@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Step 1
-nav_order: 4
+nav_order: 5
 description: "Step 1: fitting the null Poisson mixed model."
 ---
 
@@ -15,10 +15,10 @@ Step 1 involves fitting a null Poisson mixed model for each gene across cells.
 
 ### Example Scripts Location
 
-The example scripts are located in the `./extdata` folder: [https://github.com/weizhou0/SAIGEQTL/tree/main/extdata](https://github.com/weizhou0/SAIGEQTL/tree/main/extdata)
+The wrapper scripts and example data are located in the `./extdata` folder: [https://github.com/weizhou0/SAIGEQTL/tree/main/extdata](https://github.com/weizhou0/SAIGEQTL/tree/main/extdata)
 
 ```bash
-# If not downloaded the SAIGEQTL package - download now
+# If not downloaded the SAIGEQTL package already, here we download the repo with /extdata
 src_branch=main
 repo_src_url=https://github.com/weizhou0/SAIGEQTL
 git clone -b $src_branch $repo_src_url
@@ -51,7 +51,7 @@ singularity exec --bind /data:/extdata /path/to/saigeqtl_0.3.2.sif \
 ```bash
 # Navigate to the extdata folder in the SAIGEQTL directory first
 cd SAIGEQTL/extdata
-pixi run Rscript step1_fitNULLGLMM_qtl.R --help
+pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R --help
 ```
 
 ## Fitting the Null Model
@@ -60,7 +60,6 @@ pixi run Rscript step1_fitNULLGLMM_qtl.R --help
 
 The example uses the following settings and assumptions:
 
-- **No sample relatedness**: `--useSparseGRMtoFitNULL=FALSE` and `--useGRMtoFitNULL=FALSE`
 - **Poisson mixed model**: `--traitType=count`
 - **Covariates specification**: `--covarColList=` for cell-level covariates
 - **Sample covariates**: `--sampleCovarColList=` for individual-level covariates
@@ -142,7 +141,7 @@ singularity exec --bind /data:/SAIGEQTL /path/to/saigeqtl_0.3.2.sif \
 # Navigate to SAIGEQTL directory first
 cd SAIGEQTL/extdata
 
-pixi run Rscript step1_fitNULLGLMM_qtl.R \
+pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
     --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \

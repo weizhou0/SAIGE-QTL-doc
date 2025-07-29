@@ -8,6 +8,10 @@ parent: cis-eQTL test
 
 ## Step 3: obtaining gene-level p-values using the ACAT test
 
+### check Help Information and the job scripts should use the corresponding command to call the wrapper function **step3_gene_pvalue_qtl.R**
+**Check Step 1 and Step 2 for example header code
+
+
 ```
 #check the help info for step 3
 Rscript step3_gene_pvalue_qtl.R --help

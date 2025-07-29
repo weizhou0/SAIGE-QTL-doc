@@ -1,7 +1,7 @@
 ---
 layout: default
 title: genomewide-eQTL test
-nav_order: 6
+nav_order: 7
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
 has_children: true
 has_toc: true
@@ -17,6 +17,7 @@ When we run genome-wide association tests for identifying eQTLs, we can run anal
 * You may SKIP the following step 1 jobs and download the generated step 1 output from [here](https://drive.google.com/file/d/1zV4l6f6YUCSJcTwXZUrL2PZ6N0_ly_XU/view?usp=sharing) and store tham to ./output
 
     ```
+    cd SAIGEQTL/extdata/
     for i in {1..100}
     do
     echo $i
