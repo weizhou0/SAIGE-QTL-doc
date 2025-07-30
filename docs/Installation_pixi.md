@@ -39,7 +39,7 @@ curl -fsSL https://pixi.sh/install.sh | sh && \
     pixi install && \
     rm -rf ~/.cache/pixi && \
     pixi run Rscript -e 'install.packages("lintools", repos="https://cloud.r-project.org")' && \
-    pixi run Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org"); remotes::install_github("barkasn/fastSave")' && \
+    pixi run Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org"); remotes::install_github("barkasn/fastSave")'
 ```
 
 ##### Option B: System-wide Installation (Requires root - original approach)
@@ -52,7 +52,7 @@ curl -fsSL https://pixi.sh/install.sh | sh  && \
     pixi install  && \
     rm -rf ~/.cache/pixi  && \
     pixi run Rscript -e 'install.packages("lintools", repos="https://cloud.r-project.org")'  && \
-    pixi run Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org"); remotes::install_github("barkasn/fastSave")'  && \
+    pixi run Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org"); remotes::install_github("barkasn/fastSave")' 
 ```
 
 
