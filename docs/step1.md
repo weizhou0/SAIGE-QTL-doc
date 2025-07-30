@@ -32,7 +32,10 @@ View available parameters and their descriptions:
 ```bash
 # Navigate to the extdata folder in the SAIGEQTL directory first
 cd ./SAIGEQTL
-pixi run --manifest-path=/full/path/to/SAIGEQTL/pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
+CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript extdata/step1_fitNULLGLMM_qtl.R --help
+
+# Note: if not in ./SAIGEQTL, you will need to specify --manifest-path=/full/path/to/SAIGEQTL/pixi.toml
+#e.g. CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=/full/path/to/SAIGEQTL/pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 
 ```
 
@@ -44,8 +47,11 @@ docker run wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R --help
 #### Singularity Installation
 ```bash
 cd SAIGEQTL
-singularity exec --bind /data:/extdata /path/to/saigeqtl_0.3.2.sif \
-    Rscript /usr/local/bin/step1_fitNULLGLMM_qtl.R --help
+
+singularity exec \
+--bind $PWD//extdata:/extdata \
+--cleanenv saigeqtl_0.3.2.sif \
+step1_fitNULLGLMM_qtl.R --help
 ```
 
 
@@ -70,13 +76,12 @@ The example uses the following settings and assumptions:
 
 ### Running Step 1
 
-
 #### Pixi Installation
 ```bash
 # Navigate to SAIGEQTL directory first
 cd SAIGEQTL/extdata
 
-pixi run --manifest-path=/full/path/to/SAIGEQTL/pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
+pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
     --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
@@ -95,7 +100,6 @@ pixi run --manifest-path=/full/path/to/SAIGEQTL/pixi.toml Rscript step1_fitNULLG
     --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
     --IsOverwriteVarianceRatioFile=TRUE
 ```
-
 
 #### Standard Installation
 ```bash
@@ -147,50 +151,29 @@ docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 \
 
 #### Singularity Installation
 ```bash
-cd ./SAIGEQTL/extdata
-singularity exec --bind $PWD:/extdata saigeqtl_0.3.2.sif	\
-    Rscript /extdata/step1_fitNULLGLMM_qtl.R	\
+
+singularity exec \
+    --bind  $PWD/SAIGEQTL/extdata:/extdata \
+    --bind $PWD/SAIGEQTL/extdata/input:/input \
+    --bind $PWD/SAIGEQTL/extdata/output:/output \
+    --cleanenv saigeqtl_0.3.2.sif \
+    step1_fitNULLGLMM_qtl.R	\
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
-    --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
+    --phenoFile=/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
     --phenoCol=gene_1 \
     --covarColList=X1,X2,pf1,pf2 \
     --sampleCovarColList=X1,X2 \
     --sampleIDColinphenoFile=IND_ID \
     --traitType=count \
-    --outputPrefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --outputPrefix=/output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
     --skipVarianceRatioEstimation=FALSE \
     --isRemoveZerosinPheno=FALSE \
     --isCovariateOffset=FALSE \
     --isCovariateTransform=TRUE \
     --skipModelFitting=FALSE \
     --tol=0.00001 \
-    --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
-    --IsOverwriteVarianceRatioFile=TRUE
-```
-
-#### Pixi Installation
-```bash
-# Navigate to SAIGEQTL directory first
-cd SAIGEQTL/extdata
-
-pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
-    --useSparseGRMtoFitNULL=FALSE \
-    --useGRMtoFitNULL=FALSE \
-    --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
-    --phenoCol=gene_1 \
-    --covarColList=X1,X2,pf1,pf2 \
-    --sampleCovarColList=X1,X2 \
-    --sampleIDColinphenoFile=IND_ID \
-    --traitType=count \
-    --outputPrefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
-    --skipVarianceRatioEstimation=FALSE \
-    --isRemoveZerosinPheno=FALSE \
-    --isCovariateOffset=FALSE \
-    --isCovariateTransform=TRUE \
-    --skipModelFitting=FALSE \
-    --tol=0.00001 \
-    --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
+    --plinkFile=/input/n.indep_100_n.cell_1_01.step1 \
     --IsOverwriteVarianceRatioFile=TRUE
 ```
 

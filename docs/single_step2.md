@@ -60,7 +60,6 @@ step2prefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis
 NOTE: the corresponding command to call the wrapper function **step2_tests_qtl.R** needs to be modified if different ways used for installing the pcakge as shown above
 
 ```bash
-cd SAIGEQTL/extdata/
 pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
     --bedFile=./input/n.indep_100_n.cell_1.bed \
     --bimFile=./input/n.indep_100_n.cell_1.bim \
@@ -102,7 +101,6 @@ pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
 Perform conditional analysis by specifying conditioning markers:
 
 ```bash
-cd SAIGEQTL/extdata
 pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
     --bedFile=./input/n.indep_100_n.cell_1.bed \
     --bimFile=./input/n.indep_100_n.cell_1.bim \

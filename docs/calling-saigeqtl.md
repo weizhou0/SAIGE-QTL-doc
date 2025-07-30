@@ -61,13 +61,13 @@ cd ./SAIGEQTL/extdata
 Then run:
 
 ```bash
-docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 Rscript step1_fitNULLGLMM_qtl.R [options]
+docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R [options]
 ```
 
 **Example:**
 
 ```bash
-docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 Rscript step1_fitNULLGLMM_qtl.R --help
+docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R --help
 ```
 
 **Explanation:**
@@ -84,26 +84,18 @@ Navigate to the `SAIGEQTL/extdata` directory first:
 
 ```bash
 cd ./SAIGEQTL/extdata
+
+singularity exec \
+--bind $PWD:/extdata \
+--cleanenv saigeqtl_0.3.2.sif \
+step1_fitNULLGLMM_qtl.R [options]
+
 ```
 
-### Option 1: Run directly
-
-```bash
-singularity exec --bind $PWD:/extdata saigeqtl_0.3.2.sif Rscript /extdata/step1_fitNULLGLMM_qtl.R [options]
-```
-
-### Option 2: Open an interactive shell
-
-```bash
-singularity shell --bind $PWD:/extdata saigeqtl_0.3.2.sif
-Rscript /extdata/step1_fitNULLGLMM_qtl.R [options]
-exit
-```
 
 **Explanation:**
 - `--bind $PWD:/extdata` gives the container access to your local `extdata` directory
-- The `.sif` file is the Singularity image for SAIGE-QTL
-- Inside the shell, use absolute paths like `/extdata/step1_fitNULLGLMM_qtl.R` to run scripts
+- The `.sif` file is the Singularity image for SAIGE-QTL. Its full path will be needed if it is not in the default path of singularity containers 
 
 ---
 

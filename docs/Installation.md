@@ -2,13 +2,12 @@
 layout: default
 title: Installation
 nav_order: 3
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+description: "This document provides step-by-step instructions for installing SAIGE-QTL, an R package for scalable and accurate expression quantitative trait locus (eQTL) mapping in single-cell studies."
 has_children: true
 has_toc: false
 ---
 
 How to install and run SAIGE-QTL
-
 
 ## Install SAIGE-QTL (current version 0.3.2 (updated on July 28, 2025))
 

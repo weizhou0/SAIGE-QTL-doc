@@ -81,7 +81,7 @@ This creates a Singularity image file (e.g., `saigeqtl_0.3.2.sif`).
 
 ```bash
 singularity exec --bind /data/wzhougroup:/data/wzhougroup \
-    /path/to/saigeqtl_0.3.2.sif bash
+    --cleanenv /path/to/saigeqtl_0.3.2.sif bash
 ```
 
 **Note**:
@@ -95,24 +95,23 @@ From within the Singularity container:
 
 ```bash
 # Step 1: Fit NULL GLMM model
-Rscript /usr/local/bin/step1_fitNULLGLMM_qtl.R --help
+step1_fitNULLGLMM_qtl.R --help
 
 # Step 2: Run association tests
-Rscript /usr/local/bin/step2_tests_qtl.R --help
+step2_tests_qtl.R --help
 
 # Step 3: Calculate gene-level p-values
-Rscript /usr/local/bin/step3_gene_pvalue_qtl.R --help
+step3_gene_pvalue_qtl.R --help
 
 # Create group files
-Rscript /usr/local/bin/makeGroupFile.R --help
+makeGroupFile.R --help
 ```
 
 #### Direct Execution (Non-interactive)
 
 ```bash
-singularity exec --bind /data/wzhougroup:/data/wzhougroup \
-    /path/to/saigeqtl_0.3.2.sif \
-    Rscript /usr/local/bin/step1_fitNULLGLMM_qtl.R [options]
+
+singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_0.3.2.sif step1_fitNULLGLMM_qtl.R --help
 ```
 
 ## SLURM Integration
@@ -124,7 +123,7 @@ For SLURM job submission, include these basic steps in your submission script:
 ```bash
 module load singularity
 singularity exec --bind /your/data/path:/your/data/path \
-    /path/to/saigeqtl_0.3.2.sif \
+    --cleanenv /path/to/saigeqtl_0.3.2.sif \
     [your_command]
 ```
 
@@ -156,7 +155,7 @@ eachjob=${FILES[$i]}
 # Run job with timing information
 /bin/time -o /path/to/logs/run.${SLURM_ARRAY_TASK_ID}.timing.txt -v \
 singularity exec --bind /data/path:/data/path \
-    /path/to/saigeqtl_0.3.2.sif \
+    --cleanenv /path/to/saigeqtl_0.3.2.sif \
     bash "${eachjob}"
 ```
 
@@ -189,7 +188,7 @@ For large-scale analyses, use job arrays:
 2. **Each script contains SAIGE-QTL commands**:
    ```bash
    #!/bin/bash
-   Rscript /usr/local/bin/step2_tests_qtl.R \
+   step2_tests_qtl.R \
        --vcfFile=/data/genotypes/chr1.vcf.gz \
        --vcfFileIndex=/data/genotypes/chr1.vcf.gz.csi \
        --SAIGEOutputFile=/data/results/chr1_results.txt \
