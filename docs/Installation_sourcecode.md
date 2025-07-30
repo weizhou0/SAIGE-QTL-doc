@@ -17,14 +17,14 @@ published: false # Set to false to prevent rendering
 
      ```
        src_branch=main
-       repo_src_url=https://github.com/weizhou0/qtl
+       repo_src_url=https://github.com/weizhou0/SAIGEQTL
        git clone --depth 1 -b $src_branch $repo_src_url	
      ```
 
 3. Install dependencies: R packages
 
      ```
-	Rscript ./qtl/extdata/install_packages.R
+	Rscript ./SAIGEQTL/extdata/install_packages.R
         
      ```
 
@@ -32,12 +32,12 @@ published: false # Set to false to prevent rendering
 
      * To install SAIGE-QTL to the root directory storing all R libraries
      ```
-        R CMD INSTALL qtl
+        R CMD INSTALL SAIGEQTL
      ```
 
      * **--library=path_to_final_SAIGEQTL_library** can be used for specifying the directory where SAIGE-QTL is installed 
      ```
-	R CMD INSTALL --library=path_to_final_SAIGEQTL_library qtl
+	R CMD INSTALL --library=path_to_final_SAIGEQTL_library SAIGEQTL
      ```
 
 5. Run SAIGE-QTL
@@ -54,8 +54,8 @@ published: false # Set to false to prevent rendering
      in the following scripts
 
     ```
-    qtl/extdata/makeGroupFile.R
-    qtl/extdata/step1_fitNULLGLMM_qtl.R
-    qtl/extdata/step2_tests_qtl.R
-    qtl/extdata/step3_gene_pvalue_qtl.R
+    SAIGEQTL/extdata/makeGroupFile.R
+    SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R
+    SAIGEQTL/extdata/step2_tests_qtl.R
+    SAIGEQTL/extdata/step3_gene_pvalue_qtl.R
     ```

@@ -2,40 +2,67 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Documentation for SAIGE-QTL."
+description: "Documentation for SAIGE-QTL: Scalable and accurate expression quantitative trait locus mapping for single-cell studies."
 permalink: /
 ---
 
+# SAIGE-QTL
 
-SAIGE-QTL is an R package developed with Rcpp for scalable and accurate expression quantitative trait locus (QTL) mapping for single-cell studies.
+SAIGE-QTL is an R package developed with Rcpp for **scalable and accurate expression quantitative trait locus (eQTL) mapping** in single-cell studies.
 
-The method
-- Models repeated and complex data structure, due to multiple cells per individual and relatedness between individuals
-- Models discrete read counts
-- Is fast and scalable for large data, can test 20k genes, tens to hundreds of cell types, millions of cells, millions of genetic variants
-- Can test for the effects of rare variation, for which the single-variant test is underpowered (uses set-based tests instead).
+## Key Features
 
-The package takes genotype file input in the following formats
-- PLINK (bed, bim, fam), BGEN, VCF, BCF, SAV
+The SAIGE-QTL method provides several advantages for single-cell eQTL analysis:
 
-Please note that accounting for total read counts per cell is critical in single-cell eQTL mapping. The SCTransform in the SCTransform function in the Seurat R package and/or including log(total read counts) and percentage of MT read counts for each cell as covariates in the Step 1 null model can be used.  
+- **Complex data modeling**: Handles repeated and complex data structures arising from multiple cells per individual and relatedness between individuals
+- **Discrete count modeling**: Specifically designed for discrete read count data typical in single-cell RNA sequencing
+- **Scalability**: Fast and scalable for large datasets - can analyze:
+  - 20,000+ genes
+  - Tens to hundreds of cell types
+  - Millions of cells
+  - Millions of genetic variants
+- **Rare variant testing**: Includes set-based tests for rare variation effects where single-variant tests are underpowered
 
+## Supported Input Formats
 
-## Logs 
+SAIGE-QTL accepts genotype files in multiple standard formats:
+- PLINK (bed, bim, fam)
+- BGEN
+- VCF
+- BCF
+- SAV
 
-Please find logs for bugs fixed
-[https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation.html](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation.html)
+## Quick Start
 
+1. **[Install SAIGE-QTL](Installation.html)** - Choose from multiple installation methods
+2. **[Review the workflow overview](overview.html)** - Understand the analysis pipeline
+3. **[Run Step 1](step1.html)** - Fit the null Poisson mixed model
+4. **[Perform association tests](calling-saigeqtl.html)** - Execute cis-eQTL or genome-wide analyses
+
+## Important Note on Normalization
+
+⚠️ **Critical**: Accounting for total read counts per cell is essential in single-cell eQTL mapping. Consider using:
+- SCTransform function from the Seurat R package, OR
+- Including log(total read counts) and percentage of mitochondrial read counts as an offset in the Step 1 null model
+
+## What's New
+
+**Version 0.3.2** (July 28, 2025):
+- Added `--offsetCol` option for using log of total read counts per cell as an offset
+- Enhanced installation process using pixi
+- See [Installation logs](Installation.html) for complete bug fixes and updates
 
 ## Citation
 
 ### SAIGE-QTL
-- preprint coming out soon!
+Preprint: https://www.medrxiv.org/content/10.1101/2024.05.15.24307317v1
 
 ## License
+
 SAIGE-QTL is distributed under an MIT license.
 
+## Support
 
-## Contact
-If you have any questions about SAIGE-QTL please contact
-wzhou@broadinstitute.org.
+For questions about SAIGE-QTL, please contact: [wzhou@broadinstitute.org](mailto:wzhou@broadinstitute.org)
+
+For technical issues and bug reports, please use the GitHub repository issue tracker.

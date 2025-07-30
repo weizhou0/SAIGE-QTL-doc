@@ -2,116 +2,180 @@
 layout: default
 title: Calling SAIGE-QTL
 nav_order: 4
-description: "Guidelines for running SAIGE-QTL"
+description: "Complete guide for running SAIGE-QTL scripts across different environments with detailed examples and best practices."
 has_children: true
 has_toc: false
 ---
 
-## Calling SAIGE-QTL
+# Running SAIGE-QTL Scripts
 
-This guide describes how to run the SAIGE-QTL scripts 
-  ```
-  step1_fitNULLGLMM_qtl.R
-  step2_tests_qtl.R
-  step3_gene_pvalue_qtl.R
-  makeGroupFile.R
-  ```
-using different environments: Pixi, Docker, and Singularity. All R scripts are located in the `./SAIGEQTL/extdata` directory. You can refer to the corresponding section below depending on your setup.
+This guide shows how to execute SAIGE-QTL analysis scripts in different computing environments. Choose the method that matches your [installation approach](Installation.html).
+
+## Available Scripts
+
+SAIGE-QTL provides four main R scripts for the complete analysis pipeline:
+
+| Script | Purpose | When to Use |
+|--------|---------|-------------|
+| `step1_fitNULLGLMM_qtl.R` | Fit null Poisson mixed model | Required first step for all analyses |
+| `step2_tests_qtl.R` | Perform association tests | Main analysis step for variant testing |
+| `step3_gene_pvalue_qtl.R` | Calculate gene-level p-values | Optional, for gene-based rare variant tests |
+| `makeGroupFile.R` | Create variant group files | For set-based rare variant analyses |
+
+📁 **Script Location**: All scripts are in the `./SAIGEQTL/extdata` directory
+
+## Quick Reference
+
+| Environment | Command Prefix | Working Directory |
+|-------------|----------------|-------------------|
+| **Pixi** | `pixi run Rscript extdata/` | `./SAIGEQTL/` |
+| **Docker** | `docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2` | `./SAIGEQTL/extdata` |
+| **Singularity** | `singularity exec --bind $PWD:/extdata saigeqtl_0.3.2.sif` | `./SAIGEQTL/extdata` |
 
 
 ---
 
+## 🚀 Pixi Environment
 
-###  Pixi
+**Recommended method** - Provides reproducible environments with automatic dependency management.
 
-From within the SAIGEQTL root directory (which includes `pixi.toml`):
+### Prerequisites
+- Navigate to the SAIGEQTL root directory (containing `pixi.toml`)
+- Ensure pixi is installed and environment is set up
+
+### Basic Usage
 
 ```bash
 cd ./SAIGEQTL
 pixi run Rscript extdata/step1_fitNULLGLMM_qtl.R [options]
 ```
 
-**Example:**
+### Getting Help
 
 ```bash
 pixi run Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
-If you are outside the SAIGEQTL directory, you can specify the manifest path:
+### Remote Directory Usage
+If you're outside the SAIGEQTL directory:
 
 ```bash
 pixi run --manifest-path=/full/path/to/SAIGEQTL/pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R [options]
 ```
 
-**Explanation:**
+### How It Works
 - `pixi run` activates the reproducible environment defined in `pixi.toml`
-- Scripts are referenced by their path inside the repo (e.g., `extdata/step1_fitNULLGLMM_qtl.R`)
+- Scripts are referenced by their relative path: `extdata/script_name.R`
+- All dependencies are automatically managed
 
 
 ---
 
-### Docker
+## 🐳 Docker Environment
 
-Navigate to the `SAIGEQTL/extdata` directory first:
+**Container-based method** - Pre-built environment, no local installation required.
 
+### Prerequisites
+- Docker installed and running
+- Navigate to the SAIGEQTL/extdata directory
+
+### Setup
 ```bash
 cd ./SAIGEQTL/extdata
 ```
 
-Then run:
+### Basic Usage
 
 ```bash
 docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R [options]
 ```
 
-**Example:**
+### Getting Help
 
 ```bash
 docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R --help
 ```
 
-**Explanation:**
-- `-v $PWD:/extdata` mounts the current directory into the Docker container as `/extdata`
-- `-w /extdata` sets the containers working directory to `/extdata`
+### How It Works
+- `-v $PWD:/extdata` mounts your current directory into the container as `/extdata`
+- `-w /extdata` sets the container's working directory to `/extdata`
 - `$PWD` automatically resolves to your current directory path
-- `[options]` are script-specific arguments (see Notes below)
+- All input/output files must be in the mounted directory
 
 ---
 
-### Singularity
+## 🧊 Singularity Environment
 
-Navigate to the `SAIGEQTL/extdata` directory first:
+**HPC-friendly method** - Container solution compatible with high-performance computing clusters.
 
+### Prerequisites
+- Singularity/Apptainer installed
+- Access to `saigeqtl_0.3.2.sif` image file
+- Navigate to the SAIGEQTL/extdata directory
+
+### Setup
 ```bash
 cd ./SAIGEQTL/extdata
+```
 
+### Basic Usage
+
+```bash
 singularity exec \
 --bind $PWD:/extdata \
 --cleanenv saigeqtl_0.3.2.sif \
 step1_fitNULLGLMM_qtl.R [options]
-
 ```
 
+### Getting Help
 
-**Explanation:**
-- `--bind $PWD:/extdata` gives the container access to your local `extdata` directory
-- The `.sif` file is the Singularity image for SAIGE-QTL. Its full path will be needed if it is not in the default path of singularity containers 
+```bash
+singularity exec \
+--bind $PWD:/extdata \
+--cleanenv saigeqtl_0.3.2.sif \
+step1_fitNULLGLMM_qtl.R --help
+```
+
+### How It Works
+- `--bind $PWD:/extdata` gives the container access to your local directory
+- `--cleanenv` ensures a clean environment inside the container
+- The `.sif` file path may need to be absolute if not in your PATH
+- Ideal for HPC environments where Docker isn't available 
 
 ---
 
-## Notes
+## 📝 Important Notes
 
-- All R scripts are located in `./SAIGEQTL/extdata`
-- Replace `[options]` with the actual arguments required by the script (e.g., `--phenoFile`, `--genoFile`, `--covarColList`, etc.)
-- Use `--help` to see the full list of arguments for any script
-- Make sure input/output files are located in the bound/mounted directory so the container or environment can access them
-- The same format applies to the following SAIGE-QTL scripts:
+### File Locations and Access
+- **Script location**: All R scripts are in `./SAIGEQTL/extdata`
+- **Data access**: Ensure input/output files are in directories accessible to your chosen environment:
+  - **Pixi**: Files can be anywhere accessible from your system
+  - **Docker/Singularity**: Files must be in bound/mounted directories
 
-  ```
-  step1_fitNULLGLMM_qtl.R
-  step2_tests_qtl.R
-  step3_gene_pvalue_qtl.R
-  makeGroupFile.R
-  ```
+### Command Structure
+- Replace `[options]` with actual script arguments (e.g., `--phenoFile`, `--genoFile`, `--covarColList`)
+- Use `--help` with any script to see all available parameters
+- The command patterns above work for all four SAIGE-QTL scripts - just change the script name
 
-  Just replace the script name in the example commands above with the one you wish to run.
+### Universal Script Support
+All examples above work with any of these scripts:
+```
+step1_fitNULLGLMM_qtl.R    # Null model fitting
+step2_tests_qtl.R          # Association testing  
+step3_gene_pvalue_qtl.R    # Gene-level analysis
+makeGroupFile.R            # Group file creation
+```
+
+## 🚀 Next Steps
+
+1. **[Start with Step 1](step1.html)** - Fit your null models with detailed examples
+2. **[Choose your analysis type](overview.html#analysis-types)**:
+   - **[cis-eQTL analysis](cis-eQTL.html)** - Local variant testing
+   - **[Genome-wide analysis](genomewide-eQTL.html)** - Comprehensive variant screening
+
+## 💡 Tips for Success
+
+- **Test first**: Always run scripts with `--help` to verify they work in your environment
+- **Path management**: Use absolute paths for input/output files when possible
+- **Resource planning**: Ensure adequate memory and storage for your dataset size
+- **Error checking**: Review log files and error messages carefully for troubleshooting
