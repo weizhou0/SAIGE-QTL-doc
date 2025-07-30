@@ -22,7 +22,7 @@ When we run genome-wide association tests for identifying eQTLs, we can run anal
     do
     echo $i
     step1prefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_${i}
-    /bin/time -o ${step1prefix}.runinfo.txt -v Rscript step1_fitNULLGLMM_qtl.R \
+    /bin/time -o ${step1prefix}.runinfo.txt -v pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
         --useSparseGRMtoFitNULL=FALSE  \
         --useGRMtoFitNULL=FALSE \
         --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \

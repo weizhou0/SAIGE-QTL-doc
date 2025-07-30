@@ -8,6 +8,13 @@ parent: cis-eQTL test
 
 ## Step 2: performing set-based association tests for rare variants
 
+Navigate to the `SAIGEQTL/extdata` directory first:
+
+```bash
+cd ./SAIGEQTL/extdata
+```
+
+
 
 ```
 ##same setting as for the common variants tests for cis-eQTLs
@@ -23,14 +30,15 @@ echo -e "2\t300001\t610001" > ${regionFile}
 
 ```
 #check the help info for making the group file using region file
-Rscript makeGroupFile.R --help
+pixi run --manifest-path=../pixi.toml Rscript makeGroupFile.R --help
 ```
 
 
 ```
 #make the group file
 groupFile=${regionFile}.grp
-Rscript makeGroupFile.R \
+pixi run --manifest-path=../pixi.toml \
+        Rscript makeGroupFile.R \
         --bedFile=./input/n.indep_100_n.cell_1.bed      \
         --bimFile=./input/n.indep_100_n.cell_1.bim      \
         --famFile=./input/n.indep_100_n.cell_1.fam      \
@@ -61,6 +69,7 @@ step2prefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis
 
 
 ```
+pixi run --manifest-path=../pixi.toml \
 Rscript step2_tests_qtl.R       \
         --bedFile=./input/n.indep_100_n.cell_1.bed      \
         --bimFile=./input/n.indep_100_n.cell_1.bim      \
@@ -92,6 +101,7 @@ Rscript step2_tests_qtl.R       \
 * conditioning markers MUST be specified in the same order as stored in the dosage file (e.g. in the VCF file)
 
 ```
+pixi run --manifest-path=../pixi.toml \
 Rscript step2_tests_qtl.R       \
         --bedFile=./input/n.indep_100_n.cell_1.bed      \
         --bimFile=./input/n.indep_100_n.cell_1.bim      \
