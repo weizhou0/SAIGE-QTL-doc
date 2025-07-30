@@ -36,10 +36,10 @@ git clone -b $src_branch $repo_src_url
 # Single command - installs in user directory
 curl -fsSL https://pixi.sh/install.sh | sh && \
     source ~/.bashrc && \
-    pixi install && \
+    CONDA_OVERRIDE_GLIBC=2.28 pixi install --manifest-path=$PWD/SAIGEQTL/pixi.toml && \
     rm -rf ~/.cache/pixi && \
-    pixi run --manifest-path=./SAIGEQTL/pixi.toml Rscript -e 'install.packages("lintools", repos="https://cloud.r-project.org")' && \
-    pixi run --manifest-path=./SAIGEQTL/pixi.toml Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org"); remotes::install_github("barkasn/fastSave")'
+    CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'install.packages("lintools", repos="https://cloud.r-project.org")' && \
+    CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org"); remotes::install_github("barkasn/fastSave")'
 ```
 
 ##### Option B: System-wide Installation (Requires root - original approach)
@@ -49,17 +49,17 @@ curl -fsSL https://pixi.sh/install.sh | sh && \
 # Single command - Install pixi in user directory (recommended for most users)
 curl -fsSL https://pixi.sh/install.sh | sh  && \
     source ~/.bashrc   && \
-    pixi install  && \
+    CONDA_OVERRIDE_GLIBC=2.28 pixi install --manifest-path=$PWD/SAIGEQTL/pixi.toml && \
     rm -rf ~/.cache/pixi  && \
-    pixi run --manifest-path=./SAIGEQTL/pixi.toml Rscript -e 'install.packages("lintools", repos="https://cloud.r-project.org")'  && \
-    pixi run --manifest-path=./SAIGEQTL/pixi.toml Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org"); remotes::install_github("barkasn/fastSave")' 
+    CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'install.packages("lintools", repos="https://cloud.r-project.org")'  && \
+    CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org"); remotes::install_github("barkasn/fastSave")' 
 ```
 
 
 ### 2. Install the SAIGE-QTL package
 #### Installation to the default R library paths
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=./SAIGEQTL/pixi.toml R CMD INSTALL SAIGEQTL
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml R CMD INSTALL SAIGEQTL
 ```
 
 When calling SAIGE-QTL in R, set the library location:
@@ -71,7 +71,7 @@ library(SAIGEQTL)
 #### Alternative installation paths
 For custom library installation:
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=./SAIGEQTL/pixi.toml R CMD INSTALL SAIGEQTL --library=path_to_final_SAIGEQTL_library
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml R CMD INSTALL SAIGEQTL --library=path_to_final_SAIGEQTL_library
 ```
 
 When calling SAIGE-QTL in R, set the library location:
@@ -115,17 +115,23 @@ library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)
 After installation, verify the setup:
 
 ```bash
-# Navigate to the SAIGEQTL directory if not already there
-cd SAIGEQTL
 
 # Check if pixi environment is working
-pixi run R --version
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml R --version
 
 # Test SAIGE-QTL installation
-pixi run Rscript -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
+
+#if not installed in the default folder for R libraries
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library); packageVersion("SAIGEQTL")'
+
+#For example
+#CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc="/humgen/atgu1/fin/wzhou/projects/eQTL_method_dev/tool_dev/test_doc/install_test"); packageVersion("SAIGEQTL")'
+##output: [1] '0.3.2'
+
 
 # Check key dependencies
-pixi run Rscript -e 'library(SKAT); library(MetaSKAT); library(data.table)'
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'library(SKAT); library(MetaSKAT); library(data.table)'
 ```
 
 

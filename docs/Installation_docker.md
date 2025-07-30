@@ -32,11 +32,11 @@ docker pull wzhou88/saigeqtl:0.3.2
 
 The following functions are available in the Docker container:
 
-```bash
-step1_fitNULLGLMM_qtl.R --help
-step2_tests_qtl.R --help
-step3_gene_pvalue_qtl.R --help
-makeGroupFile.R --help
+```
+step1_fitNULLGLMM_qtl.R
+step2_tests_qtl.R
+step3_gene_pvalue_qtl.R
+makeGroupFile.R
 ```
 
 ### Running SAIGE-QTL on Local Systems
@@ -56,16 +56,6 @@ docker run wzhou88/saigeqtl:0.3.2 step3_gene_pvalue_qtl.R --help
 # Create group files
 docker run wzhou88/saigeqtl:0.3.2 makeGroupFile.R --help
 ```
-
-### Volume Mounting
-
-**Important**: Use the `-v` option to bind mount volumes for data access:
-
-```bash
-docker run -v /host/data:/container/data wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R [options]
-```
-
-The `-v` option allows you to mount host directories into the container, making your data accessible inside the container environment. For more details, see the [Docker documentation](https://docs.docker.com/engine/reference/commandline/run/#mount-volume--v---read-only).
 
 ## Singularity Installation and Usage
 
@@ -222,11 +212,6 @@ For large-scale analyses, use job arrays:
 - Always specify separate output and error log files
 - Include timing information for performance monitoring
 - Use descriptive job names for easier tracking
-
-### Security Considerations
-- Avoid binding sensitive system directories
-- Use read-only mounts when possible: `--bind /data:/data:ro`
-- Follow your institution's container security policies
 
 ## Troubleshooting
 
