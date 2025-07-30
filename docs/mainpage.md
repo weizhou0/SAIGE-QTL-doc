@@ -34,10 +34,10 @@ SAIGE-QTL accepts genotype files in multiple standard formats:
 
 ## Quick Start
 
-1. **[Install SAIGE-QTL](Installation.html)** - Choose from multiple installation methods
-2. **[Review the workflow overview](overview.html)** - Understand the analysis pipeline
-3. **[Run Step 1](step1.html)** - Fit the null Poisson mixed model
-4. **[Perform association tests](calling-saigeqtl.html)** - Execute cis-eQTL or genome-wide analyses
+1. **[Install SAIGE-QTL](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation.html)** - Choose from multiple installation methods
+2. **[Review the workflow overview](https://weizhou0.github.io/SAIGE-QTL-doc/docs/overview.html)** - Understand the analysis pipeline
+3. **[Run Step 1](https://weizhou0.github.io/SAIGE-QTL-doc/docs/step1.html)** - Fit the null Poisson mixed model
+4. **[Perform association tests](https://weizhou0.github.io/SAIGE-QTL-doc/docs/calling-saigeqtl.html)** - Execute cis-eQTL or genome-wide analyses
 
 ## Important Note on Normalization
 
