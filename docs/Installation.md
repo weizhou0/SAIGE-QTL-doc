@@ -19,13 +19,3 @@ How to install and run SAIGE-QTL
 * add an option --offsetCol to allow for using log of total read counts per cell as an offset in the mode
 * using pixi for installation 
 
-### List of dependencies:
-
-* R >= 3.6.1, gcc >= 5.4.0, cmake 3.14.1, [cget](https://cget.readthedocs.io/en/latest/src/intro.html#installing-cget), [savvy](https://github.com/statgen/savvy)
-* R packages: Rcpp (>= 1.0.7), RcppArmadillo, RcppParallel, data.table, SPAtest (== 3.1.2),
-        RcppEigen, Matrix, methods, BH, optparse, SKAT, qlcMatrix, RhpcBLASctl, roxygen2, rversions, devtools, dplyr, dbplyr
--  Rscript ./extdata/install_packages.R can be used to install the R packages
-
-* Two libraries for reading VCF files. Will be automatically installed during the SAIGE installation
--  [cget](https://cget.readthedocs.io/en/latest/src/intro.html#installing-cget), [savvy](https://github.com/statgen/savvy)
-
