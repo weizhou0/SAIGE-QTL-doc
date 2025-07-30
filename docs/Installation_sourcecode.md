@@ -4,7 +4,6 @@ title: Source code
 nav_order: 3
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
 parent: Installation
-published: false # Set to false to prevent rendering
 ---
 
 ### Intall SAIGE-QTL using source code https://github.com/weizhou0/qtl
