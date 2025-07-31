@@ -35,7 +35,7 @@ git clone -b $src_branch $repo_src_url
 ```bash
 # Single command - installs in user directory
 curl -fsSL https://pixi.sh/install.sh | sh && \
-    source ~/.bashrc && \
+    export PATH="$HOME/.pixi/bin:$PATH" && \
     CONDA_OVERRIDE_GLIBC=2.28 pixi install --manifest-path=$PWD/SAIGEQTL/pixi.toml && \
     rm -rf ~/.cache/pixi && \
     CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'install.packages("lintools", repos="https://cloud.r-project.org")' && \
@@ -48,7 +48,7 @@ curl -fsSL https://pixi.sh/install.sh | sh && \
 ```bash
 # Single command - Install pixi in user directory (recommended for most users)
 curl -fsSL https://pixi.sh/install.sh | sh  && \
-    source ~/.bashrc   && \
+    export PATH="$HOME/.pixi/bin:$PATH" && \
     CONDA_OVERRIDE_GLIBC=2.28 pixi install --manifest-path=$PWD/SAIGEQTL/pixi.toml && \
     rm -rf ~/.cache/pixi  && \
     CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'install.packages("lintools", repos="https://cloud.r-project.org")'  && \
