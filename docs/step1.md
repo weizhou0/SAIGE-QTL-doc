@@ -41,7 +41,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript extdata/step1_fitNULLGLMM_qtl.R --hel
 
 #### Docker Installation
 ```bash
-docker run wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R --help
+docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
 ```
 
 #### Singularity Installation
@@ -50,7 +50,7 @@ cd SAIGEQTL
 
 singularity exec \
 --bind $PWD//extdata:/extdata \
---cleanenv saigeqtl_0.3.2.sif \
+--cleanenv saigeqtl_latest.sif \
 step1_fitNULLGLMM_qtl.R --help
 ```
 
@@ -126,9 +126,8 @@ Rscript step1_fitNULLGLMM_qtl.R \
 
 #### Docker Installation
 ```bash
-cd ./SAIGEQTL/extdata
 
-docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 \
+docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:latest \
     step1_fitNULLGLMM_qtl.R \
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
@@ -151,29 +150,31 @@ docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 \
 
 #### Singularity Installation
 ```bash
+# Define your working directory first and the output from example runs will be stored there
+# e.g. /data/wzhougroup/
+
+WKDIR=/data/wzhougroup
 
 singularity exec \
-    --bind  $PWD/SAIGEQTL/extdata:/extdata \
-    --bind $PWD/SAIGEQTL/extdata/input:/input \
-    --bind $PWD/SAIGEQTL/extdata/output:/output \
-    --cleanenv saigeqtl_0.3.2.sif \
+    --bind  $WKDIR/:$WKDIR/ \
+    --cleanenv saigeqtl_latest.sif \
     step1_fitNULLGLMM_qtl.R	\
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
-    --phenoFile=/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
+    --phenoFile=/usr/local/bin/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
     --phenoCol=gene_1 \
     --covarColList=X1,X2,pf1,pf2 \
     --sampleCovarColList=X1,X2 \
     --sampleIDColinphenoFile=IND_ID \
     --traitType=count \
-    --outputPrefix=/output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --outputPrefix=$WKDIR/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
     --skipVarianceRatioEstimation=FALSE \
     --isRemoveZerosinPheno=FALSE \
     --isCovariateOffset=FALSE \
     --isCovariateTransform=TRUE \
     --skipModelFitting=FALSE \
     --tol=0.00001 \
-    --plinkFile=/input/n.indep_100_n.cell_1_01.step1 \
+    --plinkFile=/usr/local/bin/input/n.indep_100_n.cell_1_01.step1 \
     --IsOverwriteVarianceRatioFile=TRUE
 ```
 
@@ -195,13 +196,13 @@ less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Pois
 
 #### Docker Installation
 ```bash
-docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 \
+docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:latest \
     less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
 ```
 
 #### Singularity Installation
 ```bash
-singularity exec --bind $PWD:/extdata saigeqtl_0.3.2.sif        \
+singularity exec --bind $PWD:/extdata saigeqtl_latest.sif        \
     less -S /data/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
 ```
 
