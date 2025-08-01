@@ -57,9 +57,22 @@ curl -fsSL https://pixi.sh/install.sh | sh  && \
 
 
 ### 2. Install the SAIGE-QTL package
+
+```bash
+
+# Set the path to the SAIGEQTL/ source code
+
+PATHTOSAIGEQTL=./
+
+# Set the path to the file pixi.toml, which is in the SAIGEQTL folder 
+
+PATHTOTOML=${PATHTOSAIGEQTL}SAIGEQTL/
+
+```
+
 #### Installation to the default R library paths
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml R CMD INSTALL SAIGEQTL
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOTOML}pixi.toml R CMD INSTALL ${PATHTOSAIGEQTL}SAIGEQTL
 ```
 
 When calling SAIGE-QTL in R, set the library location:
@@ -69,9 +82,10 @@ library(SAIGEQTL)
 
 
 #### Alternative installation paths
-For custom library installation:
+For custom library installation to the specified R library location, e.g. path_to_final_SAIGEQTL_library
+
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml R CMD INSTALL SAIGEQTL --library=path_to_final_SAIGEQTL_library
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOTOML}pixi.toml R CMD INSTALL ${PATHTOSAIGEQTL}SAIGEQTL --library=path_to_final_SAIGEQTL_library
 ```
 
 When calling SAIGE-QTL in R, set the library location:
@@ -83,10 +97,10 @@ library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)
 **Change the library(SAIGEQTL) to library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)** in the wrapper files
 
 ```
-./SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R
-./SAIGEQTL/extdata/step2_tests_qtl.R
-./SAIGEQTL/extdata/step3_gene_pvalue_qtl.R
-./SAIGEQTL/extdata/makeGroupFile.R
+${PATHTOSAIGEQTL}SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R
+${PATHTOSAIGEQTL}SAIGEQTL/extdata/step2_tests_qtl.R
+${PATHTOSAIGEQTL}SAIGEQTL/extdata/step3_gene_pvalue_qtl.R
+${PATHTOSAIGEQTL}SAIGEQTL/extdata/makeGroupFile.R
 ```
 
 ## What Gets Installed
@@ -117,21 +131,21 @@ After installation, verify the setup:
 ```bash
 
 # Check if pixi environment is working
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml R --version
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml R --version
 
 # Test SAIGE-QTL installation
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
 
 #if not installed in the default folder for R libraries
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library); packageVersion("SAIGEQTL")'
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library); packageVersion("SAIGEQTL")'
 
 #For example
-#CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc="/humgen/atgu1/fin/wzhou/projects/eQTL_method_dev/tool_dev/test_doc/install_test"); packageVersion("SAIGEQTL")'
-##output: [1] '0.3.2'
+#CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc="/humgen/atgu1/fin/wzhou/projects/eQTL_method_dev/tool_dev/test_doc/install_test"); packageVersion("SAIGEQTL")'
+##output: [1] '0.3.2.1'
 
 
 # Check key dependencies
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=$PWD/SAIGEQTL/pixi.toml Rscript -e 'library(SKAT); library(MetaSKAT); library(data.table)'
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SKAT); library(MetaSKAT); library(data.table)'
 ```
 
 

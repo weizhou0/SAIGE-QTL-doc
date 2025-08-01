@@ -47,6 +47,9 @@ SAIGE-QTL accepts genotype files in multiple standard formats:
 
 ## What's New
 
+**July 31, 2025:
+- Export extdata/ in the docker container so users do not need to download the git repo when using the docker image wzhou88/saigeqtl:latest on example data
+
 **Version 0.3.2** (July 28, 2025):
 - Added `--offsetCol` option for using log of total read counts per cell as an offset
 - Enhanced installation process using pixi

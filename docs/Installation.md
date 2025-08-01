@@ -107,6 +107,9 @@ After installation, verify SAIGE-QTL is working correctly:
 
 ## Changelog
 
+**July 31, 2025:
+- Export extdata/ in the docker container so users do not need to download the git repo when using the docker image wzhou88/saigeqtl:latest on example data
+
 ### Version 0.3.2 (July 28, 2025)
 - **New**: Added `--offsetCol` option for using log of total read counts per cell as an offset in the model
 - **Improved**: Enhanced installation process using pixi

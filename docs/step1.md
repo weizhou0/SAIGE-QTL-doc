@@ -17,6 +17,13 @@ Step 1 involves fitting a null Poisson mixed model for each gene across cells.
 
 The wrapper scripts and example data are located in the `./extdata` folder: [https://github.com/weizhou0/SAIGEQTL/tree/main/extdata](https://github.com/weizhou0/SAIGEQTL/tree/main/extdata)
 
+
+### Check Help Information
+
+View available parameters and their descriptions:
+
+#### Pixi Installation
+
 ```bash
 # If not downloaded the SAIGEQTL package already, here we download the repo with /extdata
 src_branch=main
@@ -24,11 +31,14 @@ repo_src_url=https://github.com/weizhou0/SAIGEQTL
 git clone -b $src_branch $repo_src_url
 ```
 
-### Check Help Information
+```bash
+# If not downloaded the SAIGEQTL package already, here we download the repo with /extdata
+src_branch=main
+repo_src_url=https://github.com/weizhou0/SAIGEQTL
+git clone -b $src_branch $repo_src_url
+```
 
-View available parameters and their descriptions:
 
-#### Pixi Installation
 ```bash
 # Navigate to the extdata folder in the SAIGEQTL directory first
 cd ./SAIGEQTL
@@ -46,16 +56,23 @@ docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
 
 #### Singularity Installation
 ```bash
-cd SAIGEQTL
-
 singularity exec \
---bind $PWD//extdata:/extdata \
 --cleanenv saigeqtl_latest.sif \
 step1_fitNULLGLMM_qtl.R --help
 ```
 
 
 #### Standard Installation
+
+```bash
+#NOTE: example input data are stored in SAIGEQTL/extdata/input. If not downloaded the SAIGEQTL package already, here we download the repo with /extdata
+
+src_branch=main
+repo_src_url=https://github.com/weizhou0/SAIGEQTL
+git clone -b $src_branch $repo_src_url
+```
+
+
 ```bash
 # Navigate to the extdata folder in the SAIGEQTL directory first
 cd SAIGEQTL/extdata
@@ -126,38 +143,44 @@ Rscript step1_fitNULLGLMM_qtl.R \
 
 #### Docker Installation
 ```bash
+# Set your working directory first and the output from example runs will be stored there
+# e.g. /data/wzhougroup/
 
-docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:latest \
+WKDIR=/data/wzhougroup/
+
+docker run -w ${WKDIR} wzhou88/saigeqtl:latest \
     step1_fitNULLGLMM_qtl.R \
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
-    --phenoFile=/extdata/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
+    --phenoFile=/usr/local/bin/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
     --phenoCol=gene_1 \
     --covarColList=X1,X2,pf1,pf2 \
     --sampleCovarColList=X1,X2 \
     --sampleIDColinphenoFile=IND_ID \
     --traitType=count \
-    --outputPrefix=/extdata/output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --outputPrefix=${WKDIR}nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
     --skipVarianceRatioEstimation=FALSE \
     --isRemoveZerosinPheno=FALSE \
     --isCovariateOffset=FALSE \
     --isCovariateTransform=TRUE \
     --skipModelFitting=FALSE \
     --tol=0.00001 \
-    --plinkFile=/extdata/input/n.indep_100_n.cell_1_01.step1 \
+    --plinkFile=/usr/local/bin/input/n.indep_100_n.cell_1_01.step1 \
     --IsOverwriteVarianceRatioFile=TRUE
 ```
 
 #### Singularity Installation
 ```bash
-# Define your working directory first and the output from example runs will be stored there
+# Set your working directory first and the output from example runs will be stored there
 # e.g. /data/wzhougroup/
+# Set the path to the singularity file saigeqtl_latest.sif, e.g.  
 
-WKDIR=/data/wzhougroup
+WKDIR=/data/wzhougroup/
+PATHTOSIF=/data/wzhougroup/
 
 singularity exec \
-    --bind  $WKDIR/:$WKDIR/ \
-    --cleanenv saigeqtl_latest.sif \
+    --bind  ${WKDIR}:${WKDIR} \
+    --cleanenv ${PATHTOSIF}saigeqtl_latest.sif \
     step1_fitNULLGLMM_qtl.R	\
     --useSparseGRMtoFitNULL=FALSE \
     --useGRMtoFitNULL=FALSE \
@@ -167,7 +190,7 @@ singularity exec \
     --sampleCovarColList=X1,X2 \
     --sampleIDColinphenoFile=IND_ID \
     --traitType=count \
-    --outputPrefix=$WKDIR/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --outputPrefix=${WKDIR}nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
     --skipVarianceRatioEstimation=FALSE \
     --isRemoveZerosinPheno=FALSE \
     --isCovariateOffset=FALSE \
@@ -202,7 +225,7 @@ docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:latest \
 
 #### Singularity Installation
 ```bash
-singularity exec --bind $PWD:/extdata saigeqtl_latest.sif        \
+singularity exec saigeqtl_latest.sif        \
     less -S /data/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
 ```
 

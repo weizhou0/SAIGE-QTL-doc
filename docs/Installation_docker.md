@@ -23,7 +23,7 @@ This guide provides instructions for running SAIGE-QTL using containerized envir
 The pre-built Docker image can be pulled directly from Docker Hub:
 
 ```bash
-docker pull wzhou88/saigeqtl:0.3.2
+docker pull wzhou88/saigeqtl:latest
 ```
 
 **Note**: Thanks to Juha Karjalainen, Bram Gorissen, and Masa Kanai for sharing and updating the Dockerfile.
@@ -45,16 +45,16 @@ To run SAIGE-QTL functions locally using Docker:
 
 ```bash
 # Step 1: Fit NULL GLMM model
-docker run wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R --help
+docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
 
 # Step 2: Run association tests
-docker run wzhou88/saigeqtl:0.3.2 step2_tests_qtl.R --help
+docker run wzhou88/saigeqtl:latest step2_tests_qtl.R --help
 
 # Step 3: Calculate gene-level p-values
-docker run wzhou88/saigeqtl:0.3.2 step3_gene_pvalue_qtl.R --help
+docker run wzhou88/saigeqtl:latest step3_gene_pvalue_qtl.R --help
 
 # Create group files
-docker run wzhou88/saigeqtl:0.3.2 makeGroupFile.R --help
+docker run wzhou88/saigeqtl:latest makeGroupFile.R --help
 ```
 
 ## Singularity Installation and Usage
@@ -70,10 +70,14 @@ docker run wzhou88/saigeqtl:0.3.2 makeGroupFile.R --help
 module load singularity
 
 # Pull Docker image and convert to Singularity format
-singularity pull docker://wzhou88/saigeqtl:0.3.2
+# Navigate to the folder to store the singularity image file saigeqtl_latest.sif
+
+PATHTOSIF=/data/wzhougroup/
+cd ${PATHTOSIF}
+singularity pull docker://wzhou88/saigeqtl:latest
 ```
 
-This creates a Singularity image file (e.g., `saigeqtl_0.3.2.sif`).
+This creates a Singularity image file (e.g., `saigeqtl_latest.sif`).
 
 ### Running SAIGE-QTL with Singularity
 
@@ -81,13 +85,13 @@ This creates a Singularity image file (e.g., `saigeqtl_0.3.2.sif`).
 
 ```bash
 singularity exec --bind /data/wzhougroup:/data/wzhougroup \
-    --cleanenv /path/to/saigeqtl_0.3.2.sif bash
+    --cleanenv /path/to/saigeqtl_latest.sif bash
 ```
 
 **Note**:
 - `--bind`: Mounts directories from the host system into the container
 - Replace `/data/wzhougroup` with your actual data directories
-- Replace `/path/to/saigeqtl_0.3.2.sif` with the actual path to your Singularity image
+- Replace `/path/to/saigeqtl_latest.sif` with the actual path to your Singularity image
 
 #### Running SAIGE-QTL Functions
 
@@ -111,7 +115,7 @@ makeGroupFile.R --help
 
 ```bash
 
-singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_0.3.2.sif step1_fitNULLGLMM_qtl.R --help
+singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_latest.sif step1_fitNULLGLMM_qtl.R --help
 ```
 
 ## SLURM Integration
@@ -123,7 +127,7 @@ For SLURM job submission, include these basic steps in your submission script:
 ```bash
 module load singularity
 singularity exec --bind /your/data/path:/your/data/path \
-    --cleanenv /path/to/saigeqtl_0.3.2.sif \
+    --cleanenv /path/to/saigeqtl_latest.sif \
     [your_command]
 ```
 
@@ -155,7 +159,7 @@ eachjob=${FILES[$i]}
 # Run job with timing information
 /bin/time -o /path/to/logs/run.${SLURM_ARRAY_TASK_ID}.timing.txt -v \
 singularity exec --bind /data/path:/data/path \
-    --cleanenv /path/to/saigeqtl_0.3.2.sif \
+    --cleanenv /path/to/saigeqtl_latest.sif \
     bash "${eachjob}"
 ```
 

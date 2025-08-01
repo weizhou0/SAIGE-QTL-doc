@@ -29,8 +29,8 @@ SAIGE-QTL provides four main R scripts for the complete analysis pipeline:
 | Environment | Command Prefix | Working Directory |
 |-------------|----------------|-------------------|
 | **Pixi** | `pixi run Rscript extdata/` | `./SAIGEQTL/` |
-| **Docker** | `docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2` | `./SAIGEQTL/extdata` |
-| **Singularity** | `singularity exec --bind $PWD:/extdata saigeqtl_0.3.2.sif` | `./SAIGEQTL/extdata` |
+| **Docker** | `docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:latest` | `./SAIGEQTL/extdata` |
+| **Singularity** | `singularity exec --bind $PWD:/extdata saigeqtl_latest.sif` | `./SAIGEQTL/extdata` |
 
 
 ---
@@ -87,13 +87,13 @@ cd ./SAIGEQTL/extdata
 ### Basic Usage
 
 ```bash
-docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R [options]
+docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R [options]
 ```
 
 ### Getting Help
 
 ```bash
-docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM_qtl.R --help
+docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
 ```
 
 ### How It Works
@@ -110,7 +110,7 @@ docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:0.3.2 step1_fitNULLGLMM
 
 ### Prerequisites
 - Singularity/Apptainer installed
-- Access to `saigeqtl_0.3.2.sif` image file
+- Access to `saigeqtl_latest.sif` image file
 - Navigate to the SAIGEQTL/extdata directory
 
 ### Setup
@@ -123,7 +123,7 @@ cd ./SAIGEQTL/extdata
 ```bash
 singularity exec \
 --bind $PWD:/extdata \
---cleanenv saigeqtl_0.3.2.sif \
+--cleanenv saigeqtl_latest.sif \
 step1_fitNULLGLMM_qtl.R [options]
 ```
 
@@ -132,7 +132,7 @@ step1_fitNULLGLMM_qtl.R [options]
 ```bash
 singularity exec \
 --bind $PWD:/extdata \
---cleanenv saigeqtl_0.3.2.sif \
+--cleanenv saigeqtl_latest.sif \
 step1_fitNULLGLMM_qtl.R --help
 ```
 
