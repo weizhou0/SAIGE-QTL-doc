@@ -219,14 +219,21 @@ less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Pois
 
 #### Docker Installation
 ```bash
-docker run -v $PWD:/extdata -w /extdata wzhou88/saigeqtl:latest \
-    less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
+WKDIR=/data/wzhougroup/
+
+docker run -w ${WKDIR} wzhou88/saigeqtl:latest \
+    less -S /usr/local/bin/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
 ```
 
 #### Singularity Installation
 ```bash
-singularity exec saigeqtl_latest.sif        \
-    less -S /data/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
+WKDIR=/data/wzhougroup/
+PATHTOSIF=/data/wzhougroup/
+
+singularity exec \
+    --bind  ${WKDIR}:${WKDIR} \
+    --cleanenv ${PATHTOSIF}saigeqtl_latest.sif \
+    less -S /usr/local/bin/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
 ```
 
 ### 2. Plink File (Required)
