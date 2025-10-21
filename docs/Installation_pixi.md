@@ -148,6 +148,63 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pix
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SKAT); library(MetaSKAT); library(data.table)'
 ```
 
+---
 
+## ✅ Next Steps
 
+### Installation Complete!
 
+You've successfully installed SAIGE-QTL with Pixi. Here's how to get started with your first analysis.
+
+### Your Command Prefix
+
+All SAIGE-QTL commands will use this prefix:
+
+```bash
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOTOML}pixi.toml
+```
+
+**💡 Tip**: Set an alias to save typing:
+```bash
+# Add to your ~/.bashrc or ~/.bash_profile
+alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=/path/to/SAIGEQTL/pixi.toml'
+
+# Then you can run:
+saige-pixi Rscript step1_fitNULLGLMM_qtl.R --help
+```
+
+### Quick Start Tutorial
+
+Ready to run your first analysis? Follow this tutorial:
+
+**[📖 cis-eQTL Analysis Tutorial](cis-eQTL.html)** - Learn how to map local genetic effects on gene expression
+
+**What you'll learn:**
+- How to prepare your data files
+- Running Step 1: Fit the null model
+- Running Step 2: Test genetic variants
+- Running Step 3: Calculate gene-level p-values
+
+**Example command for Pixi users:**
+```bash
+# Step 1 example
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOTOML}pixi.toml \
+    Rscript ${PATHTOSAIGEQTL}SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R \
+    --phenoFile=phenotypes.txt \
+    --phenoCol=ENSG00000123456 \
+    --traitType=count \
+    --outputPrefix=output/gene1
+```
+
+### Additional Resources
+
+- **[Parameters & Options](parameters.html)** - Complete reference for all command-line parameters
+- **[Running Scripts Guide](calling-saigeqtl.html)** - Detailed information on running SAIGE-QTL scripts
+- **[FAQ](FAQ.html)** - Common questions and troubleshooting
+
+### Need Help?
+
+If you encounter issues:
+1. Check the [FAQ](FAQ.html) for common problems
+2. Verify your installation using the verification commands above
+3. Review the [cis-eQTL tutorial](cis-eQTL.html) for step-by-step guidance

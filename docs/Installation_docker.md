@@ -252,3 +252,88 @@ git clone https://github.com/weizhou0/SAIGEQTL.git
 cd SAIGEQTL/docker
 docker build -t your-custom-saigeqtl .
 ```
+
+---
+
+## ✅ Next Steps
+
+### Installation Complete!
+
+You've successfully set up SAIGE-QTL with Docker or Singularity. Here's how to get started with your first analysis.
+
+### Your Command Prefix
+
+All SAIGE-QTL commands will use this format:
+
+```bash
+# For Docker
+docker run -v /your/data:/data wzhou88/saigeqtl:latest [script_name] [options]
+
+# For Singularity
+singularity exec --bind /your/data:/data /path/to/saigeqtl_latest.sif [script_name] [options]
+```
+
+**💡 Important**: Replace `/your/data` with your actual data directory paths.
+
+### Quick Start Tutorial
+
+Ready to run your first analysis? Follow this tutorial:
+
+**[📖 cis-eQTL Analysis Tutorial](cis-eQTL.html)** - Learn how to map local genetic effects on gene expression
+
+**What you'll learn:**
+- How to prepare your data files
+- Running Step 1: Fit the null model
+- Running Step 2: Test genetic variants
+- Running Step 3: Calculate gene-level p-values
+
+**Example command for Docker users:**
+```bash
+# Step 1 example
+docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
+    step1_fitNULLGLMM_qtl.R \
+    --phenoFile=/data/phenotypes.txt \
+    --phenoCol=ENSG00000123456 \
+    --traitType=count \
+    --outputPrefix=/data/output/gene1
+```
+
+**Example command for Singularity users:**
+```bash
+# Step 1 example
+singularity exec --bind /data/myproject:/data /path/to/saigeqtl_latest.sif \
+    step1_fitNULLGLMM_qtl.R \
+    --phenoFile=/data/phenotypes.txt \
+    --phenoCol=ENSG00000123456 \
+    --traitType=count \
+    --outputPrefix=/data/output/gene1
+```
+
+### Running on HPC with SLURM
+
+If you're using an HPC cluster, see the SLURM examples above. A typical workflow:
+
+1. Create your analysis scripts (Step 1, Step 2, Step 3)
+2. Create a job submission script using the template above
+3. Submit: `sbatch your_job_script.sh`
+4. Monitor: `squeue -u $USER`
+
+### Additional Resources
+
+- **[Parameters & Options](parameters.html)** - Complete reference for all command-line parameters
+- **[Running Scripts Guide](calling-saigeqtl.html)** - More examples for different environments
+- **[FAQ](FAQ.html)** - Common questions and troubleshooting
+
+### Container-Specific Tips
+
+✅ **Always use absolute paths** inside containers
+✅ **Bind all necessary directories** with `-v` (Docker) or `--bind` (Singularity)
+✅ **Check file permissions** if you encounter access errors
+✅ **Use `--cleanenv`** with Singularity to avoid environment conflicts
+
+### Need Help?
+
+If you encounter issues:
+1. Check the [FAQ](FAQ.html) for container-specific problems
+2. Verify your mounts: Ensure data directories are properly bound
+3. Review the [cis-eQTL tutorial](cis-eQTL.html) for step-by-step guidance

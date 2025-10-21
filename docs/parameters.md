@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Parameter Explanation
+title: Parameters & Options
 nav_order: 8
 description: "Comprehensive guide to all parameters in SAIGE-QTL scripts."
 ---
 
-# Parameter Explanation
+# Parameters & Options
 
 Comprehensive reference for all command-line parameters in SAIGE-QTL.
 
-<details markdown="block">
+<details open markdown="block">
   <summary>
     Table of contents
   </summary>
