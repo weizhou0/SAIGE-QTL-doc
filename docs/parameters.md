@@ -6,19 +6,27 @@ description: "Comprehensive guide to all parameters in SAIGE-QTL scripts."
 ---
 
 # Parameter Explanation
-{: .no_toc }
 
 Comprehensive reference for all command-line parameters in SAIGE-QTL.
 
-## Table of contents
-{: .no_toc .text-delta }
+<details markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
 
-1. TOC
-{:toc}
+- [createSparseGRM.R](#create-sparse-grm)
+- [step1_fitNULLGLMM_qtl.R](#step1-fit-null-glmm)
+- [step2_tests_qtl.R](#step2-association-tests)
+- [step3_gene_pvalue_qtl.R](#step3-gene-pvalue)
+- [makeGroupFile.R](#make-group-file)
+
+</details>
 
 ---
 
 ## createSparseGRM.R
+{: #create-sparse-grm }
 
 Creates a sparse genetic relationship matrix (GRM). Optional preprocessing step for computational efficiency.
 
@@ -52,6 +60,7 @@ Creates a sparse genetic relationship matrix (GRM). Optional preprocessing step 
 ---
 
 ## step1_fitNULLGLMM_qtl.R
+{: #step1-fit-null-glmm }
 
 Fits the null Poisson mixed model for eQTL analysis.
 
@@ -187,6 +196,7 @@ Fits the null Poisson mixed model for eQTL analysis.
 ---
 
 ## step2_tests_qtl.R
+{: #step2-association-tests }
 
 Performs association tests using the null model from Step 1.
 
@@ -351,6 +361,7 @@ Performs association tests using the null model from Step 1.
 ---
 
 ## step3_gene_pvalue_qtl.R
+{: #step3-gene-pvalue }
 
 Calculates gene-level p-values using ACAT (Aggregated Cauchy Association Test).
 
@@ -366,6 +377,7 @@ Calculates gene-level p-values using ACAT (Aggregated Cauchy Association Test).
 ---
 
 ## makeGroupFile.R
+{: #make-group-file }
 
 Creates group files for set-based association tests.
 
