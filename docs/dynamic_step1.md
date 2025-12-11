@@ -9,9 +9,10 @@ parent: SAIGE-QTL Dynamic
 # SAIGE-QTL Dynamic Step 1
 
 Step 1 fits the null Poisson mixed model for each gene across cells.
+
 H0: βG = 0; βGxC = 0
 
-## Example script: [`step1_0.2.5.1.sh`]({{ site.baseurl }}/assets/code/step1_0.2.5.1.sh)
+## Example script: [`step1_0.2.5.1.sh`]({{ '/assets/codes/step1_0.2.5.1.sh' | relative_url }})
 
 ```bash
 genename=$1
