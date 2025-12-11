@@ -35,12 +35,11 @@ awk '{print $1, $2, $3}' ${regionFilewithname} > ${regionFile}
 
 step1output=/.../step1_output/
 step1prefix=${step1output}${genename}_${cellType}_${traitType}_0.2.5.1
-
 step2output=/.../step2_output/
 step2prefix=${step2output}${genename}_${cellType}_${traitType}_saigeqtl_cis_window_${windowsize}.singleVar.txt_ge_SAIGEQTL_0.2.5.1
 
 step2_tests_qtl.R \
-	--bedFile=/.../full_genome_chr${i}.bed \
+    --bedFile=/.../full_genome_chr${i}.bed \
     --bimFile=/.../full_genome_chr${i}.bim \
     --famFile=/.../full_genome_chr${i}.fam \
     --SAIGEOutputFile=${step2prefix} \
@@ -52,9 +51,9 @@ step2_tests_qtl.R \
     --SPAcutoff=2 \
     --varianceRatioFile=${step1prefix}.varianceRatio.txt \
     --markers_per_chunk=1000 \
-	--rangestoIncludeFile=${regionFile}	\
-	--pval_cutoff_for_gxe=1 \
-	--is_permute_e=FALSE \
+    --rangestoIncludeFile=${regionFile}	\
+    --pval_cutoff_for_gxe=1 \
+    --is_permute_e=FALSE \
     --is_permute_ginge=FALSE
 ```
 
