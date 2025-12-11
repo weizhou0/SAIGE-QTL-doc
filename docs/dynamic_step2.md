@@ -10,7 +10,7 @@ parent: SAIGE-QTL Dynamic
 
 Step 2 performs association test for each genetic marker (apply SKAT test for combining all interaction effects).
 
-## Example script: [`step2_0.2.5.1.sh`]({{ site.baseurl }}/assets/code/step2_0.2.5.1.sh)
+## Example script: [`step2_0.2.5.1.sh`]({{ '/assets/codes/step2_0.2.5.1.sh' | relative_url }})
 
 ```bash
 genename=$1

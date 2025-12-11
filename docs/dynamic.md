@@ -37,4 +37,4 @@ Step 3 can be excuted outside of the container with the provided script.
 
 ## Support
 
-This work is in progress. For any questions, please contact: Christiana Liu [liuyijia@broadinstitute.org](mailto:liuyijia@broadinstitute.org)
+This work is in progress. For any questions, please contact Christiana Liu:[liuyijia@broadinstitute.org](mailto:liuyijia@broadinstitute.org).
