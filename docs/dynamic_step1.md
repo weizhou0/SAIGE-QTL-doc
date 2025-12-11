@@ -58,7 +58,7 @@ step1_fitNULLGLMM_qtl.R \
 
 - `--dynamicCovarColList` specifies dynamic (cell-level) covariates to include in the model.
 - `--offsetCol` specifies offset covariates, for example the log of total read counts at the cell level.
-- We recommend LD-pruning and randomly selecting ~3,000 SNPs for the genotype file in step 1 to improve computational efficiency.
+- We recommend LD-pruning and randomly selecting ~3,000 SNPs for the genotype file in step 1 for computational efficiency.
 
 
 ## Example phenotype file
