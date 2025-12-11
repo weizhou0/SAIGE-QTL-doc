@@ -3,7 +3,6 @@ layout: default
 title: SAIGE-QTL Dynamic
 nav_order: 9
 description: "Documentation for SAIGE-QTL Dynamic: scalable and accurate mixed model association tool for context-specific single cell eQTL analysis."
-permalink: /
 has_children: true
 ---
 
