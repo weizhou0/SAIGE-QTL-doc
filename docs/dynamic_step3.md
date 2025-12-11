@@ -10,7 +10,7 @@ parent: SAIGE-QTL Dynamic
 
  Step 3 combines p-values using cauchy combination/ACAT test to obtain gene-level p-values.
 
-# Preprocessing for step 3
+## Preprocessing for step 3
 
 1. Run the following script [`001_concatenate.sh`]({{ '/assets/codes/001_concatenate.sh' | relative_url }}) to concatenate all genes' P values from step 2.  
 
