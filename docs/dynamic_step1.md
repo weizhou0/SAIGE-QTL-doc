@@ -86,5 +86,5 @@ step1_fitNULLGLMM_qtl.R \
 
 ## Command to run one gene
 ```bash
-step1_0.2.5.1.sh AL627309.1 B_cell
+bash step1_0.2.5.1.sh AL627309.1 B_cell
 ```

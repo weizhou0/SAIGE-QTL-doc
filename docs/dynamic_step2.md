@@ -59,7 +59,7 @@ step2_tests_qtl.R \
 
 ## Command to run one gene
 ```bash
-step2_0.2.5.1.sh AL627309.1 B_cell
+bash step2_0.2.5.1.sh AL627309.1 B_cell
 ```
 
 ## Output
