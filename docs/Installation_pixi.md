@@ -1,31 +1,70 @@
 ---
 layout: default
-title: PIXI
-nav_order: 1
-description: "This guide provides instructions for installing SAIGE-QTL using pixi package manager. Pixi is a standalone package manager that doesn't require conda or any existing package managers - it manages its own isolated environments and downloads packages directly from conda-forge and bioconda channels."
+title: Pixi Binary (Linux)
+nav_order: 2
+description: "Fastest installation method for Linux using pre-built binary packages - no compilation required."
 parent: Installation
 ---
 
-###  Install SAIGE-QTL using pixi
+# Pixi Binary Installation Guide (🥈 Fastest for Linux)
 
-#### Prerequisites
-- Linux or macOS (64-bit)
-- Internet connection for downloading packages
-- Sufficient disk space (~2-3 GB for all dependencies)
-- **No conda, mamba, or other package managers required**
-- Git (for downloading the source code)
+## Overview
 
+Pixi Binary installation provides the **fastest installation method for Linux users** with pre-built packages that require no compilation. This method is ideal for users who want a quick setup without dealing with compilers or build dependencies.
 
-Note: These steps can be found in the [Dockerfile](https://github.com/weizhou0/qtl/blob/main/docker/Dockerfile).
+## Why Pixi Binary?
 
+**✅ Advantages:**
+- **Fastest installation** (no compilation required)
+- **No compiler** or build tools needed
+- **Avoids compilation errors** completely
+- **Pre-built optimized** binaries
+- **Consistent environment** management
+- **Works on most modern Linux systems**
 
-### 0. Download the SAIGE-QTL package from github
+**⚠️ Requirements:**
+- Linux x86_64 only
+- R 4.4+ (managed by pixi)
+- GLIBC 2.28+ (CentOS 7+, Ubuntu 18.04+, most modern systems)
+- Pixi package manager
 
+## Quick Installation
+
+### One-Liner Installation
 ```bash
-src_branch=main
-repo_src_url=https://github.com/weizhou0/SAIGEQTL
-git clone -b $src_branch $repo_src_url
+# Complete installation in one command
+curl -fsSL https://pixi.sh/install.sh | bash && source ~/.bashrc && \
+git clone https://github.com/weizhou0/SAIGEQTL.git && cd SAIGEQTL && \
+BINARY_FILE=$(ls binaries/SAIGEQTL_*_linux-x86_64.tgz | head -n1) && \
+CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e "install.packages('${BINARY_FILE}', repos=NULL, type='source'); library(SAIGEQTL)"
+```
 
+### Step-by-Step Installation
+
+#### 1. Install pixi (if needed)
+```bash
+curl -fsSL https://pixi.sh/install.sh | bash
+source ~/.bashrc  # Restart shell or reload environment
+```
+
+#### 2. Download SAIGE-QTL repository
+```bash
+git clone https://github.com/weizhou0/SAIGEQTL.git
+cd SAIGEQTL
+```
+
+#### 3. Install from pre-built binary
+```bash
+# Auto-detect latest binary version
+BINARY_FILE=$(ls binaries/SAIGEQTL_*_linux-x86_64.tgz | head -n1)
+echo "Installing: $BINARY_FILE"
+
+# Install binary package
+CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e "
+install.packages('${BINARY_FILE}', repos = NULL, type = 'source')
+library(SAIGEQTL)
+cat('✓ SAIGEQTL', as.character(packageVersion('SAIGEQTL')), 'installed successfully\n')
+"
 ```
 
 ### 1. Install pixi and the R packages 
@@ -88,20 +127,17 @@ For custom library installation to the specified R library location, e.g. path_t
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOTOML}pixi.toml R CMD INSTALL ${PATHTOSAIGEQTL}SAIGEQTL --library=path_to_final_SAIGEQTL_library
 ```
 
-When calling SAIGE-QTL in R, set the library location:
+**No manual wrapper file editing required!** The wrapper scripts now support the `--library` parameter:
 
-```r
-library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)
+```bash
+# Use the --library parameter to specify custom library location
+step1_fitNULLGLMM_qtl.R --library=path_to_final_SAIGEQTL_library [other_options]
+step2_tests_qtl.R --library=path_to_final_SAIGEQTL_library [other_options]
+step3_gene_pvalue_qtl.R --library=path_to_final_SAIGEQTL_library [other_options]
+makeGroupFile.R --library=path_to_final_SAIGEQTL_library [other_options]
 ```
 
-**Change the library(SAIGEQTL) to library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library)** in the wrapper files
-
-```
-${PATHTOSAIGEQTL}SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R
-${PATHTOSAIGEQTL}SAIGEQTL/extdata/step2_tests_qtl.R
-${PATHTOSAIGEQTL}SAIGEQTL/extdata/step3_gene_pvalue_qtl.R
-${PATHTOSAIGEQTL}SAIGEQTL/extdata/makeGroupFile.R
-```
+**✅ Simplified Workflow:** No need to manually edit wrapper files - just use the `--library` parameter!
 
 ## What Gets Installed
 
@@ -133,14 +169,14 @@ After installation, verify the setup:
 # Check if pixi environment is working
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml R --version
 
-# Test SAIGE-QTL installation
+# Test SAIGE-QTL installation (default library location)
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
 
-#if not installed in the default folder for R libraries
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library); packageVersion("SAIGEQTL")'
+# For custom library installations, use the --library parameter with wrapper scripts:
+step1_fitNULLGLMM_qtl.R --library=path_to_final_SAIGEQTL_library --help
 
-#For example
-#CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc="/humgen/atgu1/fin/wzhou/projects/eQTL_method_dev/tool_dev/test_doc/install_test"); packageVersion("SAIGEQTL")'
+# Or test in R session (if you need to use lib.loc for direct R commands):
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=${PATHTOSAIGEQTL}SAIGEQTL/pixi.toml Rscript -e 'library(SAIGEQTL, lib.loc=path_to_final_SAIGEQTL_library); packageVersion("SAIGEQTL")'
 ##output: [1] '0.3.2.1'
 
 

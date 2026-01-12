@@ -9,41 +9,49 @@ has_toc: false
 
 # Installing SAIGE-QTL
 
-Choose the installation method that best fits your environment and requirements. We recommend **Pixi** for most users as it provides the most reliable and reproducible installation experience.
+Choose the installation method that best fits your environment and requirements. We recommend **Docker** for most users as it works on all platforms with zero setup, followed by **Pixi Binary** for Linux users seeking the fastest installation.
 
-## Current Version: 0.3.2
-*Updated: July 28, 2025*
+## Current Version: 0.3.4
+*Updated: January 11, 2025*
 
-## Installation Methods
+## Installation Methods (Ordered by Ease of Use)
 
-### 🚀 **Recommended: Pixi Installation**
-The fastest and most reliable method with automatic dependency management.
-
-**[→ Install with Pixi](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_pixi.html)**
-
-### 🐳 **Docker Installation**
-Pre-built container for immediate use without local installation.
+### 🥇 **Easiest: Docker (Recommended)**
+Zero setup, works on Linux, macOS, Windows - everything included in the container.
 
 **[→ Install with Docker](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_docker.html)**
 
-### 📦 **Conda/Bioconda Installation**
-Traditional package manager for Python/R environments.
+### 🥈 **Easy: Pixi Binary (Linux only)**
+Fastest installation for Linux - no compilation required, pre-built packages.
+
+**[→ Install with Pixi Binary](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_pixi.html)**
+
+### 🥉 **Moderate: Conda/Bioconda**
+Cross-platform package manager with automatic dependency management.
 
 **[→ Install with Conda](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_bioconda.html)**
 
-### 🔧 **Source Code Installation**
-For advanced users who need custom builds or development versions.
+### 🔧 **Advanced: Source Code**
+For developers, custom builds, or users needing the latest development features.
 
 **[→ Install from Source](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_sourcecode.html)**
 
-## Quick Start Comparison
+## Platform Support & Quick Start
 
-| Method | Best For | Setup Time | Dependencies |
-|--------|----------|------------|--------------|
-| **Pixi** | Most users, reproducible environments | ~5 minutes | Automatic |
-| **Docker** | Containers, HPC clusters | ~2 minutes | Docker only |
-| **Conda** | Existing conda environments | ~10 minutes | Manual |
-| **Source** | Developers, custom builds | ~30 minutes | Manual |
+| Platform | Support Level | Recommended Methods | Notes |
+|----------|---------------|-------------------|--------|
+| **Linux** | ✅ **Full Support** | Docker → Pixi Binary → Conda → Source | Pre-built binaries available |
+| **macOS** | ✅ **Good Support** | Docker → Conda → Source | No pre-built binaries |
+| **Windows** | ⚠️ **Limited Support** | Docker only, or WSL2 + Linux methods | Not natively supported |
+
+## Installation Comparison
+
+| Method | Platform | Setup Time | Dependencies | Best For |
+|--------|----------|------------|--------------|----------|
+| **Docker** | All platforms | ~2 minutes | Docker only | Zero setup, containers, HPC |
+| **Pixi Binary** | Linux only | ~5 minutes | Pixi + GLIBC 2.28+ | Fastest Linux installation |
+| **Conda** | Linux, macOS | ~10 minutes | Conda/Mamba | Existing conda environments |
+| **Source** | Linux, macOS | ~30 minutes | C++ compiler + libraries | Developers, custom builds |
 
 ## System Requirements
 
@@ -58,17 +66,21 @@ For advanced users who need custom builds or development versions.
 - **CPU**: Multi-core processor for parallel processing
 - **Storage**: SSD storage for improved I/O performance
 
-## What's New in Version 0.3.2
+## What's New in Version 0.3.4
 
 ### ✨ **New Features**
+- **Improved installation guidance**: Comprehensive installation documentation with platform-specific recommendations and troubleshooting
+- **Enhanced Docker support**: Updated Docker images with better documentation and cross-platform compatibility
+- **Binary installation method**: Pre-built packages for faster Linux installation via Pixi
+
+### 🚀 **Performance Improvements**
+- **Speed up matrix inversion**: Optimized numerical computations for faster model fitting and reduced computation time
+- **Memory efficiency**: Better memory management for large-scale analyses
+
+### 📋 **Previous Features (0.3.2)**
 - **`--offsetCol` parameter**: Use log of total read counts per cell as an offset in the model
 - **Enhanced Pixi support**: Improved installation process and environment management
 - **Better error handling**: More informative error messages and debugging information
-
-### 🐛 **Bug Fixes**
-- Resolved memory issues with large datasets
-- Fixed compatibility issues with newer R versions
-- Improved handling of edge cases in variance estimation
 
 ### 📋 **Complete Changelog**
 For detailed logs of all bug fixes and improvements, see the [Installation Logs](Installation.html#changelog).
@@ -107,11 +119,19 @@ After installation, verify SAIGE-QTL is working correctly:
 
 ## Changelog
 
-**July 31, 2025:
-- Export extdata/ in the docker container so users do not need to download the git repo when using the docker image wzhou88/saigeqtl:latest on example data
+### Version 0.3.4 (January 11, 2025)
+- **New**: Comprehensive installation documentation with platform-specific guidance and troubleshooting
+- **New**: Binary installation method for faster Linux setup via Pixi
+- **Performance**: Optimized matrix inversion algorithms for faster model fitting
+- **Performance**: Improved memory efficiency for large-scale analyses
+- **Improved**: Enhanced Docker support with updated documentation and cross-platform compatibility
+- **Fixed**: Various stability and performance improvements
 
 ### Version 0.3.2 (July 28, 2025)
 - **New**: Added `--offsetCol` option for using log of total read counts per cell as an offset in the model
 - **Improved**: Enhanced installation process using pixi
-- **Fixed**: Various bug fixes and stability improvements 
+- **Fixed**: Various bug fixes and stability improvements
+
+**July 31, 2025:**
+- Export extdata/ in the docker container so users do not need to download the git repo when using the docker image wzhou88/saigeqtl:latest on example data 
 

@@ -64,6 +64,12 @@ Creates a sparse genetic relationship matrix (GRM). Optional preprocessing step 
 
 Fits the null Poisson mixed model for eQTL analysis.
 
+### Package Library
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `--library` | character | "" | Custom library path for SAIGEQTL package (avoids manual lib.loc specification) |
+
 ### Input Files
 
 #### Genotype Files
@@ -199,6 +205,12 @@ Fits the null Poisson mixed model for eQTL analysis.
 {: #step2-association-tests }
 
 Performs association tests using the null model from Step 1.
+
+### Package Library
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `--library` | character | "" | Custom library path for SAIGEQTL package (avoids manual lib.loc specification) |
 
 ### Genotype Input Files
 
@@ -365,6 +377,12 @@ Performs association tests using the null model from Step 1.
 
 Calculates gene-level p-values using ACAT (Aggregated Cauchy Association Test).
 
+### Package Library
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `--library` | character | "" | Custom library path for SAIGEQTL package (avoids manual lib.loc specification) |
+
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
 | `--assocFile` | character | "" | **Required.** Association file from Step 2 |
@@ -380,6 +398,12 @@ Calculates gene-level p-values using ACAT (Aggregated Cauchy Association Test).
 {: #make-group-file }
 
 Creates group files for set-based association tests.
+
+### Package Library
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `--library` | character | "" | Custom library path for SAIGEQTL package (avoids manual lib.loc specification) |
 
 ### Genotype Input Files
 

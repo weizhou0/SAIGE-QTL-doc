@@ -205,6 +205,9 @@ singularity exec --bind /data:/data saigeqtl_latest.sif \
 | `--traitType` | Always use `count` for eQTL | `count` |
 | `--plinkFile` | Genotype file prefix (no extension) | `genotypes` |
 | `--outputPrefix` | Where to save results | `output/gene_1` |
+| `--library` | Custom library path (if needed) | `/path/to/custom/library` |
+
+> **📝 Note on `--library` parameter**: If you installed SAIGEQTL to a custom library location (e.g., using `R CMD INSTALL --library=custom/path`), use this parameter to specify the path. This avoids manually editing wrapper scripts. Not needed for standard installations.
 
 ### ✅ Step 1 Output
 
@@ -431,6 +434,19 @@ singularity exec --bind /data:/data saigeqtl_latest.sif \
 ```
 
 </details>
+
+### 💡 Using Custom Library Locations
+
+For all wrapper scripts (`step1_fitNULLGLMM_qtl.R`, `step2_tests_qtl.R`, `step3_gene_pvalue_qtl.R`), you can now specify a custom library path using the `--library` parameter:
+
+```bash
+# Example with custom library location
+step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
+step2_tests_qtl.R --library=/path/to/custom/library [other_options]  
+step3_gene_pvalue_qtl.R --library=/path/to/custom/library [other_options]
+```
+
+This is especially useful when you've installed SAIGEQTL to a custom location and eliminates the need to manually edit wrapper scripts with `lib.loc` specifications.
 
 ### ✅ Final Output
 

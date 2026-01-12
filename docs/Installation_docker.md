@@ -1,32 +1,66 @@
 ---
 layout: default
-title: Docker and Singularity (with Slurm script)
-nav_order: 2
-description: "Steps to use Docker or Singularity for running SAIGE-QTL jobs."
+title: Docker (Recommended)
+nav_order: 1
+description: "Zero setup installation using Docker containers - works on all platforms with no local dependencies required."
 parent: Installation
 ---
 
-# Docker and Singularity Guide for SAIGE-QTL
+# Docker Installation Guide (🥇 Easiest Method)
 
 ## Overview
 
-This guide provides instructions for running SAIGE-QTL using containerized environments with Docker and Singularity, including integration with SLURM job scheduling systems.
+Docker provides the **easiest and most reliable** installation method for SAIGE-QTL. It works identically on **Linux, macOS, and Windows** with zero setup required - no compilers, no dependency management, no configuration needed.
 
-## Docker Installation and Usage
+## Why Docker?
 
-### Prerequisites
+**✅ Advantages:**
+- **Zero setup** - runs directly, no installation required
+- **Works on any system** with Docker (Linux/macOS/Windows)
+- **Completely isolated** environment - no dependency conflicts
+- **Consistent behavior** across all platforms
+- **Includes all tools** and test data
+- **Immediate access** to new versions
+
+**⚠️ Requirements:**
 - Docker installed on your system
-- Access to pull images from Docker Hub
+- No other requirements
 
-### Pull the SAIGE-QTL Docker Image
+## Quick Start
 
-The pre-built Docker image can be pulled directly from Docker Hub:
+### Test Docker Installation
 
 ```bash
-docker pull wzhou88/saigeqtl:latest
+# Quick test - verify Docker image works
+docker run --rm weizhou0/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
 ```
 
-**Note**: Thanks to Juha Karjalainen, Bram Gorissen, and Masa Kanai for sharing and updating the Dockerfile.
+### Run Analysis with Your Data
+
+```bash
+# Run analysis with your data (mount current directory)
+docker run --rm -v $(pwd):/data weizhou0/saigeqtl:latest \
+  step1_fitNULLGLMM_qtl.R \
+  --plinkFile=/data/your_genotypes \
+  --phenoFile=/data/your_phenotypes.txt \
+  --outputPrefix=/data/results
+```
+
+### Interactive R Session
+
+```bash
+# Interactive R session with SAIGEQTL loaded
+docker run --rm -it -v $(pwd):/data weizhou0/saigeqtl:latest \
+  pixi run R
+```
+
+## Docker Image Details
+
+- **Image**: `weizhou0/saigeqtl:latest`
+- **Base**: Ubuntu 20.04 with pixi environment
+- **Size**: ~2GB (includes R, dependencies, and tools)
+- **Updates**: Automatically built from latest code
+- **Repository**: Built from https://github.com/weizhou0/SAIGEQTL
 
 ### Available SAIGE-QTL Functions
 

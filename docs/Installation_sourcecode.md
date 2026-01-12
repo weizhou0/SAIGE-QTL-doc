@@ -1,63 +1,146 @@
 ---
 layout: default
-title: Source code
-nav_order: 3
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+title: Source Code Installation
+nav_order: 4
+description: "Advanced installation from source code for developers and custom builds."
 parent: Installation
 ---
 
-### Intall SAIGE-QTL using source code https://github.com/weizhou0/qtl
+# Source Code Installation Guide (🔧 Advanced)
 
-1. Install dependcies 
+## Overview
 
-     * R >= 3.6.1, gcc >= 5.4.0, cmake 3.14.1,
-    
-2. Download SAIGE-QTL from github
+Source code installation is intended for **developers, contributors, or users needing the latest development features**. This method requires manual dependency management and compilation.
 
-     ```
-       src_branch=main
-       repo_src_url=https://github.com/weizhou0/SAIGEQTL
-       git clone --depth 1 -b $src_branch $repo_src_url	
-     ```
+## Why Source Installation?
 
-3. Install dependencies: R packages
+**✅ Advantages:**
+- Access to **latest development features**
+- **Customizable builds** and configurations
+- **Integration with existing R** environment
+- **No pre-built package** limitations
+- **Development contribution** capability
 
-     ```
-	Rscript ./SAIGEQTL/extdata/install_packages.R
-        
-     ```
+**⚠️ Disadvantages:**
+- **Requires C++ compiler** setup on your system
+- **Can fail due to missing** system libraries
+- **Dependency version conflicts** possible
+- **Slower installation** (compilation time)
+- **Complex troubleshooting** on older systems
 
-4. Install SAIGE-QTL R package
+## System Requirements
 
-     * To install SAIGE-QTL to the root directory storing all R libraries
-     ```
-        R CMD INSTALL SAIGEQTL
-     ```
+- **R** ≥ 3.5.0 (≥ 4.0 recommended)
+- **C/C++ compiler** (gcc/clang with C++11 support)
+- **BLAS/LAPACK libraries** (automatically detected by R)
+- **OpenMP** (optional, for parallel processing)
+- **Git** (for downloading source code)
 
-     * **--library=path_to_final_SAIGEQTL_library** can be used for specifying the directory where SAIGE-QTL is installed 
-     ```
-	R CMD INSTALL --library=path_to_final_SAIGEQTL_library SAIGEQTL
-     ```
+### Platform-Specific Compiler Setup
 
-5. Run SAIGE-QTL
-     * If SAIGE-QTL was not installed in the root R lib path, change 
+#### Linux (Ubuntu/Debian)
+```bash
+sudo apt update && sudo apt install build-essential r-base-dev
+```
 
-     ```
-        library(SAIGEQTL)
-     ```
-     to      
-     ```
-        library(SAIGEQTL, lib.loc="path_to_final_SAIGEQTL_library")
-     ```
+#### Linux (CentOS/RHEL)
+```bash
+sudo yum groupinstall "Development Tools"
+sudo yum install R-devel
+```
 
-     in the following scripts
+#### macOS
+```bash
+# Install Xcode command line tools
+xcode-select --install
+```
 
-    ```
-    SAIGEQTL/extdata/makeGroupFile.R
-    SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R
-    SAIGEQTL/extdata/step2_tests_qtl.R
-    SAIGEQTL/extdata/step3_gene_pvalue_qtl.R
-    ```
+## Installation Methods
+
+### Method 1: R remotes (Recommended)
+```r
+# Install using remotes package
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+remotes::install_github("weizhou0/qtl", dependencies = TRUE)
+
+# Test installation
+library(SAIGEQTL)
+packageVersion("SAIGEQTL")
+```
+
+### Method 2: Manual Git Clone + Install
+```bash
+# 1. Download source code
+git clone https://github.com/weizhou0/SAIGEQTL.git
+cd SAIGEQTL
+
+# 2. Install dependencies (if needed)
+Rscript -e 'install.packages(c("Rcpp", "RcppArmadillo", "Matrix", "data.table", "optparse"))'
+
+# 3. Install SAIGEQTL package
+R CMD INSTALL .
+
+# 4. Test installation
+R -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
+```
+
+### Method 3: Custom Library Path
+```bash
+# Install to specific directory
+mkdir -p ~/R-packages
+R CMD INSTALL --library=~/R-packages qtl/
+
+# Test with custom library
+R -e 'library(SAIGEQTL, lib.loc="~/R-packages"); packageVersion("SAIGEQTL")'
+```
+
+### Method 4: Development Installation
+```bash
+# For contributors and developers
+git clone https://github.com/weizhou0/SAIGEQTL.git
+cd SAIGEQTL
+Rscript scripts/install_standard.R --dev
+```
+
+## Usage
+
+### Standard Usage (Default Library)
+```r
+library(SAIGEQTL)
+```
+
+### Custom Library Usage
+
+**🆕 Recommended**: Use the `--library` parameter with wrapper scripts:
+```bash
+# Wrapper scripts now support --library parameter
+step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
+step2_tests_qtl.R --library=/path/to/custom/library [other_options]
+step3_gene_pvalue_qtl.R --library=/path/to/custom/library [other_options]
+makeGroupFile.R --library=/path/to/custom/library [other_options]
+```
+
+**Alternative**: Direct R usage with lib.loc:
+```r
+library(SAIGEQTL, lib.loc="/path/to/custom/library")
+```
+
+### Command-Line Scripts
+After installation, executable scripts are available in:
+```bash
+# Scripts location (adjust path as needed)
+/path/to/qtl/extdata/step1_fitNULLGLMM_qtl.R
+/path/to/qtl/extdata/step2_tests_qtl.R  
+/path/to/qtl/extdata/step3_gene_pvalue_qtl.R
+/path/to/qtl/extdata/makeGroupFile.R
+```
+
+**💡 Tip**: Add to PATH for convenience:
+```bash
+export PATH="/path/to/qtl/extdata:$PATH"
+```
 
 ---
 

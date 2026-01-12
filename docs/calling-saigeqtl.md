@@ -146,6 +146,12 @@ step1_fitNULLGLMM_qtl.R --help
 
 ## 📝 Important Notes
 
+### Custom Library Support
+- **New Feature**: All wrapper scripts now support the `--library` parameter
+- Use `--library=/path/to/custom/library` when SAIGEQTL is installed in a non-standard location
+- No more manual editing of wrapper scripts with `lib.loc` specifications
+- Example: `step1_fitNULLGLMM_qtl.R --library=/custom/path [other_options]`
+
 ### File Locations and Access
 - **Script location**: All R scripts are in `./SAIGEQTL/extdata`
 - **Data access**: Ensure input/output files are in directories accessible to your chosen environment:
@@ -156,6 +162,7 @@ step1_fitNULLGLMM_qtl.R --help
 - Replace `[options]` with actual script arguments (e.g., `--phenoFile`, `--genoFile`, `--covarColList`)
 - Use `--help` with any script to see all available parameters
 - The command patterns above work for all four SAIGE-QTL scripts - just change the script name
+- **New**: All wrapper scripts now support the `--library` parameter for custom library locations (eliminates need for manual `lib.loc` edits)
 
 ### Universal Script Support
 All examples above work with any of these scripts:
