@@ -96,30 +96,59 @@ R CMD INSTALL --library=~/R-packages qtl/
 R -e 'library(SAIGEQTL, lib.loc="~/R-packages"); packageVersion("SAIGEQTL")'
 ```
 
-### Method 4: Development Installation
+### Method 4: Pixi Source Installation (Environment Management)
+```bash
+# Full environment management with pixi - cross-platform
+curl -fsSL https://pixi.sh/install.sh | bash && source ~/.bashrc
+git clone https://github.com/weizhou0/qtl.git && cd qtl
+pixi run install-standard
+
+# Commands use manifest path:
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
+```
+
+**Why Pixi Source?**
+- ✅ **Managed environment**: All dependencies handled automatically
+- ✅ **Cross-platform**: Works on Linux and macOS
+- ✅ **Reproducible**: Consistent across systems
+- ✅ **Development-ready**: Full toolchain included
+- ❌ **Slower**: Requires compilation time
+- ❌ **Complex commands**: Longer command prefixes
+
+### Method 5: Development Installation
 ```bash
 # For contributors and developers
-git clone https://github.com/weizhou0/SAIGEQTL.git
-cd SAIGEQTL
+git clone https://github.com/weizhou0/qtl.git
+cd qtl
 Rscript scripts/install_standard.R --dev
 ```
 
 ## Usage
 
-### Standard Usage (Default Library)
+### Standard Source Installation
 ```r
 library(SAIGEQTL)
+```
+
+### Pixi Source Installation
+```bash
+# Command prefix for all Pixi source installations
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml
+
+# Example commands:
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml R -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ### Custom Library Usage
 
 **🆕 Recommended**: Use the `--library` parameter with wrapper scripts:
 ```bash
-# Wrapper scripts now support --library parameter
+# Standard source installation
 step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
-step2_tests_qtl.R --library=/path/to/custom/library [other_options]
-step3_gene_pvalue_qtl.R --library=/path/to/custom/library [other_options]
-makeGroupFile.R --library=/path/to/custom/library [other_options]
+
+# Pixi source installation
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
 ```
 
 **Alternative**: Direct R usage with lib.loc:
@@ -129,17 +158,30 @@ library(SAIGEQTL, lib.loc="/path/to/custom/library")
 
 ### Command-Line Scripts
 After installation, executable scripts are available in:
+
+**Standard installation:**
 ```bash
-# Scripts location (adjust path as needed)
 /path/to/qtl/extdata/step1_fitNULLGLMM_qtl.R
 /path/to/qtl/extdata/step2_tests_qtl.R  
 /path/to/qtl/extdata/step3_gene_pvalue_qtl.R
 /path/to/qtl/extdata/makeGroupFile.R
 ```
 
-**💡 Tip**: Add to PATH for convenience:
+**Pixi source installation:**
 ```bash
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step2_tests_qtl.R
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step3_gene_pvalue_qtl.R
+```
+
+**💡 Tip**: Add aliases for convenience:
+```bash
+# For standard installation
 export PATH="/path/to/qtl/extdata:$PATH"
+
+# For Pixi source installation
+alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
+# Then: saige-pixi Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ---
@@ -148,27 +190,33 @@ export PATH="/path/to/qtl/extdata:$PATH"
 
 ### Installation Complete!
 
-You've successfully built SAIGE-QTL from source. Here's how to get started with your first analysis.
+You've successfully built SAIGEQTL from source. Here's how to get started with your first analysis.
 
 ### Your Command Prefix
 
-Your scripts are located in:
+**Standard source installation:**
 ```bash
-/path/to/SAIGEQTL/extdata/
+# Scripts located in: /path/to/qtl/extdata/
+Rscript /path/to/qtl/extdata/step1_fitNULLGLMM_qtl.R [options]
 ```
 
-Run commands like:
+**Pixi source installation:**
 ```bash
-Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R [options]
+# Use pixi environment
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R [options]
 ```
 
-**💡 Tip**: Add to PATH for convenience:
+**💡 Tip**: Set up convenient aliases:
 ```bash
-# Add to your ~/.bashrc or ~/.bash_profile
-export PATH="/path/to/SAIGEQTL/extdata:$PATH"
+# For standard installation - add to ~/.bashrc or ~/.bash_profile
+export PATH="/path/to/qtl/extdata:$PATH"
+
+# For Pixi source installation
+alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
 
 # Then you can run:
-step1_fitNULLGLMM_qtl.R --help
+step1_fitNULLGLMM_qtl.R --help                                           # Standard
+saige-pixi Rscript extdata/step1_fitNULLGLMM_qtl.R --help               # Pixi
 ```
 
 ### Quick Start Tutorial
@@ -183,9 +231,21 @@ Ready to run your first analysis? Follow this tutorial:
 - Running Step 2: Test genetic variants
 - Running Step 3: Calculate gene-level p-values
 
-**Example command for Source installation users:**
+**Example commands:**
+
+**Standard source installation:**
 ```bash
-Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R \
+Rscript /path/to/qtl/extdata/step1_fitNULLGLMM_qtl.R \
+    --phenoFile=phenotypes.txt \
+    --phenoCol=ENSG00000123456 \
+    --traitType=count \
+    --outputPrefix=output/gene1
+```
+
+**Pixi source installation:**
+```bash
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml \
+    Rscript extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
     --phenoCol=ENSG00000123456 \
     --traitType=count \

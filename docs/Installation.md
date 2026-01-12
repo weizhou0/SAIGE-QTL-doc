@@ -51,7 +51,8 @@ For developers, custom builds, or users needing the latest development features.
 | **Docker** | All platforms | ~2 minutes | Docker only | Zero setup, containers, HPC |
 | **Pixi Binary** | Linux only | ~5 minutes | Pixi + GLIBC 2.28+ | Fastest Linux installation |
 | **Conda** | Linux, macOS | ~10 minutes | Conda/Mamba | Existing conda environments |
-| **Source** | Linux, macOS | ~30 minutes | C++ compiler + libraries | Developers, custom builds |
+| **Pixi Source** | Linux, macOS | ~15 minutes | Pixi only | Managed dev environment |
+| **Source** | Linux, macOS | ~30 minutes | C++ compiler + libraries | Traditional development |
 
 ## System Requirements
 
