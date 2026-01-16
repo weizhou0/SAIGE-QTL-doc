@@ -26,37 +26,9 @@ Docker provides the **easiest and most reliable** installation method for SAIGE-
 - Docker installed on your system
 - No other requirements
 
-## Quick Start
-
-### Test Docker Installation
-
-```bash
-# Quick test - verify Docker image works
-docker run --rm weizhou0/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
-```
-
-### Run Analysis with Your Data
-
-```bash
-# Run analysis with your data (mount current directory)
-docker run --rm -v $(pwd):/data weizhou0/saigeqtl:latest \
-  step1_fitNULLGLMM_qtl.R \
-  --plinkFile=/data/your_genotypes \
-  --phenoFile=/data/your_phenotypes.txt \
-  --outputPrefix=/data/results
-```
-
-### Interactive R Session
-
-```bash
-# Interactive R session with SAIGEQTL loaded
-docker run --rm -it -v $(pwd):/data weizhou0/saigeqtl:latest \
-  pixi run R
-```
-
 ## Docker Image Details
 
-- **Image**: `weizhou0/saigeqtl:latest`
+- **Image**: `weizhou88/saigeqtl:latest`
 - **Base**: Ubuntu 20.04 with pixi environment
 - **Size**: ~2GB (includes R, dependencies, and tools)
 - **Updates**: Automatically built from latest code
@@ -78,6 +50,15 @@ makeGroupFile.R
 To run SAIGE-QTL functions locally using Docker:
 
 ```bash
+# Logging into Docker
+docker login
+
+# Pull pre-built image for Apple Silicon (arm64)
+docker pull --platform linux/amd64 wzhou88/saigeqtl:latest
+
+# Pull pre-built image for standard (x86_64)
+docker pull wzhou88/saigeqtl:latest
+
 # Step 1: Fit NULL GLMM model
 docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
 
@@ -179,7 +160,7 @@ singularity exec --bind /your/data/path:/your/data/path \
 #SBATCH --error=/path/to/logs/%A_%a.err
 #SBATCH --mail-user=your.email@institution.edu
 #SBATCH --mail-type=END
-#SBATCH --array=1-42
+#SBATCH --array=1-50
 
 # Load required modules
 module load singularity

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Genome-wide eQTL Analysis
+title: Genome-wide eQTL Analysis (Step 2+3)
 nav_order: 7
 description: "Comprehensive guide for genome-wide eQTL discovery using SAIGE-QTL, including batch processing strategies and computational optimization."
 has_children: true

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: cis-eQTL Analysis
+title: cis-eQTL Analysis (Step 2+3)
 nav_order: 6
 description: "Complete guide for performing cis-eQTL analysis with SAIGE-QTL, including both common and rare variant testing approaches."
 has_children: true

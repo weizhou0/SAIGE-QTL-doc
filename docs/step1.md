@@ -51,6 +51,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript extdata/step1_fitNULLGLMM_qtl.R --hel
 
 #### Docker Installation
 ```bash
+
 docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
 ```
 
@@ -87,8 +88,8 @@ Rscript step1_fitNULLGLMM_qtl.R --help
 The example uses the following settings and assumptions:
 
 - **Poisson mixed model**: `--traitType=count`
-- **Covariates specification**: `--covarColList=` for cell-level covariates
-- **Sample covariates**: `--sampleCovarColList=` for individual-level covariates
+- **Covariates specification**: `--covarColList=` for all covariates included in the model
+- **Sample covariates**: `--sampleCovarColList=` for only individual-level covariates
 - **Offset terms**: `--offsetCol=` for normalization (e.g., log total read counts)
 
 ### Running Step 1
@@ -249,8 +250,8 @@ Used for estimating variance ratio with random markers:
 |-----------|-------------|---------------|
 | `--phenoFile` | Path to phenotype file | `./input/phenotype.txt` |
 | `--phenoCol` | Column name for phenotype | `gene_1` |
-| `--covarColList` | Cell-level covariates | `X1,X2,pf1,pf2` |
-| `--sampleCovarColList` | Individual-level covariates | `X1,X2` |
+| `--covarColList` | all covariates | `X1(e.g. age),X2(e.g. sex),pf1,pf2` |
+| `--sampleCovarColList` | Individual-level covariates | `X1(age),X2(sex)` |
 | `--sampleIDColinphenoFile` | Sample ID column name | `IND_ID` |
 | `--traitType` | Type of trait (count/binary/quantitative) | `count` |
 | `--outputPrefix` | Prefix for output files | `./output/analysis_gene1` |
