@@ -18,12 +18,12 @@ Source code installation is intended for **developers, contributors, or users ne
 - Access to **latest development features**
 - **Customizable builds** and configurations
 - **Integration with existing R** environment
-- **No pre-built package** limitations
 - **Development contribution** capability
 
 **⚠️ Disadvantages:**
 - **Requires C++ compiler** setup on your system
 - **Can fail due to missing** system libraries
+- **No pre-built package**
 - **Dependency version conflicts** possible
 - **Slower installation** (compilation time)
 - **Complex troubleshooting** on older systems
@@ -35,6 +35,26 @@ Source code installation is intended for **developers, contributors, or users ne
 - **BLAS/LAPACK libraries** (automatically detected by R)
 - **OpenMP** (optional, for parallel processing)
 - **Git** (for downloading source code)
+- **GNU make/cmake**
+
+## System Libraries (should be installed before R package requirements)
+
+- **zlib & zstd** (Compression & Zstandard compression)
+- **SuperLu** (Sparse linear solver)
+- **Boost C++ libraries** (String algorithms)
+
+## Dependencies 
+These dependencies should be installed in following guide (good to check if they exist if running in to installation issues)
+#### R Package Dependencies
+- **Rcpp** (≥ 1.0.7)
+- **RcppArmadillo** (≥ 0.10.7.5)
+- **RcppParallel**, **RcppEigen**, **RcppNumerical**, **Matrix**, **data.table**, **furrr**, **dbplyr**, **BH**
+#### Additional LinkingTo Dependencies
+- **SPAtest** (3.1.2)
+- **SKAT**, **RhpcBLASctl**, **RSQLite**, **dplyr**, **nlme**, **MASS**, **optparse**
+#### GitHub-hosted Dependencies (can be installed via remotes)
+- **cysouw/qlcMatrix**, **leeshawn/MetaSKAT**, **barkasn/fastSave**
+
 
 ### Platform-Specific Compiler Setup
 
