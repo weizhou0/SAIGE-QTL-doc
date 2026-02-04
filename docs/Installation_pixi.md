@@ -102,7 +102,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run R --version
 
 # Test SAIGEQTL installation
 CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
-# Expected output: [1] '0.3.4' (or latest version)
+# Expected output: [1] '0.3.5' (or latest version)
 
 # Test core functionality
 CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e 'library(SAIGEQTL); exists("fitNULLGLMM_multiV")'
