@@ -50,7 +50,7 @@ SAIGE-QTL accepts genotype files in multiple standard formats:
 **Version 0.3.5** (February 2, 2026):
 - Added `--solverMethod` option allow user-specified step 1 null model fitting using either Sherman-Morrison-Woodbury approach (“smw” option) or the original preconditioned conjugate gradient approach (“pcg” option). For data sets with unrelated donors, for which the sparse GRM becomes the identity matrix, SMW further reduces to closed-form block-wise operations with optimal complexity. The default is to automatically detect given phenotype file, if there are multiple cells data for 1 individual and no GRM is provided, it will automatically use SMW approach.
 
-**July 31, 2025:
+**July 31, 2025**:
 - Export extdata/ in the docker container so users do not need to download the git repo when using the docker image wzhou88/saigeqtl:latest on example data
 
 **Version 0.3.2** (July 28, 2025):
