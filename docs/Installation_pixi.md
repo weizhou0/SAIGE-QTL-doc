@@ -113,7 +113,7 @@ ls qtl/extdata/step*.R
 # Expected output: step1_fitNULLGLMM_qtl.R step2_tests_qtl.R step3_gene_pvalue_qtl.R
 
 # Test help information
-CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript qtl/extdata/step1_fitNULLGLMM_qtl.R --help
+CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript ./extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ---
@@ -138,7 +138,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run'
 
 # Then you can run:
-saige-pixi Rscript qtl/extdata/step1_fitNULLGLMM_qtl.R --help
+saige-pixi Rscript ./extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ### Quick Start Tutorial
@@ -157,7 +157,7 @@ Ready to run your first analysis? Follow this tutorial:
 ```bash
 # Step 1 example
 CONDA_OVERRIDE_GLIBC=2.28 pixi run \
-    Rscript qtl/extdata/step1_fitNULLGLMM_qtl.R \
+    Rscript ./extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
     --phenoCol=ENSG00000123456 \
     --traitType=count \
