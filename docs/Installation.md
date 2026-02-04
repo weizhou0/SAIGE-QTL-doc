@@ -11,8 +11,8 @@ has_toc: false
 
 Choose the installation method that best fits your environment and requirements. We recommend **Docker** for most users as it works on all platforms with zero setup, followed by **Pixi Binary** for Linux users seeking the fastest installation.
 
-## Current Version: 0.3.4
-*Updated: January 11, 2025*
+## Current Version: 0.3.5
+*Updated: February 2, 2025*
 
 ## Installation Methods (Ordered by Ease of Use)
 
@@ -67,22 +67,6 @@ For developers, custom builds, or users needing the latest development features.
 - **CPU**: Multi-core processor for parallel processing
 - **Storage**: SSD storage for improved I/O performance
 
-## What's New in Version 0.3.4
-
-### ✨ **New Features**
-- **Improved installation guidance**: Comprehensive installation documentation with platform-specific recommendations and troubleshooting
-- **Enhanced Docker support**: Updated Docker images with better documentation and cross-platform compatibility
-- **Binary installation method**: Pre-built packages for faster Linux installation via Pixi
-
-### 🚀 **Performance Improvements**
-- **Speed up matrix inversion**: Optimized numerical computations for faster model fitting and reduced computation time
-- **Memory efficiency**: Better memory management for large-scale analyses
-
-### 📋 **Previous Features (0.3.2)**
-- **`--offsetCol` parameter**: Use log of total read counts per cell as an offset in the model
-- **Enhanced Pixi support**: Improved installation process and environment management
-- **Better error handling**: More informative error messages and debugging information
-
 ### 📋 **Complete Changelog**
 For detailed logs of all bug fixes and improvements, see the [Installation Logs](Installation.html#changelog).
 
@@ -119,6 +103,12 @@ After installation, verify SAIGE-QTL is working correctly:
 ---
 
 ## Changelog
+
+### Version 0.3.5 (February 2, 2025)
+- **New**: --solverMethod flag allowing step 1 null modeling fitting using either Sherman-Morrison-Woodbury approach ("smw" option) or the original preconditioned conjugate gradient approach ("pcg" option). For data sets with unrelated donors, for which the sparse GRM becomes the identity matrix, SMW further reduces to closed-form block-wise operations with optimal complexity.
+- **Performance**: Optimized matrix inversion algorithm (SMW) for faster model fitting
+- **Improved**: Enhanced Docker support with updated documentation and cross-platform compatibility
+- **Fixed**: Various stability and performance improvements
 
 ### Version 0.3.4 (January 11, 2025)
 - **New**: Comprehensive installation documentation with platform-specific guidance and troubleshooting
