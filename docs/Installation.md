@@ -105,7 +105,7 @@ After installation, verify SAIGE-QTL is working correctly:
 ## Changelog
 
 ### Version 0.3.5 (February 2, 2025)
-- **New**: --solverMethod flag allowing step 1 null modeling fitting using either Sherman-Morrison-Woodbury approach ("smw" option) or the original preconditioned conjugate gradient approach ("pcg" option). For data sets with unrelated donors, for which the sparse GRM becomes the identity matrix, SMW further reduces to closed-form block-wise operations with optimal complexity.
+- **New**: Added `--solverMethod` option allowing step 1 null modeling fitting using either Sherman-Morrison-Woodbury approach ("smw" option) or the original preconditioned conjugate gradient approach ("pcg" option). For data sets with unrelated donors, for which the sparse GRM becomes the identity matrix, SMW further reduces to closed-form block-wise operations with optimal complexity. The default is to automatically detect given phenotype file, if there are multiple cells data for 1 individual and no GRM is provided, it will automatically use SMW approach.
 - **Performance**: Optimized matrix inversion algorithm (SMW) for faster model fitting
 - **Improved**: Enhanced Docker support with updated documentation and cross-platform compatibility
 - **Fixed**: Various stability and performance improvements
