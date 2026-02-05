@@ -26,13 +26,8 @@ Fastest installation for Linux and Mac - no compilation required, pre-built pack
 
 **[→ Install with Pixi Binary](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_pixi.html)**
 
-### 🥉 **Moderate: Conda/Bioconda**
-Cross-platform package manager with automatic dependency management.
-
-**[→ Install with Conda](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_bioconda.html)**
-
 ### 🔧 **Advanced: Source Code**
-For developers, custom builds, or users needing the latest development features.
+Requires specific system configurations, unless using the pixi source-code installation approach outlined in this page.
 
 **[→ Install from Source](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_sourcecode.html)**
 
@@ -40,8 +35,8 @@ For developers, custom builds, or users needing the latest development features.
 
 | Platform | Support Level | Recommended Methods | Notes |
 |----------|---------------|-------------------|--------|
-| **Linux** | ✅ **Full Support** | Docker → Pixi Binary → Conda → Source | Pre-built binaries available |
-| **macOS** | ✅ **Good Support** | Docker → Pixi Binary → Conda → Source | No pre-built binaries |
+| **Linux** | ✅ **Full Support** | Docker → Pixi Binary → Source | Pre-built binaries available |
+| **macOS** | ✅ **Good Support** | Docker → Pixi Binary → Source | No pre-built binaries |
 | **Windows** | ⚠️ **Limited Support** | Docker only, or WSL2 + Linux methods | Not natively supported |
 
 ## Installation Comparison
@@ -50,9 +45,8 @@ For developers, custom builds, or users needing the latest development features.
 |--------|----------|------------|--------------|----------|
 | **Docker** | All platforms | ~2 minutes | Docker only | Zero setup, containers, HPC |
 | **Pixi Binary** | Linux, macOS | ~5 minutes | Pixi + GLIBC 2.28+ | Fastest installation from pre-built binaries |
-| **Conda** | Linux, macOS | ~10 minutes | Conda/Mamba | Existing conda environments |
 | **Pixi Source** | Linux, macOS | ~15 minutes | Pixi only | Managed dev environment |
-| **Source** | Linux, macOS | ~30 minutes | C++ compiler + libraries | Traditional development |
+| **Source** | Linux, macOS | ~30 minutes | C++ compiler + libraries | Traditional development, requires specific system configuration |
 
 ## System Requirements
 
