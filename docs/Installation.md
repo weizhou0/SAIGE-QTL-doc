@@ -21,7 +21,7 @@ Zero setup, works on Linux, macOS, Windows - everything included in the containe
 
 **[→ Install with Docker](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_docker.html)**
 
-### 🥈 **Easy: Pixi Binary **
+### 🥈 **Easy: Pixi Binary**
 Fastest installation for Linux and Mac - no compilation required, pre-built packages.
 
 **[→ Install with Pixi Binary](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_pixi.html)**
