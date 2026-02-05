@@ -38,8 +38,8 @@ source ~/.bashrc  # Restart shell or reload environment
 
 #### 2. Download SAIGE-QTL repository
 ```bash
-git clone https://github.com/weizhou0/qtl.git
-cd qtl
+git clone https://github.com/weizhou0/SAIGEQTL.git
+cd SAIGEQTL
 ```
 
 #### 3. Install from pre-built binary
