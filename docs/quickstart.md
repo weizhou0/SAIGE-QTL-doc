@@ -156,7 +156,6 @@ IND002        CELL_001        38      156     42   F    -0.08  0.15
 
 ```
 1    1000000    2000000
-2     500000    1500000
 ```
 
 Format: `chromosome  start  end` (no header)
