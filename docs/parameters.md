@@ -143,6 +143,8 @@ Fits the null Poisson mixed model for eQTL analysis.
 | `--isCovariateOffset` | logical | TRUE | Estimate fixed effect coefficients |
 | `--isCovariateTransform` | logical | TRUE | Apply QR transformation to covariates |
 | `--skipModelFitting` | logical | FALSE | Skip fitting (requires existing model file) |
+| `--solverMethod` | character | "auto" | Choose different method to solve the linear system, default being automatic selection based on data structure. Can be specified as 'pcg' (Preconditioned Conjugate Gradient) or 'smw' (Sherman-Morrison-Woodbury) |
+
 
 ### Variance Ratio Estimation
 
