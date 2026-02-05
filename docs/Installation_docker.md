@@ -10,13 +10,13 @@ parent: Installation
 
 ## Overview
 
-Docker provides the **easiest and most reliable** installation method for SAIGE-QTL. It works identically on **Linux, macOS, and Windows** with zero setup required - no compilers, no dependency management, no configuration needed.
+Docker provides the **easiest and most reliable** installation method for SAIGE-QTL. It works identically on **Linux and macOS** with zero setup required - no compilers, no dependency management, no configuration needed.
 
 ## Why Docker?
 
 **✅ Advantages:**
 - **Zero setup** - runs directly, no installation required
-- **Works on any system** with Docker (Linux/macOS/Windows)
+- **Works on any system** with Docker (Linux/macOS)
 - **Completely isolated** environment - no dependency conflicts
 - **Consistent behavior** across all platforms
 - **Includes all tools** and test data
@@ -42,11 +42,8 @@ To run SAIGE-QTL functions locally using Docker:
 # Logging into Docker
 docker login
 
-# Pull pre-built image for Apple Silicon (arm64) (it could take a few minutes to pull to local environment)
+# Pull pre-built image (it could take several minutes to pull docker image to local environment)
 docker pull --platform linux/amd64 wzhou88/saigeqtl:latest
-
-# Pull pre-built image for standard (x86_64) (it could take a few minutes to pull to local environment)
-docker pull wzhou88/saigeqtl:latest
 
 # Step 1: Fit NULL GLMM model
 docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
@@ -75,7 +72,6 @@ module load singularity
 
 # Pull Docker image and convert to Singularity format
 # Navigate to the folder to store the singularity image file saigeqtl_latest.sif
-
 PATHTOSIF=/data/wzhougroup/
 cd ${PATHTOSIF}
 singularity pull docker://wzhou88/saigeqtl:latest
@@ -97,28 +93,9 @@ singularity exec --bind /data/wzhougroup:/data/wzhougroup \
 - Replace `/data/wzhougroup` with your actual data directories
 - Replace `/path/to/saigeqtl_latest.sif` with the actual path to your Singularity image
 
-#### Running SAIGE-QTL Functions
-
-From within the Singularity container:
+#### Direct Execution to run SAIGE-QTL Functions (Non-interactive)
 
 ```bash
-# Step 1: Fit NULL GLMM model
-step1_fitNULLGLMM_qtl.R --help
-
-# Step 2: Run association tests
-step2_tests_qtl.R --help
-
-# Step 3: Calculate gene-level p-values
-step3_gene_pvalue_qtl.R --help
-
-# Create group files
-makeGroupFile.R --help
-```
-
-#### Direct Execution (Non-interactive)
-
-```bash
-
 singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_latest.sif step1_fitNULLGLMM_qtl.R --help
 ```
 
@@ -197,9 +174,9 @@ For large-scale analyses, use job arrays:
    ```bash
    #!/bin/bash
    step2_tests_qtl.R \
-       --vcfFile=/data/genotypes/chr1.vcf.gz \
-       --vcfFileIndex=/data/genotypes/chr1.vcf.gz.csi \
-       --SAIGEOutputFile=/data/results/chr1_results.txt \
+       --vcfFile=/path_to_genotypes/chr1.vcf.gz \
+       --vcfFileIndex=/path_to_genotypes/chr1.vcf.gz.csi \
+       --SAIGEOutputFile=/path_to_results/chr1_results.txt \
        [other options]
    ```
 
@@ -296,10 +273,10 @@ Ready to run your first analysis? Follow this tutorial:
 # Step 1 example
 docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
     step1_fitNULLGLMM_qtl.R \
-    --phenoFile=/data/phenotypes.txt \
+    --phenoFile=/path_to_phenotype/phenotypes.txt \
     --phenoCol=ENSG00000123456 \
     --traitType=count \
-    --outputPrefix=/data/output/gene1
+    --outputPrefix=/path_to_output/gene1
 ```
 
 **Example command for Singularity users:**
@@ -307,10 +284,10 @@ docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
 # Step 1 example
 singularity exec --bind /data/myproject:/data /path/to/saigeqtl_latest.sif \
     step1_fitNULLGLMM_qtl.R \
-    --phenoFile=/data/phenotypes.txt \
+    --phenoFile=/path_to_phenotype/phenotypes.txt \
     --phenoCol=ENSG00000123456 \
     --traitType=count \
-    --outputPrefix=/data/output/gene1
+    --outputPrefix=/path_to_output/gene1
 ```
 
 ### Running on HPC with SLURM
