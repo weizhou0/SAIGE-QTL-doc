@@ -21,9 +21,8 @@ We recommend the **Pixi Source Installation** method below, which handles all de
 # Full environment management with pixi - cross-platform
 # install pixi
 curl -fsSL https://pixi.sh/install.sh | bash
-# Restart shell or reload environment (using anyshell configuration files corresponding to your system, below are 2 common paths for Linux/MacOS users)
-source ~/.bashrc # Linux
-source ~/.zshrc # MacOS
+# Restart shell or reload environment
+export PATH="$HOME/.pixi/bin:$PATH"
 # Download SAIGEQTL package from GitHub
 git clone https://github.com/weizhou0/SAIGEQTL.git && cd SAIGEQTL
 pixi run install-standard
@@ -113,6 +112,7 @@ Ready to run your first analysis? Follow this tutorial:
 **Example command:**
 
 ```bash
+# Note: Modify to your actual paths if you're trying to run
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml \
     Rscript extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
