@@ -23,7 +23,7 @@ Pick the installation method that best fits your environment:
 
 **Best for**: Users without root access, no existing conda setup
 
-1. Pixi binary installation (Recommended, using prebuilt binaries)
+Installation method 1: Pixi binary installation (Recommended, using prebuilt binaries)
 ```bash
 # install pixi (if needed)
 curl -fsSL https://pixi.sh/install.sh | bash
@@ -45,7 +45,7 @@ cat('✓ SAIGEQTL', as.character(packageVersion('SAIGEQTL')), 'installed success
 "
 ```
 
-2. Pixi source installation (using pixi to install from source code with all dependencies)
+Installation method 2: Pixi source installation (using pixi to install from source code with all dependencies)
 ```bash
 # Install Pixi and SAIGE-QTL
 curl -fsSL https://pixi.sh/install.sh | sh
