@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Advanced Source Installation
+title: Advanced Source Code Installation
 nav_order: 1
 description: "Manual source code installation methods requiring system configuration."
 parent: Source Code Installation
