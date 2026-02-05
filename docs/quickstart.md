@@ -21,7 +21,7 @@ Pick the installation method that best fits your environment:
 <details open markdown="block">
   <summary><strong>🐍 PIXI (Recommended for most users)</strong></summary>
 
-**Best for**: Users without root access, no existing conda setup
+Best for: Users without root access, no existing conda setup
 
 **Installation method 1 (Recommended)**: Pixi binary installation (using prebuilt binaries)
 ```bash
