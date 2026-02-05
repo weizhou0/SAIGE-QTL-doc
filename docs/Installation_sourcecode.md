@@ -191,7 +191,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/ste
 **💡 Tip**: Add aliases for convenience:
 ```bash
 # For standard installation
-export PATH="/path/to/qtl/extdata:$PATH"
+export PATH="/path/to/SAIGEQTL/extdata:$PATH"
 
 # For Pixi source installation
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
@@ -200,10 +200,10 @@ alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
 
 **Standard installation:**
 ```bash
-/path/to/qtl/extdata/step1_fitNULLGLMM_qtl.R
-/path/to/qtl/extdata/step2_tests_qtl.R  
-/path/to/qtl/extdata/step3_gene_pvalue_qtl.R
-/path/to/qtl/extdata/makeGroupFile.R
+/path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R
+/path/to/SAIGEQTL/extdata/step2_tests_qtl.R  
+/path/to/SAIGEQTL/extdata/step3_gene_pvalue_qtl.R
+/path/to/SAIGEQTL/extdata/makeGroupFile.R
 ```
 
 ---
@@ -225,7 +225,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/ste
 **💡 Tip**: Set up convenient aliases:
 ```bash
 # For standard installation - add to ~/.bashrc or ~/.bash_profile
-export PATH="/path/to/qtl/extdata:$PATH"
+export PATH="/path/to/SAIGEQTL/extdata:$PATH"
 
 # For Pixi source installation
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
@@ -237,8 +237,8 @@ saige-pixi Rscript extdata/step1_fitNULLGLMM_qtl.R --help               # Pixi
 
 **Standard source installation:**
 ```bash
-# Scripts located in: /path/to/qtl/extdata/
-Rscript /path/to/qtl/extdata/step1_fitNULLGLMM_qtl.R [options]
+# Scripts located in: /path/to/SAIGEQTL/extdata/
+Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R [options]
 ```
 
 ### Quick Start Tutorial
@@ -267,7 +267,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml \
 
 **Standard source installation:**
 ```bash
-Rscript /path/to/qtl/extdata/step1_fitNULLGLMM_qtl.R \
+Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
     --phenoCol=ENSG00000123456 \
     --traitType=count \
