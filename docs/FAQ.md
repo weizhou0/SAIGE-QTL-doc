@@ -18,7 +18,6 @@ description: "Frequently asked questions about SAIGE-QTL installation, usage, an
 
 Choose other methods based on your specific needs:
 - **Docker**: For containerized environments or HPC clusters
-- **Conda**: If you already have conda environments
 - **Source**: For developers or custom builds
 
 ### Q: What are the minimum system requirements?
@@ -182,4 +181,5 @@ Rscript step1_fitNULLGLMM_qtl.R --help
 - Report bugs and suggest features via GitHub
 - Contribute documentation improvements
 - Share analysis examples and use cases
+
 - Contact the development team for larger contributions
