@@ -88,6 +88,11 @@ pixi run install-standard
 # Commands use manifest path:
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 ```
+**Why Pixi Source recommended?**
+- ✅ **Managed environment**: All dependencies handled automatically
+- ✅ **Cross-platform**: Works on Linux and macOS
+- ✅ **Reproducible**: Consistent across systems
+- ✅ **Development-ready**: Full toolchain included
 
 ### Method 2: R remotes (require system libraries configured as mentioned in the System Requirements section above)
 ```r
@@ -127,16 +132,6 @@ R CMD INSTALL --library=~/R-packages qtl/
 # Test with custom library
 R -e 'library(SAIGEQTL, lib.loc="~/R-packages"); packageVersion("SAIGEQTL")'
 ```
-
-
-
-**Why Pixi Source?**
-- ✅ **Managed environment**: All dependencies handled automatically
-- ✅ **Cross-platform**: Works on Linux and macOS
-- ✅ **Reproducible**: Consistent across systems
-- ✅ **Development-ready**: Full toolchain included
-- ❌ **Slower**: Requires compilation time
-- ❌ **Complex commands**: Longer command prefixes
 
 ### Method 5: Development Installation
 ```bash
