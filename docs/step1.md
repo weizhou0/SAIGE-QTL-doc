@@ -17,68 +17,7 @@ Step 1 involves fitting a null Poisson mixed model for each gene across cells.
 
 The wrapper scripts and example data are located in the `./extdata` folder: [https://github.com/weizhou0/SAIGEQTL/tree/main/extdata](https://github.com/weizhou0/SAIGEQTL/tree/main/extdata)
 
-
-### Check Help Information
-
-View available parameters and their descriptions:
-
-#### Pixi Installation
-
-```bash
-# If not downloaded the SAIGEQTL package already, here we download the repo with /extdata
-src_branch=main
-repo_src_url=https://github.com/weizhou0/SAIGEQTL
-git clone -b $src_branch $repo_src_url
-```
-
-```bash
-# If not downloaded the SAIGEQTL package already, here we download the repo with /extdata
-src_branch=main
-repo_src_url=https://github.com/weizhou0/SAIGEQTL
-git clone -b $src_branch $repo_src_url
-```
-
-
-```bash
-# Navigate to the extdata folder in the SAIGEQTL directory first
-cd ./SAIGEQTL
-CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript extdata/step1_fitNULLGLMM_qtl.R --help
-
-# Note: if not in ./SAIGEQTL, you will need to specify --manifest-path=/full/path/to/SAIGEQTL/pixi.toml
-#e.g. CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=/full/path/to/SAIGEQTL/pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
-
-```
-
-#### Docker Installation
-```bash
-
-docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
-```
-
-#### Singularity Installation
-```bash
-singularity exec \
---cleanenv saigeqtl_latest.sif \
-step1_fitNULLGLMM_qtl.R --help
-```
-
-
-#### Standard Installation
-
-```bash
-#NOTE: example input data are stored in SAIGEQTL/extdata/input. If not downloaded the SAIGEQTL package already, here we download the repo with /extdata
-
-src_branch=main
-repo_src_url=https://github.com/weizhou0/SAIGEQTL
-git clone -b $src_branch $repo_src_url
-```
-
-
-```bash
-# Navigate to the extdata folder in the SAIGEQTL directory first
-cd SAIGEQTL/extdata
-Rscript step1_fitNULLGLMM_qtl.R --help
-```
+Check Installation instruction if you haven't had SAIGE-QTL installed yet: [Install SAIGE-QTL](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation.html)
 
 
 ## Fitting the Null Model
