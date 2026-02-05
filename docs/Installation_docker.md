@@ -34,17 +34,6 @@ Docker provides the **easiest and most reliable** installation method for SAIGE-
 - **Updates**: Automatically built from latest code
 - **Repository**: Built from https://github.com/weizhou0/SAIGEQTL
 
-### Available SAIGE-QTL Functions
-
-The following functions are available in the Docker container:
-
-```
-step1_fitNULLGLMM_qtl.R
-step2_tests_qtl.R
-step3_gene_pvalue_qtl.R
-makeGroupFile.R
-```
-
 ### Running SAIGE-QTL on Local Systems
 
 To run SAIGE-QTL functions locally using Docker:
@@ -53,10 +42,10 @@ To run SAIGE-QTL functions locally using Docker:
 # Logging into Docker
 docker login
 
-# Pull pre-built image for Apple Silicon (arm64)
+# Pull pre-built image for Apple Silicon (arm64) (it could take a few minutes to pull to local environment)
 docker pull --platform linux/amd64 wzhou88/saigeqtl:latest
 
-# Pull pre-built image for standard (x86_64)
+# Pull pre-built image for standard (x86_64) (it could take a few minutes to pull to local environment)
 docker pull wzhou88/saigeqtl:latest
 
 # Step 1: Fit NULL GLMM model
