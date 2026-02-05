@@ -79,7 +79,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=/path/to/SAIGEQTL/pixi.toml R
 
 ```bash
 # Pull pre-built image
-docker pull wzhou88/saigeqtl:latest
+docker pull --platform linux/amd64 wzhou88/saigeqtl:latest
 
 # Test installation
 docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
