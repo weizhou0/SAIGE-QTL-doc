@@ -113,7 +113,7 @@ docker run -w ${WKDIR} wzhou88/saigeqtl:latest \
 ```bash
 # Set your working directory first and the output from example runs will be stored there
 # e.g. /data/wzhougroup/
-# Set the path to the singularity file saigeqtl_latest.sif, e.g.  
+# Set the path to the singularity file saigeqtl_latest.sif, e.g. /data/wzhougroup
 
 WKDIR=/data/wzhougroup/
 PATHTOSIF=/data/wzhougroup/
