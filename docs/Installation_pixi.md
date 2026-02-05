@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Pixi Binary (Linux)
+title: Pixi Binary
 nav_order: 2
-description: "Fastest installation method for Linux using pre-built binary packages - no compilation required."
+description: "Fastest installation method using pre-built binary packages - no compilation required."
 parent: Installation
 ---
 
-# Pixi Binary Installation Guide (🥈 Fastest for Linux)
+# Pixi Binary Installation Guide (🥈)
 
 ## Overview
 
-Pixi Binary installation provides the **fastest installation method for Linux users** with pre-built packages that require no compilation. This method is ideal for users who want a quick setup without dealing with compilers or build dependencies.
+Pixi Binary installation provides the **fastest installation method for Linux and MacOS users** with pre-built packages that require no compilation. This method is ideal for users who want a quick setup without dealing with compilers or build dependencies.
 
 ## Why Pixi Binary?
 
@@ -23,7 +23,7 @@ Pixi Binary installation provides the **fastest installation method for Linux us
 - **Works on most modern Linux systems**
 
 **⚠️ Requirements:**
-- Linux x86_64 only
+- Linux x86_64 or MacOS arm64
 - R 4.4+ (managed by pixi)
 - GLIBC 2.28+ (CentOS 7+, Ubuntu 18.04+, most modern systems)
 - Pixi package manager
@@ -54,9 +54,23 @@ cd qtl
 ```
 
 #### 3. Install from pre-built binary
+##### For Linux users:
 ```bash
 # Auto-detect latest binary version
 BINARY_FILE=$(ls binaries/SAIGEQTL_*_linux-x86_64.tgz | head -n1)
+echo "Installing: $BINARY_FILE"
+
+# Install binary package
+CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e "
+install.packages('${BINARY_FILE}', repos = NULL, type = 'source')
+library(SAIGEQTL)
+cat('✓ SAIGEQTL', as.character(packageVersion('SAIGEQTL')), 'installed successfully\n')
+"
+```
+##### For MacOS users:
+```bash
+# Auto-detect latest binary version
+BINARY_FILE=$(ls binaries/SAIGEQTL_*_macos.tgz | head -n1)
 echo "Installing: $BINARY_FILE"
 
 # Install binary package
@@ -70,8 +84,8 @@ cat('✓ SAIGEQTL', as.character(packageVersion('SAIGEQTL')), 'installed success
 ## What Gets Installed
 
 ### Pre-built Binary Package
-- **SAIGEQTL Binary**: Pre-compiled Linux x86_64 package (`.tgz` format)
-- **Location**: `binaries/SAIGEQTL_*_linux-x86_64.tgz` in the repository
+- **SAIGEQTL Binary**: Pre-compiled Linux or MacOS package (`.tgz` format)
+- **Location**: `binaries/SAIGEQTL_*_linux-x86_64.tgz` and `binaries/SAIGEQTL_*_macos.tgz` in the repository
 - **No compilation**: Ready-to-install binary eliminates build time and dependencies
 
 ### Managed R Environment
@@ -109,7 +123,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e 'library(SAIGEQTL); exists("fitNULLGLMM_
 # Expected output: [1] TRUE
 
 # Check executable scripts are available
-ls qtl/extdata/step*.R
+ls ./extdata/step*.R
 # Expected output: step1_fitNULLGLMM_qtl.R step2_tests_qtl.R step3_gene_pvalue_qtl.R
 
 # Test help information
