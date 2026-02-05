@@ -2,152 +2,46 @@
 layout: default
 title: Source Code Installation
 nav_order: 4
-description: "Advanced installation from source code for developers and custom builds."
+description: "Source code installation using Pixi for developers and custom builds."
 parent: Installation
+has_children: true
 ---
 
 # Source Code Installation Guide (🔧 Advanced)
 
 ## Overview
 
-Source code installation is intended for **developers, contributors, or users needing the latest development features**. This method requires manual dependency management and compilation.
+Source code installation is intended for **developers, contributors, or users needing the latest development features**.
 
-## Why Source Installation?
+We recommend the **Pixi Source Installation** method below, which handles all dependencies automatically. For other manual installation methods that require complex system configuration and troubleshooting, see **[Advanced Source Installation](Installation_sourcecode_advanced.html)**.
 
-**✅ Advantages:**
-- Access to **latest development features**
-- **Customizable builds** and configurations
-- **Integration with existing R** environment
-- **Development contribution** capability
+## Pixi Source Installation (Recommended)
 
-**⚠️ Disadvantages:**
-- **Requires C++ compiler** setup on your system
-- **Can fail due to missing** system libraries
-- **No pre-built package**
-- **Dependency version conflicts** possible
-- **Slower installation** (compilation time)
-- **Complex troubleshooting** on older systems
-
-## System Requirements
-
-- **R** ≥ 3.5.0 (≥ 4.0 recommended)
-- **C/C++ compiler** (gcc/clang with C++11 support)
-- **BLAS/LAPACK libraries** (automatically detected by R)
-- **OpenMP** (optional, for parallel processing)
-- **Git** (for downloading source code)
-- **GNU make/cmake**
-
-## System Libraries (should be installed before R package requirements)
-
-- **zlib & zstd** (Compression & Zstandard compression)
-- **SuperLu** (Sparse linear solver)
-- **Boost C++ libraries** (String algorithms)
-
-## Dependencies 
-These dependencies should be installed in following guide (good to check if they exist if running in to installation issues)
-#### R Package Dependencies
-- **Rcpp** (≥ 1.0.7)
-- **RcppArmadillo** (≥ 0.10.7.5)
-- **RcppParallel**, **RcppEigen**, **RcppNumerical**, **Matrix**, **data.table**, **furrr**, **dbplyr**, **BH**
-#### Additional LinkingTo Dependencies
-- **SPAtest** (3.1.2)
-- **SKAT**, **RhpcBLASctl**, **RSQLite**, **dplyr**, **nlme**, **MASS**, **optparse**
-#### GitHub-hosted Dependencies (can be installed via remotes)
-- **cysouw/qlcMatrix**, **leeshawn/MetaSKAT**, **barkasn/fastSave**
-
-
-### Platform-Specific Compiler Setup
-
-#### Linux (Ubuntu/Debian)
-```bash
-sudo apt update && sudo apt install build-essential r-base-dev
-```
-
-#### Linux (CentOS/RHEL)
-```bash
-sudo yum groupinstall "Development Tools"
-sudo yum install R-devel
-```
-
-#### macOS
-```bash
-# Install Xcode command line tools
-xcode-select --install
-```
-
-## Installation Methods
-
-### Method 1: Pixi Source Installation (Recommended)
 ```bash
 # Full environment management with pixi - cross-platform
 # install pixi
 curl -fsSL https://pixi.sh/install.sh | bash
 # Restart shell or reload environment (using anyshell configuration files corresponding to your system, below are 2 common paths for Linux/MacOS users)
-# change bashrc location if needed to restart shell or reload environment to make sure pixi is installed
 source ~/.bashrc # Linux
-source ~/.zshrc # MacOS 
+source ~/.zshrc # MacOS
+# Download SAIGEQTL package from GitHub
 git clone https://github.com/weizhou0/SAIGEQTL.git && cd SAIGEQTL
 pixi run install-standard
 
 # Commands use manifest path:
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 ```
+
 **Why Pixi Source recommended?**
 - ✅ **Managed environment**: All dependencies handled automatically
 - ✅ **Cross-platform**: Works on Linux and macOS
 - ✅ **Reproducible**: Consistent across systems
 - ✅ **Development-ready**: Full toolchain included
-
-### Method 2: R remotes (require system libraries configured as mentioned in the System Requirements section above)
-```r
-# Install using remotes package
-if (!requireNamespace("remotes", quietly = TRUE)) {
-  install.packages("remotes")
-}
-remotes::install_github("weizhou0/SAIGEQTL", dependencies = TRUE)
-
-# Test installation
-library(SAIGEQTL)
-packageVersion("SAIGEQTL")
-```
-
-### Method 3: Manual Git Clone + Install (require system libraries configured as mentioned in the System Requirements section above)
-```bash
-# 1. Download source code
-git clone https://github.com/weizhou0/SAIGEQTL.git
-cd SAIGEQTL
-
-# 2. Install dependencies (if needed)
-Rscript -e 'install.packages(c("Rcpp", "RcppArmadillo", "Matrix", "data.table", "optparse"))'
-
-# 3. Install SAIGEQTL package
-R CMD INSTALL .
-
-# 4. Test installation
-R -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
-```
-
-### Method 4: Custom Library Path (require system libraries configured as mentioned in the System Requirements section above)
-```bash
-# Install to specific directory
-mkdir -p ~/R-packages
-R CMD INSTALL --library=~/R-packages qtl/
-
-# Test with custom library
-R -e 'library(SAIGEQTL, lib.loc="~/R-packages"); packageVersion("SAIGEQTL")'
-```
-
-### Method 5: Development Installation
-```bash
-# For contributors and developers
-git clone https://github.com/weizhou0/SAIGEQTL.git
-cd SAIGEQTL
-Rscript scripts/install_standard.R --dev
-```
+- ✅ **No system configuration required**: Unlike other source methods
 
 ## Usage
 
-### Pixi Source Installation
+### Command Prefix
 ```bash
 # Command prefix for all Pixi source installations
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml
@@ -157,53 +51,27 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml R -e 'library(SAIGE
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
-### Standard Source Installation
-```r
-library(SAIGEQTL)
-```
-
-### Custom Library Usage
-
-**🆕 Recommended**: Use the `--library` parameter with wrapper scripts:
-```bash
-# Standard source installation
-step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
-
-# Pixi source installation
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
-```
-
-**Alternative**: Direct R usage with lib.loc:
-```r
-library(SAIGEQTL, lib.loc="/path/to/custom/library")
-```
-
 ### Command-Line Scripts
-After installation, executable scripts are available in:
+After installation, executable scripts are available:
 
-**Pixi source installation:**
 ```bash
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step2_tests_qtl.R
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step3_gene_pvalue_qtl.R
 ```
 
-**💡 Tip**: Add aliases for convenience:
+**💡 Tip**: Add an alias for convenience:
 ```bash
-# For standard installation
-export PATH="/path/to/SAIGEQTL/extdata:$PATH"
-
 # For Pixi source installation
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
 # Then: saige-pixi Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
-**Standard installation:**
+### Custom Library Usage
+
+Use the `--library` parameter with wrapper scripts:
 ```bash
-/path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R
-/path/to/SAIGEQTL/extdata/step2_tests_qtl.R  
-/path/to/SAIGEQTL/extdata/step3_gene_pvalue_qtl.R
-/path/to/SAIGEQTL/extdata/makeGroupFile.R
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
 ```
 
 ---
@@ -212,33 +80,22 @@ alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
 
 ### Installation Complete!
 
-You've successfully built SAIGEQTL from source. Here's how to get started with your first analysis.
+You've successfully built SAIGEQTL from source using Pixi. Here's how to get started with your first analysis.
 
 ### Your Command Prefix
 
-**Pixi source installation:**
 ```bash
 # Use pixi environment
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R [options]
 ```
 
-**💡 Tip**: Set up convenient aliases:
+**💡 Tip**: Set up a convenient alias:
 ```bash
-# For standard installation - add to ~/.bashrc or ~/.bash_profile
-export PATH="/path/to/SAIGEQTL/extdata:$PATH"
-
-# For Pixi source installation
+# For Pixi source installation - add to ~/.bashrc or ~/.zshrc
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
 
 # Then you can run:
-step1_fitNULLGLMM_qtl.R --help                                           # Standard
-saige-pixi Rscript extdata/step1_fitNULLGLMM_qtl.R --help               # Pixi
-```
-
-**Standard source installation:**
-```bash
-# Scripts located in: /path/to/SAIGEQTL/extdata/
-Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R [options]
+saige-pixi Rscript extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ### Quick Start Tutorial
@@ -253,21 +110,11 @@ Ready to run your first analysis? Follow this tutorial:
 - Running Step 2: Test genetic variants
 - Running Step 3: Calculate gene-level p-values
 
-**Example commands:**
+**Example command:**
 
-**Pixi source installation:**
 ```bash
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml \
     Rscript extdata/step1_fitNULLGLMM_qtl.R \
-    --phenoFile=phenotypes.txt \
-    --phenoCol=ENSG00000123456 \
-    --traitType=count \
-    --outputPrefix=output/gene1
-```
-
-**Standard source installation:**
-```bash
-Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
     --phenoCol=ENSG00000123456 \
     --traitType=count \
