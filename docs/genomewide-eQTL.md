@@ -58,6 +58,8 @@ Step 1 can be run independently for each gene, making it highly parallelizable:
 
 **Example batch processing for 100 genes:**
 
+Note: Remove the `/bin/time` command if your system does not have that installed. This command is purely for estimating the computational footprint for your information, does not affect SAIGEQTL running at all.
+
 ```bash
 cd SAIGEQTL/extdata/
 for i in {1..100}
