@@ -9,7 +9,7 @@ has_toc: false
 
 # Installing SAIGE-QTL
 
-Choose the installation method that best fits your environment and requirements. We recommend **Docker** for most users as it works on all platforms with zero setup, followed by **Pixi Binary** for Linux users seeking the fastest installation.
+Choose the installation method that best fits your environment and requirements. We recommend **Docker** for most users as it works on all platforms with zero setup, followed by **Pixi Binary** for Linux and Mac users seeking the fastest installation.
 
 ## Current Version: 0.3.5
 *Updated: February 2, 2025*
@@ -21,8 +21,8 @@ Zero setup, works on Linux, macOS, Windows - everything included in the containe
 
 **[→ Install with Docker](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_docker.html)**
 
-### 🥈 **Easy: Pixi Binary (Linux only)**
-Fastest installation for Linux - no compilation required, pre-built packages.
+### 🥈 **Easy: Pixi Binary **
+Fastest installation for Linux and Mac - no compilation required, pre-built packages.
 
 **[→ Install with Pixi Binary](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_pixi.html)**
 
@@ -41,7 +41,7 @@ For developers, custom builds, or users needing the latest development features.
 | Platform | Support Level | Recommended Methods | Notes |
 |----------|---------------|-------------------|--------|
 | **Linux** | ✅ **Full Support** | Docker → Pixi Binary → Conda → Source | Pre-built binaries available |
-| **macOS** | ✅ **Good Support** | Docker → Conda → Source | No pre-built binaries |
+| **macOS** | ✅ **Good Support** | Docker → Pixi Binary → Conda → Source | No pre-built binaries |
 | **Windows** | ⚠️ **Limited Support** | Docker only, or WSL2 + Linux methods | Not natively supported |
 
 ## Installation Comparison
@@ -49,7 +49,7 @@ For developers, custom builds, or users needing the latest development features.
 | Method | Platform | Setup Time | Dependencies | Best For |
 |--------|----------|------------|--------------|----------|
 | **Docker** | All platforms | ~2 minutes | Docker only | Zero setup, containers, HPC |
-| **Pixi Binary** | Linux only | ~5 minutes | Pixi + GLIBC 2.28+ | Fastest Linux installation |
+| **Pixi Binary** | Linux, macOS | ~5 minutes | Pixi + GLIBC 2.28+ | Fastest installation from pre-built binaries |
 | **Conda** | Linux, macOS | ~10 minutes | Conda/Mamba | Existing conda environments |
 | **Pixi Source** | Linux, macOS | ~15 minutes | Pixi only | Managed dev environment |
 | **Source** | Linux, macOS | ~30 minutes | C++ compiler + libraries | Traditional development |
