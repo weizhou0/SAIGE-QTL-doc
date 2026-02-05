@@ -80,8 +80,12 @@ xcode-select --install
 ### Method 1: Pixi Source Installation (Recommended)
 ```bash
 # Full environment management with pixi - cross-platform
-# install pixi, change bashrc location if needed to restart shell or reload environment to make sure pixi is installed
-curl -fsSL https://pixi.sh/install.sh | bash && source ~/.bashrc 
+# install pixi
+curl -fsSL https://pixi.sh/install.sh | bash
+# Restart shell or reload environment (using anyshell configuration files corresponding to your system, below are 2 common paths for Linux/MacOS users)
+# change bashrc location if needed to restart shell or reload environment to make sure pixi is installed
+source ~/.bashrc # Linux
+source ~/.zshrc # MacOS 
 git clone https://github.com/weizhou0/SAIGEQTL.git && cd SAIGEQTL
 pixi run install-standard
 
