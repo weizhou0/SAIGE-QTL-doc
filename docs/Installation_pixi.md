@@ -111,10 +111,6 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e 'library(SAIGEQTL); packageVersion("SAIG
 CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e 'library(SAIGEQTL); exists("fitNULLGLMM_multiV")'
 # Expected output: [1] TRUE
 
-# Check executable scripts are available
-ls ./extdata/step*.R
-# Expected output: step1_fitNULLGLMM_qtl.R step2_tests_qtl.R step3_gene_pvalue_qtl.R
-
 # Test help information
 CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript ./extdata/step1_fitNULLGLMM_qtl.R --help
 ```
@@ -137,7 +133,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run
 
 **💡 Tip**: Set an alias to save typing:
 ```bash
-# Add to your ~/.bashrc or ~/.bash_profile
+# Add to your ~/.bashrc or ~/.bash_profile or ~/.zshrc
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run'
 
 # Then you can run:
@@ -158,7 +154,7 @@ Ready to run your first analysis? Follow this tutorial:
 
 **Example command for Pixi Binary users:**
 ```bash
-# Step 1 example
+# Step 1 example (modify to your actual paths)
 CONDA_OVERRIDE_GLIBC=2.28 pixi run \
     Rscript ./extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
