@@ -82,7 +82,7 @@ xcode-select --install
 # Full environment management with pixi - cross-platform
 # install pixi, change bashrc location if needed to restart shell or reload environment to make sure pixi is installed
 curl -fsSL https://pixi.sh/install.sh | bash && source ~/.bashrc 
-git clone https://github.com/weizhou0/qtl.git && cd qtl
+git clone https://github.com/weizhou0/SAIGEQTL.git && cd SAIGEQTL
 pixi run install-standard
 
 # Commands use manifest path:
@@ -136,8 +136,8 @@ R -e 'library(SAIGEQTL, lib.loc="~/R-packages"); packageVersion("SAIGEQTL")'
 ### Method 5: Development Installation
 ```bash
 # For contributors and developers
-git clone https://github.com/weizhou0/qtl.git
-cd qtl
+git clone https://github.com/weizhou0/SAIGEQTL.git
+cd SAIGEQTL
 Rscript scripts/install_standard.R --dev
 ```
 
