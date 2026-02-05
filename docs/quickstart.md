@@ -23,7 +23,7 @@ Pick the installation method that best fits your environment:
 
 **Best for**: Users without root access, no existing conda setup
 
-Installation method 1 (Recommended): Pixi binary installation (using prebuilt binaries)
+**Installation method 1 (Recommended)**: Pixi binary installation (using prebuilt binaries)
 ```bash
 # install pixi & Restart shell or reload environment to make sure pixi is installed correctly (if needed)
 curl -fsSL https://pixi.sh/install.sh | bash
@@ -32,10 +32,17 @@ export PATH="$HOME/.pixi/bin:$PATH"
 git clone https://github.com/weizhou0/SAIGEQTL.git
 cd SAIGEQTL
 # Detect pre-built binary (choose one of the commands below to match your system)
+```
+
+Obtain corresponding Binary file based on which system you are using -- choose either one of the following command to match your system
+```bash
 ## For Linux users (Linux x86_64):
 BINARY_FILE=$(ls binaries/SAIGEQTL_*_linux-x86_64.tgz | head -n1)
 ## For MacOs users (arm64):
 BINARY_FILE=$(ls binaries/SAIGEQTL_*_macos.tgz | head -n1)
+```
+
+```bash
 # Install from pre-built binary
 echo "Installing: $BINARY_FILE"
 CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e "
@@ -45,7 +52,7 @@ cat('✓ SAIGEQTL', as.character(packageVersion('SAIGEQTL')), 'installed success
 "
 ```
 
-Installation method 2: Pixi source installation (using pixi to install from source code with all dependencies)
+**Installation method 2**: Pixi source installation (using pixi to install from source code with all dependencies)
 ```bash
 # Install Pixi and SAIGE-QTL
 curl -fsSL https://pixi.sh/install.sh | sh
