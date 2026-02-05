@@ -97,7 +97,7 @@ singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_la
 ```
 
 <details markdown="block">
-  <summary><h2>SLURM Integration</h2></summary>
+  <summary><strong>SLURM Integration</strong></summary>
 
 ### Basic SLURM Setup
 
