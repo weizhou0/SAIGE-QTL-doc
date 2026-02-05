@@ -168,8 +168,10 @@ Run Step 1 for each gene you want to analyze.
 
 ### 📝 Basic Command Structure
 
-<details open markdown="block">
-  <summary><strong>Show me the command for my installation method</strong></summary>
+<details markdown="block">
+  <summary><strong>Show me example command</strong></summary>
+
+Note: below paths to all inputs should be modified according to your own actual paths
 
 #### For PIXI Users
 
@@ -301,8 +303,10 @@ echo -e "1\t500000\t2500000" > gene_1_cis_region.txt
 
 ### Run Step 2
 
-<details open markdown="block">
-  <summary><strong>Show me the command for my installation method</strong></summary>
+<details markdown="block">
+  <summary><strong>Show me example command</strong></summary>
+
+Note: below paths to all inputs should be modified according to your own actual paths
 
 #### For PIXI Users
 
@@ -368,8 +372,10 @@ Test all genetic variants across the genome.
 ### Run Step 2
 
 <details markdown="block">
-  <summary><strong>Show me the command for my installation method</strong></summary>
-
+  <summary><strong>Show me example command </strong></summary>
+  
+Note: below paths to all inputs should be modified according to your own actual paths
+  
 #### For PIXI Users
 
 ```bash
@@ -430,8 +436,10 @@ Combine results from all variants into a single gene-level p-value using ACAT.
 
 ### Run Step 3
 
-<details open markdown="block">
-  <summary><strong>Show me the command for my installation method</strong></summary>
+<details markdown="block">
+  <summary><strong>Show me example command</strong></summary>
+
+Note: below paths to all inputs should be modified according to your own actual paths
 
 #### For PIXI Users
 
