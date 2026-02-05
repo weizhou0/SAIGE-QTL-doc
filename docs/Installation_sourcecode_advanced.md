@@ -56,7 +56,7 @@ These dependencies should be installed in following guide (good to check if they
 - **cysouw/qlcMatrix**, **leeshawn/MetaSKAT**, **barkasn/fastSave**
 
 
-### Platform-Specific Compiler Setup
+## Platform-Specific Compiler Setup
 
 #### Linux (Ubuntu/Debian)
 ```bash
@@ -112,7 +112,7 @@ R -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
 ```bash
 # Install to specific directory
 mkdir -p ~/R-packages
-R CMD INSTALL --library=~/R-packages qtl/
+R CMD INSTALL --library=~/R-packages SAIGEQTL/
 
 # Test with custom library
 R -e 'library(SAIGEQTL, lib.loc="~/R-packages"); packageVersion("SAIGEQTL")'
@@ -123,7 +123,7 @@ R -e 'library(SAIGEQTL, lib.loc="~/R-packages"); packageVersion("SAIGEQTL")'
 # For contributors and developers
 git clone https://github.com/weizhou0/SAIGEQTL.git
 cd SAIGEQTL
-Rscript scripts/install_standard.R --dev
+Rscript scripts/install.R --dev
 ```
 
 ---
