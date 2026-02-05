@@ -45,15 +45,13 @@ docker login
 # Pull pre-built image (it could take several minutes to pull docker image to local environment)
 docker pull --platform linux/amd64 wzhou88/saigeqtl:latest
 
+# [Optional] Confirm pulled docker image functionality by testing these main functions
 # Step 1: Fit NULL GLMM model
 docker run wzhou88/saigeqtl:latest step1_fitNULLGLMM_qtl.R --help
-
 # Step 2: Run association tests
 docker run wzhou88/saigeqtl:latest step2_tests_qtl.R --help
-
 # Step 3: Calculate gene-level p-values
 docker run wzhou88/saigeqtl:latest step3_gene_pvalue_qtl.R --help
-
 # Create group files
 docker run wzhou88/saigeqtl:latest makeGroupFile.R --help
 ```
@@ -84,8 +82,7 @@ This creates a Singularity image file (e.g., `saigeqtl_latest.sif`).
 #### Interactive Shell Access
 
 ```bash
-singularity exec --bind /data/wzhougroup:/data/wzhougroup \
-    --cleanenv /path/to/saigeqtl_latest.sif bash
+singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv /path/to/saigeqtl_latest.sif bash
 ```
 
 **Note**:
@@ -99,7 +96,8 @@ singularity exec --bind /data/wzhougroup:/data/wzhougroup \
 singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_latest.sif step1_fitNULLGLMM_qtl.R --help
 ```
 
-## SLURM Integration
+<details markdown="block">
+  <summary><strong>SLURM Integration</h2></summary>
 
 ### Basic SLURM Setup
 
@@ -137,11 +135,9 @@ joblist=/path/to/job_scripts/job_list.txt
 declare -a FILES=($(cat $joblist))
 eachjob=${FILES[$i]}
 
-# Run job with timing information
+# Run job with timing information (if your system has /bin/time installed)
 /bin/time -o /path/to/logs/run.${SLURM_ARRAY_TASK_ID}.timing.txt -v \
-singularity exec --bind /data/path:/data/path \
-    --cleanenv /path/to/saigeqtl_latest.sif \
-    bash "${eachjob}"
+singularity exec --bind /data/path:/data/path --cleanenv /path/to/saigeqtl_latest.sif bash "${eachjob}"
 ```
 
 ### SLURM Script Parameters Explanation
@@ -179,6 +175,7 @@ For large-scale analyses, use job arrays:
        --SAIGEOutputFile=/path_to_results/chr1_results.txt \
        [other options]
    ```
+</details>
 
 ## Best Practices
 
