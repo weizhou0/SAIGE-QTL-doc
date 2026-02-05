@@ -33,7 +33,9 @@ Pixi Binary installation provides the **fastest installation method for Linux an
 #### 1. Install pixi (if needed)
 ```bash
 curl -fsSL https://pixi.sh/install.sh | bash
-source ~/.bashrc  # Restart shell or reload environment
+# Restart shell or reload environment (using any shell configuration files corresponding to your system, below are 2 commonly-used paths for Linux/MacOS users)
+source ~/.bashrc # Linux
+source ~/.zshrc # MacOS
 ```
 
 #### 2. Download SAIGE-QTL repository
