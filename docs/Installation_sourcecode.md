@@ -77,7 +77,19 @@ xcode-select --install
 
 ## Installation Methods
 
-### Method 1: R remotes (Recommended)
+### Method 1: Pixi Source Installation (Recommended)
+```bash
+# Full environment management with pixi - cross-platform
+# install pixi, change bashrc location if needed to restart shell or reload environment to make sure pixi is installed
+curl -fsSL https://pixi.sh/install.sh | bash && source ~/.bashrc 
+git clone https://github.com/weizhou0/qtl.git && cd qtl
+pixi run install-standard
+
+# Commands use manifest path:
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
+```
+
+### Method 2: R remotes (require system libraries configured as mentioned in the System Requirements section above)
 ```r
 # Install using remotes package
 if (!requireNamespace("remotes", quietly = TRUE)) {
@@ -90,7 +102,7 @@ library(SAIGEQTL)
 packageVersion("SAIGEQTL")
 ```
 
-### Method 2: Manual Git Clone + Install
+### Method 3: Manual Git Clone + Install (require system libraries configured as mentioned in the System Requirements section above)
 ```bash
 # 1. Download source code
 git clone https://github.com/weizhou0/SAIGEQTL.git
@@ -106,7 +118,7 @@ R CMD INSTALL .
 R -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
 ```
 
-### Method 3: Custom Library Path
+### Method 4: Custom Library Path (require system libraries configured as mentioned in the System Requirements section above)
 ```bash
 # Install to specific directory
 mkdir -p ~/R-packages
@@ -116,16 +128,7 @@ R CMD INSTALL --library=~/R-packages qtl/
 R -e 'library(SAIGEQTL, lib.loc="~/R-packages"); packageVersion("SAIGEQTL")'
 ```
 
-### Method 4: Pixi Source Installation (Environment Management)
-```bash
-# Full environment management with pixi - cross-platform
-curl -fsSL https://pixi.sh/install.sh | bash && source ~/.bashrc
-git clone https://github.com/weizhou0/qtl.git && cd qtl
-pixi run install-standard
 
-# Commands use manifest path:
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
-```
 
 **Why Pixi Source?**
 - ✅ **Managed environment**: All dependencies handled automatically
