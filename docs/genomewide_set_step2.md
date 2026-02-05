@@ -13,7 +13,7 @@ parent: genomewide-eQTL test
 * Additional input --groupFile= is needed with the following parameters to run set-based tests:
 
 ```
-	--maxMAF_in_groupTest=0.1   \
+	    --maxMAF_in_groupTest=0.1   \
         --minMAF_in_groupTest_Exclude=0       \
         --groupFile=${groupFile}        \
         --annotation_in_groupTest=null  \
