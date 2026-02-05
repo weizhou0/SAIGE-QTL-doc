@@ -23,7 +23,7 @@ Pick the installation method that best fits your environment:
 
 **Best for**: Users without root access, no existing conda setup
 
-Installation method 1: Pixi binary installation (Recommended, using prebuilt binaries)
+Installation method 1 (Recommended): Pixi binary installation (using prebuilt binaries)
 ```bash
 # install pixi (if needed)
 curl -fsSL https://pixi.sh/install.sh | bash
