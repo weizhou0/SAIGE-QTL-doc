@@ -27,9 +27,8 @@ Installation method 1 (Recommended): Pixi binary installation (using prebuilt bi
 ```bash
 # install pixi (if needed)
 curl -fsSL https://pixi.sh/install.sh | bash
-# Restart shell or reload environment (using any shell configuration files corresponding to your system, below are 2 common paths for Linux/MacOS users)
-source ~/.bashrc # Linux
-source ~/.zshrc # MacOS
+# Restart shell or reload environment
+export PATH="$HOME/.pixi/bin:$PATH"
 # Download SAIGE-QTL repository
 git clone https://github.com/weizhou0/SAIGEQTL.git
 cd SAIGEQTL
