@@ -61,9 +61,9 @@ NOTE: the corresponding command to call the wrapper function **step2_tests_qtl.R
 
 ```bash
 pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
-    --bedFile=./input/n.indep_100_n.cell_1.bed \
-    --bimFile=./input/n.indep_100_n.cell_1.bim \
-    --famFile=./input/n.indep_100_n.cell_1.fam \
+    --bedFile=./input/n.indep_100_n.cell_1_full.bed \
+    --bimFile=./input/n.indep_100_n.cell_1_full.bim \
+    --famFile=./input/n.indep_100_n.cell_1_full.fam \
     --SAIGEOutputFile=${step2prefix} \
     --chrom=2 \
     --minMAF=0 \
@@ -102,9 +102,9 @@ Perform conditional analysis by specifying conditioning markers:
 
 ```bash
 pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
-    --bedFile=./input/n.indep_100_n.cell_1.bed \
-    --bimFile=./input/n.indep_100_n.cell_1.bim \
-    --famFile=./input/n.indep_100_n.cell_1.fam \
+    --bedFile=./input/n.indep_100_n.cell_1_full.bed \
+    --bimFile=./input/n.indep_100_n.cell_1_full.bim \
+    --famFile=./input/n.indep_100_n.cell_1_full.fam \
     --SAIGEOutputFile=${step2prefix}_cond \
     --chrom=2 \
     --minMAF=0 \
@@ -115,7 +115,7 @@ pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
     --varianceRatioFile=${step1prefix}.varianceRatio.txt \
     --rangestoIncludeFile=${regionFile} \
     --markers_per_chunk=10000 \
-    --condition=2:300096:2:1,2:609979:1:2
+    --condition=2:300096:C:A
 ```
 
 **Note**: Conditioning markers must be specified as **chr:pos:ref:alt** and in the same order as stored in the dosage file.
@@ -126,9 +126,9 @@ pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
 
 #### PLINK Format
 ```bash
---bedFile=./input/n.indep_100_n.cell_1.bed
---bimFile=./input/n.indep_100_n.cell_1.bim
---famFile=./input/n.indep_100_n.cell_1.fam
+--bedFile=./input/n.indep_100_n.cell_1_full.bed
+--bimFile=./input/n.indep_100_n.cell_1_full.bim
+--famFile=./input/n.indep_100_n.cell_1_full.fam
 ```
 
 #### BGEN Format
