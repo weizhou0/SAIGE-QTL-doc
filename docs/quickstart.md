@@ -29,8 +29,8 @@ Installation method 1: Pixi binary installation (Recommended, using prebuilt bin
 curl -fsSL https://pixi.sh/install.sh | bash
 source ~/.bashrc  # Restart shell or reload environment
 # Download SAIGE-QTL repository
-git clone https://github.com/weizhou0/qtl.git
-cd qtl
+git clone https://github.com/weizhou0/SAIGEQTL.git
+cd SAIGEQTL
 # Detect pre-built binary (choose one of the commands below to match your system)
 ## For Linux users (Linux x86_64):
 BINARY_FILE=$(ls binaries/SAIGEQTL_*_linux-x86_64.tgz | head -n1)
