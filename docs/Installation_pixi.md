@@ -30,17 +30,6 @@ Pixi Binary installation provides the **fastest installation method for Linux an
 
 ## Quick Installation
 
-### One-Liner Installation
-```bash
-# Complete installation in one command
-curl -fsSL https://pixi.sh/install.sh | bash && source ~/.bashrc && \
-git clone https://github.com/weizhou0/qtl.git && cd qtl && \
-BINARY_FILE=$(ls binaries/SAIGEQTL_*_linux-x86_64.tgz | head -n1) && \
-CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e "install.packages('${BINARY_FILE}', repos=NULL, type='source'); library(SAIGEQTL)"
-```
-
-### Step-by-Step Installation
-
 #### 1. Install pixi (if needed)
 ```bash
 curl -fsSL https://pixi.sh/install.sh | bash
