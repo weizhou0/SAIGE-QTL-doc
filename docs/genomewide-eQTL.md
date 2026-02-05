@@ -58,15 +58,13 @@ Step 1 can be run independently for each gene, making it highly parallelizable:
 
 **Example batch processing for 100 genes:**
 
-Note: Remove the `/bin/time` command if your system does not have that installed. This command is purely for estimating the computational footprint for your information, does not affect SAIGEQTL running at all.
-
 ```bash
 cd SAIGEQTL/extdata/
 for i in {1..100}
 do
 echo $i
 step1prefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_${i}
-/bin/time -o ${step1prefix}.runinfo.txt -v pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
+pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
     --useSparseGRMtoFitNULL=FALSE  \
     --useGRMtoFitNULL=FALSE \
     --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
