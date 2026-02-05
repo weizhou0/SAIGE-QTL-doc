@@ -97,8 +97,8 @@ singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_la
 ```
 
 <details markdown="block">
-  <summary><strong>SLURM Integration</strong></summary>
-
+  <summary><span style="font-size: 1.4em; font-weight: 600;">SLURM Integration</span></summary>
+  
 ### Basic SLURM Setup
 
 For SLURM job submission, include these basic steps in your submission script:
