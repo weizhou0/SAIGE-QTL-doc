@@ -17,7 +17,7 @@ Choose the installation method that best fits your environment and requirements.
 ## Installation Methods (Ordered by Ease of Use)
 
 ### 🥇 **Easiest: Docker (Recommended)**
-Zero setup, works on Linux, macOS, Windows - everything included in the container.
+Zero setup, works on Linux and macOS - everything included in the container.
 
 **[→ Install with Docker](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_docker.html)**
 
@@ -37,7 +37,7 @@ Requires specific system configurations, unless using the pixi source-code insta
 |----------|---------------|-------------------|--------|
 | **Linux** | ✅ **Full Support** | Docker → Pixi Binary → Source | Pre-built binaries available |
 | **macOS** | ✅ **Good Support** | Docker → Pixi Binary → Source | No pre-built binaries |
-| **Windows** | ⚠️ **Limited Support** | Docker only, or WSL2 + Linux methods | Not natively supported |
+| **Windows** | ⚠️ **Limited Support** | WSL2 + Linux methods | Not natively supported |
 
 ## Installation Comparison
 
@@ -51,7 +51,7 @@ Requires specific system configurations, unless using the pixi source-code insta
 ## System Requirements
 
 ### Minimum Requirements
-- **OS**: Linux, macOS, or Windows (WSL recommended)
+- **OS**: Linux andmacOS (can be attempted on Windows with WSL)
 - **RAM**: 8GB minimum, 16GB+ recommended for large datasets
 - **Storage**: 2GB for software, additional space for data
 - **R**: Version 4.0+ (installed automatically with Pixi/Docker)
