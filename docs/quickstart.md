@@ -237,6 +237,7 @@ singularity exec --bind /data:/data saigeqtl_latest.sif \
 You'll get two files:
 - `output/gene_1.rda` - Model file (needed for Step 2)
 - `output/gene_1.varianceRatio.txt` - Variance ratio (needed for Step 2)
+- `output/gene_1.status.txt` - status file indicating Step 1 Analysis Status. This is a file for users' reference to confirm if the null model fitting succeeded or failed to converge.
 
 ---
 
