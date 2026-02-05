@@ -104,7 +104,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/ste
 if (!requireNamespace("remotes", quietly = TRUE)) {
   install.packages("remotes")
 }
-remotes::install_github("weizhou0/qtl", dependencies = TRUE)
+remotes::install_github("weizhou0/SAIGEQTL", dependencies = TRUE)
 
 # Test installation
 library(SAIGEQTL)
