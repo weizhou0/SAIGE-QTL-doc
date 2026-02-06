@@ -16,7 +16,7 @@ Choose the installation method that best fits your environment and requirements.
 
 ## Installation Methods (Ordered by Ease of Use)
 
-### 🥇 **Easiest: Docker (Recommended)**
+### 🥇 **Easiest: Docker/Singularity (Recommended)**
 Zero setup, works on Linux and macOS - everything included in the container.
 
 **[→ Install with Docker](https://weizhou0.github.io/SAIGE-QTL-doc/docs/Installation_docker.html)**
@@ -35,15 +35,15 @@ Requires specific system configurations, unless using the pixi source-code insta
 
 | Platform | Support Level | Recommended Methods | Notes |
 |----------|---------------|-------------------|--------|
-| **Linux** | ✅ **Full Support** | Docker → Pixi Binary → Source | Pre-built binaries available |
-| **macOS** | ✅ **Good Support** | Docker → Pixi Binary → Source | No pre-built binaries |
+| **Linux** | ✅ **Full Support** | Docker/Singularity → Pixi Binary → Source | Pre-built binaries available |
+| **macOS** | ✅ **Good Support** | Docker/Singularity → Pixi Binary → Source | No pre-built binaries |
 | **Windows** | ⚠️ **Limited Support** | WSL2 + Linux methods | Not natively supported |
 
 ## Installation Comparison
 
 | Method | Platform | Setup Time | Dependencies | Best For |
 |--------|----------|------------|--------------|----------|
-| **Docker** | All platforms | ~2 minutes | Docker only | Zero setup, containers, HPC |
+| **Docker/Singularity** | All platforms | ~5-10 minutes | Docker Image only | Zero setup, containers, HPC |
 | **Pixi Binary** | Linux, macOS | ~5 minutes | Pixi + GLIBC 2.28+ | Fastest installation from pre-built binaries |
 | **Pixi Source** | Linux, macOS | ~15 minutes | Pixi only | Managed dev environment |
 | **Source** | Linux, macOS | ~30 minutes | C++ compiler + libraries | Traditional development, requires specific system configuration |
