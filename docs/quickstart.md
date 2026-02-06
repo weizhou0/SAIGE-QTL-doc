@@ -520,5 +520,5 @@ See [Set-based Tests Tutorial](cis-eQTL.html) for testing rare variants using SK
 
 **Get support**:
 - 📖 Check the [FAQ](FAQ.html) for common problems
-- 📧 Email: wzhou@broadinstitute.org
+- 📧 Email: wzhou@broadinstitute.org, lhu@broadinstitute.org
 - 🐛 Report bugs: [GitHub Issues](https://github.com/weizhou0/SAIGEQTL/issues)
