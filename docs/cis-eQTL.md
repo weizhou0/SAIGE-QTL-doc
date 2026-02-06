@@ -54,11 +54,6 @@ SAIGE-QTL supports two complementary approaches for cis-eQTL mapping:
 2. **[Understand the workflow](overview.html)** and analysis pipeline  
 3. **Prepare your data**: phenotype files, genotype files, and covariates
 
-### Quick Start Guide
-1. **[Step 1: Fit null models](step1.html)** - One model per gene of interest
-2. **[Step 2: Run association tests](single_step2.html)** - Test cis-variants for each gene
-3. **[Step 3: Gene-level analysis](gene_step3.html)** (optional) - For rare variant burden tests
-
 ## Analysis Considerations
 
 ### Variant Selection
@@ -80,7 +75,7 @@ SAIGE-QTL supports two complementary approaches for cis-eQTL mapping:
 
 Ready to start your cis-eQTL analysis? Follow these detailed guides:
 
-1. **[Step 1: Null Model Fitting](step1.html)** - Detailed parameter explanations and examples
+1. **[Step 1: Null Model Fitting](step1.html)** - Detailed parameter explanations and examples. One model per gene of interest
 2. **[Step 2: Single-Variant Tests](single_step2.html)** - cis-eQTL association testing
 3. **[Step 2: Set-Based Tests](set_step2.html)** - Rare variant burden analysis  
 4. **[Step 3: Gene-Level Analysis](gene_step3.html)** - Combine results across variants
