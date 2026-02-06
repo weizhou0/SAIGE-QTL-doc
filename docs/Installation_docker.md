@@ -26,8 +26,7 @@ Docker Image provides the **easiest and most reliable** installation method for 
 - Docker or Singularity installed on your system
 - No other requirements
 
-## Docker Image Details
-
+**Docker Image Details:**
 - **Image**: `weizhou88/saigeqtl:latest`
 - **Base**: Ubuntu 20.04 with pixi environment
 - **Size**: ~2GB (includes R, dependencies, and tools)
