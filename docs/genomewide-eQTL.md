@@ -121,7 +121,7 @@ Store downloaded files to `./output` directory to skip Step 1 computation.
 
 Ready to perform genome-wide eQTL analysis? Follow these guides:
 
-1. **[Step 1: Batch Null Model Fitting](https://weizhou0.github.io/SAIGE-QTL-doc/docs/step1.html)** - Parallel processing strategies
+1. **[Step 1: Batch Null Model Fitting]: Following above section for batch processing for 100 genes** - Parallel processing strategies
 2. **[Step 2: Genome-wide Association Tests](https://weizhou0.github.io/SAIGE-QTL-doc/docs/genomewide_single_step2.html)** - Single-variant tests
 3. **[Step 2: Set-based Tests](https://weizhou0.github.io/SAIGE-QTL-doc/docs/genomewide_set_step2.html)** - Rare variant analysis
 
