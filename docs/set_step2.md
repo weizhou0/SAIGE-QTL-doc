@@ -39,9 +39,9 @@ pixi run --manifest-path=../pixi.toml Rscript makeGroupFile.R --help
 groupFile=${regionFile}.grp
 pixi run --manifest-path=../pixi.toml \
         Rscript makeGroupFile.R \
-        --bedFile=./input/n.indep_100_n.cell_1.bed      \
-        --bimFile=./input/n.indep_100_n.cell_1.bim      \
-        --famFile=./input/n.indep_100_n.cell_1.fam      \
+        --bedFile=./input/n.indep_100_n.cell_1_full.bed      \
+        --bimFile=./input/n.indep_100_n.cell_1_full.bim      \
+        --famFile=./input/n.indep_100_n.cell_1_full.fam      \
         --regionFile=${regionFile}      \
         --outputPrefix=${regionFile}.grp
 ```
@@ -71,9 +71,9 @@ step2prefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis
 ```
 pixi run --manifest-path=../pixi.toml \
 Rscript step2_tests_qtl.R       \
-        --bedFile=./input/n.indep_100_n.cell_1.bed      \
-        --bimFile=./input/n.indep_100_n.cell_1.bim      \
-        --famFile=./input/n.indep_100_n.cell_1.fam      \
+        --bedFile=./input/n.indep_100_n.cell_1_full.bed      \
+        --bimFile=./input/n.indep_100_n.cell_1_full.bim      \
+        --famFile=./input/n.indep_100_n.cell_1_full.fam      \
         --SAIGEOutputFile=${step2prefix}_rare     \
         --chrom=2       \
         --maxMAF_in_groupTest=0.1   \
@@ -103,9 +103,9 @@ Rscript step2_tests_qtl.R       \
 ```
 pixi run --manifest-path=../pixi.toml \
 Rscript step2_tests_qtl.R       \
-        --bedFile=./input/n.indep_100_n.cell_1.bed      \
-        --bimFile=./input/n.indep_100_n.cell_1.bim      \
-        --famFile=./input/n.indep_100_n.cell_1.fam      \
+        --bedFile=./input/n.indep_100_n.cell_1_full.bed      \
+        --bimFile=./input/n.indep_100_n.cell_1_full.bim      \
+        --famFile=./input/n.indep_100_n.cell_1_full.fam      \
         --SAIGEOutputFile=${step2prefix}_rare_cond     \
         --chrom=2       \
         --maxMAF_in_groupTest=0.1   \
@@ -120,7 +120,7 @@ Rscript step2_tests_qtl.R       \
         --SPAcutoff=2 \
         --varianceRatioFile=${step1prefix}.varianceRatio.txt    \
         --markers_per_chunk=10000	\
-        --condition=2:300114:1:2,2:609965:1:2
+        --condition=2:300114:C:A,2:609965:C:A
 ```
 
 
