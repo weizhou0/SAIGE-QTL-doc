@@ -193,17 +193,6 @@ Ready to run your first analysis? Follow this tutorial:
 - Running Step 2: Test genetic variants
 - Running Step 3: Calculate gene-level p-values
 
-**Example command:**
-
-```bash
-!!! Modify to your own actual paths
-Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R \
-    --phenoFile=phenotypes.txt \
-    --phenoCol=ENSG00000123456 \
-    --traitType=count \
-    --outputPrefix=output/gene1
-```
-
 ### Additional Resources
 
 - **[Parameters & Options](parameters.html)** - Complete reference for all command-line parameters
