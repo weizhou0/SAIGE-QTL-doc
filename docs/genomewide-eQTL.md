@@ -92,7 +92,7 @@ done
 - **I/O efficiency**: Minimizes repeated genotype file access
 - **Job scheduling**: Ideal for HPC cluster environments
 
-## Pre-computed Example Data
+### Pre-computed Example Data
 
 To save computation time, you can download pre-computed Step 1 results:
 
