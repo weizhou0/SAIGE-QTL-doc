@@ -63,14 +63,14 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/ste
 ```bash
 # For Pixi source installation
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
-# Then: saige-pixi Rscript extdata/step1_fitNULLGLMM_qtl.R --help
+# Then: saige-pixi SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ### Custom Library Usage
 
 Use the `--library` parameter with wrapper scripts:
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
 ```
 
 ---
@@ -85,7 +85,7 @@ You've successfully built SAIGEQTL from source using Pixi. Here's how to get sta
 
 ```bash
 # Use pixi environment
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R [options]
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R [options]
 ```
 
 **💡 Tip**: Set up a convenient alias:
@@ -108,18 +108,6 @@ Ready to run your first analysis? Follow this tutorial:
 - Running Step 1: Fit the null model
 - Running Step 2: Test genetic variants
 - Running Step 3: Calculate gene-level p-values
-
-**Example command:**
-
-```bash
-# !!! Modify to your own actual paths
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml \
-    Rscript extdata/step1_fitNULLGLMM_qtl.R \
-    --phenoFile=phenotypes.txt \
-    --phenoCol=ENSG00000123456 \
-    --traitType=count \
-    --outputPrefix=output/gene1
-```
 
 ### Additional Resources
 
