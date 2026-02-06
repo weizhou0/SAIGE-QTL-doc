@@ -440,7 +440,7 @@ This is especially useful when you've installed SAIGEQTL to a custom location an
 
 </details>
 
-## ✅ Final Output
+## ✅ Final Output (cis-eQTL)
 
 Your final results file (`gene_1_gene_pvalue.txt`) contains:
 - Gene name
@@ -463,7 +463,7 @@ You've completed your first SAIGE-QTL analysis!
 
 **To learn more**:
 - 📖 [Complete cis-eQTL Tutorial](cis-eQTL.html) - Detailed workflow with examples
-- 📖 [Genome-wide eQTL Tutorial](genomewide-eQTL.html) - Large-scale analysis
+- 📖 [Complete Genome-wide eQTL Tutorial](genomewide-eQTL.html) - Large-scale analysis
 - 📖 [Parameters & Options](parameters.html) - Complete parameter reference
 - ❓ [FAQ](FAQ.html) - Common questions and troubleshooting
 
