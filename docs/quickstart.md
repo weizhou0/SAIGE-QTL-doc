@@ -8,7 +8,7 @@ description: "Step-by-step guide to get started with SAIGE-QTL in minutes."
 # Quick Start Guide
 {: .no_toc }
 
-Get started with SAIGE-QTL in 5 simple steps. Follow this guide to run your first eQTL analysis.
+Get started with SAIGE-QTL in 6 simple steps. Follow this guide to run your first eQTL analysis.
 
 ---
 
@@ -383,7 +383,7 @@ Test all genetic variants across the genome.
 
 ### Run Analyses -- 
 
-Please refer run all steps following this page: **[All Steps using Batch Running](https://weizhou0.github.io/SAIGE-QTL-doc/docs/genomewide-eQTL.html)**.
+Please refer run all steps following this page: **[All Steps for Genome-wide Analysis using Batch Running](https://weizhou0.github.io/SAIGE-QTL-doc/docs/genomewide-eQTL.html)**.
 
 Docker and Singularity users may simply modify the command prefix to (`docker run -v ${WKDIR}:/data wzhou88/saigeqtl:latest` or `singularity exec --bind /data:/data saigeqtl_latest.sif`) to use same option flags denoted in the commands in the webpage linked above.
 
