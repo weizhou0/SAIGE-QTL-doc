@@ -425,8 +425,6 @@ docker run -v ${WKDIR}:/data wzhou88/saigeqtl:latest step2_tests_qtl.R ...
 singularity exec --bind ${WKDIR}:/data saigeqtl_latest.sif step2_tests_qtl.R ...
 ```
 
-</details>
-
 ### 💡 Using Custom Library Locations
 
 For all wrapper scripts (`step1_fitNULLGLMM_qtl.R`, `step2_tests_qtl.R`, `step3_gene_pvalue_qtl.R`), you can now specify a custom library path using the `--library` parameter:
@@ -440,7 +438,9 @@ step3_gene_pvalue_qtl.R --library=/path/to/custom/library [other_options]
 
 This is especially useful when you've installed SAIGEQTL to a custom location and eliminates the need to manually edit wrapper scripts with `lib.loc` specifications.
 
-### ✅ Final Output
+</details>
+
+## ✅ Final Output
 
 Your final results file (`gene_1_gene_pvalue.txt`) contains:
 - Gene name
