@@ -58,29 +58,6 @@ pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
     --IsOverwriteVarianceRatioFile=TRUE
 ```
 
-#### Standard Installation
-```bash
-cd SAIGEQTL/extdata
-Rscript step1_fitNULLGLMM_qtl.R \
-    --useSparseGRMtoFitNULL=FALSE \
-    --useGRMtoFitNULL=FALSE \
-    --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
-    --phenoCol=gene_1 \
-    --covarColList=X1,X2,pf1,pf2 \
-    --sampleCovarColList=X1,X2 \
-    --sampleIDColinphenoFile=IND_ID \
-    --traitType=count \
-    --outputPrefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
-    --skipVarianceRatioEstimation=FALSE \
-    --isRemoveZerosinPheno=FALSE \
-    --isCovariateOffset=FALSE \
-    --isCovariateTransform=TRUE \
-    --skipModelFitting=FALSE \
-    --tol=0.00001 \
-    --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
-    --IsOverwriteVarianceRatioFile=TRUE
-```
-
 #### Docker Installation
 ```bash
 # Set your working directory first and the output from example runs will be stored there
@@ -154,6 +131,7 @@ The phenotype file contains expression data and covariates. It can be space or t
 
 #### Standard/Pixi Installation
 ```bash
+# Make sure you're in SAIGEQTL/extdata/ folder
 less -S ./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt
 ```
 
