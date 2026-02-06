@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Docker (Recommended)
+title: Docker/Singularity (Recommended)
 nav_order: 1
 description: "Zero setup installation using Docker containers - works on all platforms with no local dependencies required."
 parent: Installation
