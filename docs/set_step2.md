@@ -153,7 +153,7 @@ Rscript step2_tests_qtl.R       \
 * A file with set-based association test results
 
     ```
-    head -n 1  ./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis_rare
+    less -S  ./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis_rare
     ```
 
 ```
