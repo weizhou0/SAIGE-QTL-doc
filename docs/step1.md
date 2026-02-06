@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Step 1
-nav_order: 5
+nav_exclude: true
 description: "Step 1: fitting the null Poisson mixed model."
 ---
 
