@@ -112,7 +112,7 @@ Ready to run your first analysis? Follow this tutorial:
 **Example command:**
 
 ```bash
-# Note: Modify to your actual paths if you're trying to run
+# !!! Modify to your own actual paths
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml \
     Rscript extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
