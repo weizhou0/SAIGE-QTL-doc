@@ -25,7 +25,7 @@ curl -fsSL https://pixi.sh/install.sh | bash
 export PATH="$HOME/.pixi/bin:$PATH"
 # Download SAIGEQTL package from GitHub
 git clone https://github.com/weizhou0/SAIGEQTL.git && cd SAIGEQTL
-pixi run install-standard
+CONDA_OVERRIDE_GLIBC=2.28 pixi run install-standard
 
 # Commands use manifest path:
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
