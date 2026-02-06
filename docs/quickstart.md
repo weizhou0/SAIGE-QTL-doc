@@ -41,7 +41,7 @@ BINARY_FILE=$(ls binaries/SAIGEQTL_*_linux-x86_64.tgz | head -n1)
 ## For MacOs users (arm64):
 BINARY_FILE=$(ls binaries/SAIGEQTL_*_macos.tgz | head -n1)
 ```
-
+Install from corresponding binary you've chosen for your system
 ```bash
 # Install from pre-built binary
 echo "Installing: $BINARY_FILE"
