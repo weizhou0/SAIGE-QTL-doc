@@ -6,13 +6,13 @@ description: "Zero setup installation using Docker containers - works on all pla
 parent: Installation
 ---
 
-# Docker Installation Guide (🥇 Easiest Method)
+# Docker/Singularity Installation Guide (🥇 Easiest Method)
 
 ## Overview
 
-Docker provides the **easiest and most reliable** installation method for SAIGE-QTL. It works identically on **Linux and macOS** with zero setup required - no compilers, no dependency management, no configuration needed.
+Docker Image provides the **easiest and most reliable** installation method for SAIGE-QTL. It works identically on **Linux and macOS** with zero setup required - no compilers, no dependency management, no configuration needed.
 
-## Why Docker?
+## Why Docker Image?
 
 **✅ Advantages:**
 - **Zero setup** - runs directly, no installation required
@@ -23,7 +23,7 @@ Docker provides the **easiest and most reliable** installation method for SAIGE-
 - **Immediate access** to new versions
 
 **⚠️ Requirements:**
-- Docker installed on your system
+- Docker or Singularity installed on your system
 - No other requirements
 
 ## Docker Image Details
@@ -34,7 +34,7 @@ Docker provides the **easiest and most reliable** installation method for SAIGE-
 - **Updates**: Automatically built from latest code
 - **Repository**: Built from https://github.com/weizhou0/SAIGEQTL
 
-### Running SAIGE-QTL on Local Systems
+### Docker Installation and Usage
 
 To run SAIGE-QTL functions locally using Docker:
 
@@ -62,7 +62,7 @@ docker run wzhou88/saigeqtl:latest makeGroupFile.R --help
 - Singularity installed on your system (common on HPC clusters)
 - Access to pull Docker images
 
-### Pull and Convert Docker Image
+### Pull and Convert Docker Image for Singularity
 
 ```bash
 # Load Singularity module (if using module system)
@@ -99,7 +99,7 @@ singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_la
 <details markdown="block">
   <summary>
     <span style="font-size: 1.6em; font-weight: 600; line-height: 1.25;">
-      SLURM Integration
+      SLURM Integration For Singularity
     </span>
   </summary>
   
