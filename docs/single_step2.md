@@ -55,9 +55,9 @@ step1prefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1
 step2prefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis
 ```
 
-### Run Association Tests
+### Run Association Tests (install through pixi)
 
-NOTE: the corresponding command to call the wrapper function **step2_tests_qtl.R** needs to be modified if different ways used for installing the pcakge as shown above
+NOTE: the corresponding command prefixes to call the wrapper function **step2_tests_qtl.R** needs to be modified if SAIGEQTL installed in other ways (e.g. through Docker, etc). Here we just provide the pixi way of running for simplicity as the flags used in step2 running remains the same regardless of how SAIGEQTL is installed.
 
 ```bash
 pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
