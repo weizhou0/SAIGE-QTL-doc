@@ -52,8 +52,7 @@ These dependencies should be installed in following guide (good to check if they
 #### Additional LinkingTo Dependencies
 - **SPAtest** (3.1.2)
 - **SKAT**, **RhpcBLASctl**, **RSQLite**, **dplyr**, **nlme**, **MASS**, **optparse**
-#### GitHub-hosted Dependencies (can be installed via remotes)
-- **cysouw/qlcMatrix**, **leeshawn/MetaSKAT**, **barkasn/fastSave**
+- packages that can be installed from GitHub: **cysouw/qlcMatrix**, **leeshawn/MetaSKAT**, **barkasn/fastSave**
 
 
 ## Platform-Specific Compiler Setup
