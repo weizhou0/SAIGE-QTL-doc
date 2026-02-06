@@ -43,34 +43,29 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/ste
 ### Command Prefix
 ```bash
 # Command prefix for all Pixi source installations
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=your_path_to_SAIGEQTL_folder/SAIGEQTL/pixi.toml
 
 # Example commands:
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml R -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R --help
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=your_path_to_SAIGEQTL_folder/SAIGEQTL/pixi.toml R -e 'library(SAIGEQTL); packageVersion("SAIGEQTL")'
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=your_path_to_SAIGEQTL_folder/SAIGEQTL/pixi.toml Rscript your_path_to_SAIGEQTL_folder/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ### Command-Line Scripts
 After installation, executable scripts are available:
 
 ```bash
+cd your_path_to_SAIGEQTL_folder/SAIGEQTL
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step1_fitNULLGLMM_qtl.R
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step2_tests_qtl.R
 CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript extdata/step3_gene_pvalue_qtl.R
-```
-
-**💡 Tip**: Add an alias for convenience:
-```bash
-# For Pixi source installation
-alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
-# Then: saige-pixi SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ### Custom Library Usage
 
 Use the `--library` parameter with wrapper scripts:
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
+cd your_path_to_SAIGEQTL_folder/SAIGEQTL
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript ./extdata/step1_fitNULLGLMM_qtl.R --library=/path/to/custom/library [other_options]
 ```
 
 ---
@@ -85,11 +80,14 @@ You've successfully built SAIGEQTL from source using Pixi. Here's how to get sta
 
 ```bash
 # Use pixi environment
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R [options]
+cd your_path_to_SAIGEQTL_folder/SAIGEQTL
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml Rscript ./extdata/step1_fitNULLGLMM_qtl.R [options]
 ```
 
 **💡 Tip**: Set up a convenient alias:
 ```bash
+cd your_path_to_SAIGEQTL_folder/SAIGEQTL
+
 # For Pixi source installation - add to ~/.bashrc or ~/.zshrc
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=pixi.toml'
 
