@@ -171,54 +171,83 @@ Run Step 1 for each gene you want to analyze.
 <details markdown="block">
   <summary><strong>Show me example command</strong></summary>
 
-Note: below paths to all inputs should be modified according to your own actual paths
+Note: below paths to all inputs can be modified according to your own actual paths as well.
 
 #### For PIXI Users
 
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=/path/to/SAIGEQTL/pixi.toml \
-    Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R \
-    --phenoFile=phenotypes.txt \
+cd SAIGEQTL/extdata
+pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
+    --useSparseGRMtoFitNULL=FALSE \
+    --useGRMtoFitNULL=FALSE \
+    --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
     --phenoCol=gene_1 \
-    --covarColList=age,sex,PC1,PC2 \
-    --sampleCovarColList=age,sex,PC1,PC2 \
-    --sampleIDColinphenoFile=individual_id \
-    --cellIDColinphenoFile=cell_id \
+    --covarColList=X1,X2,pf1,pf2 \
+    --sampleCovarColList=X1,X2 \
+    --sampleIDColinphenoFile=IND_ID \
     --traitType=count \
-    --plinkFile=genotypes \
-    --outputPrefix=output/gene_1
+    --outputPrefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --skipVarianceRatioEstimation=FALSE \
+    --isRemoveZerosinPheno=FALSE \
+    --isCovariateOffset=FALSE \
+    --isCovariateTransform=TRUE \
+    --skipModelFitting=FALSE \
+    --tol=0.00001 \
+    --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
+    --IsOverwriteVarianceRatioFile=TRUE
 ```
 
 #### For Docker Users
 
 ```bash
-docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
+WKDIR=/data/wzhougroup/ # !!!Modify path to your working directory
+docker run -w ${WKDIR} wzhou88/saigeqtl:latest \
     step1_fitNULLGLMM_qtl.R \
-    --phenoFile=/data/phenotypes.txt \
+    --useSparseGRMtoFitNULL=FALSE \
+    --useGRMtoFitNULL=FALSE \
+    --phenoFile=/usr/local/bin/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
     --phenoCol=gene_1 \
-    --covarColList=age,sex,PC1,PC2 \
-    --sampleCovarColList=age,sex,PC1,PC2 \
-    --sampleIDColinphenoFile=individual_id \
-    --cellIDColinphenoFile=cell_id \
+    --covarColList=X1,X2,pf1,pf2 \
+    --sampleCovarColList=X1,X2 \
+    --sampleIDColinphenoFile=IND_ID \
     --traitType=count \
-    --plinkFile=/data/genotypes \
-    --outputPrefix=/data/output/gene_1
+    --outputPrefix=${WKDIR}nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --skipVarianceRatioEstimation=FALSE \
+    --isRemoveZerosinPheno=FALSE \
+    --isCovariateOffset=FALSE \
+    --isCovariateTransform=TRUE \
+    --skipModelFitting=FALSE \
+    --tol=0.00001 \
+    --plinkFile=/usr/local/bin/input/n.indep_100_n.cell_1_01.step1 \
+    --IsOverwriteVarianceRatioFile=TRUE
 ```
 
 #### For Singularity Users
 
 ```bash
-singularity exec --bind /data:/data saigeqtl_latest.sif \
-    step1_fitNULLGLMM_qtl.R \
-    --phenoFile=/data/phenotypes.txt \
+WKDIR=/data/wzhougroup/ # !!!Modify path to your working directory
+PATHTOSIF=/data/wzhougroup/saigeqtl_latest.sif # !!!Modify path to your sif location
+singularity exec \
+    --bind  ${WKDIR}:${WKDIR} \
+    --cleanenv ${PATHTOSIF} \
+    step1_fitNULLGLMM_qtl.R	\
+    --useSparseGRMtoFitNULL=FALSE \
+    --useGRMtoFitNULL=FALSE \
+    --phenoFile=/usr/local/bin/input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
     --phenoCol=gene_1 \
-    --covarColList=age,sex,PC1,PC2 \
-    --sampleCovarColList=age,sex,PC1,PC2 \
-    --sampleIDColinphenoFile=individual_id \
-    --cellIDColinphenoFile=cell_id \
+    --covarColList=X1,X2,pf1,pf2 \
+    --sampleCovarColList=X1,X2 \
+    --sampleIDColinphenoFile=IND_ID \
     --traitType=count \
-    --plinkFile=/data/genotypes \
-    --outputPrefix=/data/output/gene_1
+    --outputPrefix=${WKDIR}nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --skipVarianceRatioEstimation=FALSE \
+    --isRemoveZerosinPheno=FALSE \
+    --isCovariateOffset=FALSE \
+    --isCovariateTransform=TRUE \
+    --skipModelFitting=FALSE \
+    --tol=0.00001 \
+    --plinkFile=/usr/local/bin/input/n.indep_100_n.cell_1_01.step1 \
+    --IsOverwriteVarianceRatioFile=TRUE
 ```
 
 </details>
@@ -311,52 +340,35 @@ Note: below paths to all inputs should be modified according to your own actual 
 #### For PIXI Users
 
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=/path/to/SAIGEQTL/pixi.toml \
-    Rscript /path/to/SAIGEQTL/extdata/step2_tests_qtl.R \
-    --vcfFile=chr1.vcf.gz \
-    --vcfFileIndex=chr1.vcf.gz.csi \
-    --vcfField=DS \
-    --chrom=1 \
-    --rangestoIncludeFile=gene_1_cis_region.txt \
-    --GMMATmodelFile=output/gene_1.rda \
-    --varianceRatioFile=output/gene_1.varianceRatio.txt \
-    --SAIGEOutputFile=output/gene_1_cis_results.txt \
+cd SAIGEQTL/extdata
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
+    --bedFile=./input/n.indep_100_n.cell_1_full.bed \
+    --bimFile=./input/n.indep_100_n.cell_1_full.bim \
+    --famFile=./input/n.indep_100_n.cell_1_full.fam \
+    --SAIGEOutputFile=${step2prefix} \
+    --chrom=2 \
+    --minMAF=0 \
     --minMAC=20 \
-    --LOCO=FALSE
+    --LOCO=FALSE \
+    --GMMATmodelFile=${step1prefix}.rda \
+    --SPAcutoff=2 \
+    --varianceRatioFile=${step1prefix}.varianceRatio.txt \
+    --rangestoIncludeFile=${regionFile} \
+    --markers_per_chunk=10000
 ```
 
 #### For Docker Users
 
 ```bash
-docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
-    step2_tests_qtl.R \
-    --vcfFile=/data/chr1.vcf.gz \
-    --vcfFileIndex=/data/chr1.vcf.gz.csi \
-    --vcfField=DS \
-    --chrom=1 \
-    --rangestoIncludeFile=/data/gene_1_cis_region.txt \
-    --GMMATmodelFile=/data/output/gene_1.rda \
-    --varianceRatioFile=/data/output/gene_1.varianceRatio.txt \
-    --SAIGEOutputFile=/data/output/gene_1_cis_results.txt \
-    --minMAC=20 \
-    --LOCO=FALSE
+# Similar commands flags as in pixi section above
+docker run -v ${WKDIR}:/data wzhou88/saigeqtl:latest step2_tests_qtl.R ...
 ```
 
 #### For Singularity Users
 
 ```bash
-singularity exec --bind /data:/data saigeqtl_latest.sif \
-    step2_tests_qtl.R \
-    --vcfFile=/data/chr1.vcf.gz \
-    --vcfFileIndex=/data/chr1.vcf.gz.csi \
-    --vcfField=DS \
-    --chrom=1 \
-    --rangestoIncludeFile=/data/gene_1_cis_region.txt \
-    --GMMATmodelFile=/data/output/gene_1.rda \
-    --varianceRatioFile=/data/output/gene_1.varianceRatio.txt \
-    --SAIGEOutputFile=/data/output/gene_1_cis_results.txt \
-    --minMAC=20 \
-    --LOCO=FALSE
+# Similar commands flags as in pixi section above
+singularity exec --bind ${WKDIR}:/data saigeqtl_latest.sif step2_tests_qtl.R ...
 ```
 
 </details>
@@ -365,66 +377,14 @@ singularity exec --bind /data:/data saigeqtl_latest.sif \
 
 ---
 
-## Step 5B: Run Genome-wide Tests (Step 2)
+## Step 5B: Run Genome-wide Analyses (need to restart from a differently tuned step1 as below)
 
 Test all genetic variants across the genome.
 
-### Run Step 2
+### Run Analyses -- 
 
-<details markdown="block">
-  <summary><strong>Show me example command </strong></summary>
-  
-Note: below paths to all inputs should be modified according to your own actual paths
-  
-#### For PIXI Users
-
-```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=/path/to/SAIGEQTL/pixi.toml \
-    Rscript /path/to/SAIGEQTL/extdata/step2_tests_qtl.R \
-    --vcfFile=chr1.vcf.gz \
-    --vcfFileIndex=chr1.vcf.gz.csi \
-    --vcfField=DS \
-    --chrom=1 \
-    --GMMATmodelFile=output/gene_1.rda \
-    --varianceRatioFile=output/gene_1.varianceRatio.txt \
-    --SAIGEOutputFile=output/gene_1_chr1_results.txt \
-    --minMAF=0.01 \
-    --LOCO=TRUE
-```
-
-#### For Docker Users
-
-```bash
-docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
-    step2_tests_qtl.R \
-    --vcfFile=/data/chr1.vcf.gz \
-    --vcfFileIndex=/data/chr1.vcf.gz.csi \
-    --vcfField=DS \
-    --chrom=1 \
-    --GMMATmodelFile=/data/output/gene_1.rda \
-    --varianceRatioFile=/data/output/gene_1.varianceRatio.txt \
-    --SAIGEOutputFile=/data/output/gene_1_chr1_results.txt \
-    --minMAF=0.01 \
-    --LOCO=TRUE
-```
-
-#### For Singularity Users
-
-```bash
-singularity exec --bind /data:/data saigeqtl_latest.sif \
-    step2_tests_qtl.R \
-    --vcfFile=/data/chr1.vcf.gz \
-    --vcfFileIndex=/data/chr1.vcf.gz.csi \
-    --vcfField=DS \
-    --chrom=1 \
-    --GMMATmodelFile=/data/output/gene_1.rda \
-    --varianceRatioFile=/data/output/gene_1.varianceRatio.txt \
-    --SAIGEOutputFile=/data/output/gene_1_chr1_results.txt \
-    --minMAF=0.01 \
-    --LOCO=TRUE
-```
-
-</details>
+Please refer run all steps following this page: **[All Steps using Batch Running](https://weizhou0.github.io/SAIGE-QTL-doc/docs/genomewide-eQTL.html)**
+Docker and Singularity users may simply modify the prefix to (`docker run -v ${WKDIR}:/data wzhou88/saigeqtl:latest` or `singularity exec --bind /data:/data saigeqtl_latest.sif`) to use same command flags denoted in above each command in above page.
 
 **💡 Tip**: Repeat for each chromosome (chr1-chr22, chrX)
 
@@ -444,31 +404,24 @@ Note: below paths to all inputs should be modified according to your own actual 
 #### For PIXI Users
 
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=/path/to/SAIGEQTL/pixi.toml \
-    Rscript /path/to/SAIGEQTL/extdata/step3_gene_pvalue_qtl.R \
-    --assocFile=output/gene_1_cis_results.txt \
-    --geneName=gene_1 \
-    --genePval_outputFile=output/gene_1_gene_pvalue.txt
+CONDA_OVERRIDE_GLIBC=2.28 pixi run --manifest-path=../pixi.toml Rscript step3_gene_pvalue_qtl.R	\
+        --assocFile=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis        \
+        --geneName=gene_1       \
+        --genePval_outputFile=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis_genePval
 ```
 
 #### For Docker Users
 
 ```bash
-docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
-    step3_gene_pvalue_qtl.R \
-    --assocFile=/data/output/gene_1_cis_results.txt \
-    --geneName=gene_1 \
-    --genePval_outputFile=/data/output/gene_1_gene_pvalue.txt
+# Similar commands flags as in pixi section above
+docker run -v ${WKDIR}:/data wzhou88/saigeqtl:latest step2_tests_qtl.R ...
 ```
 
 #### For Singularity Users
 
 ```bash
-singularity exec --bind /data:/data saigeqtl_latest.sif \
-    step3_gene_pvalue_qtl.R \
-    --assocFile=/data/output/gene_1_cis_results.txt \
-    --geneName=gene_1 \
-    --genePval_outputFile=/data/output/gene_1_gene_pvalue.txt
+# Similar commands flags as in pixi section above
+singularity exec --bind ${WKDIR}:/data saigeqtl_latest.sif step2_tests_qtl.R ...
 ```
 
 </details>
