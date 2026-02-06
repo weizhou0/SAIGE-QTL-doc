@@ -74,7 +74,7 @@ cat('✓ SAIGEQTL', as.character(packageVersion('SAIGEQTL')), 'installed success
 
 ### Pre-built Binary Package
 - **SAIGEQTL Binary**: Pre-compiled Linux or MacOS package (`.tgz` format)
-- **Location**: `binaries/SAIGEQTL_*_linux-x86_64.tgz` and `binaries/SAIGEQTL_*_macos.tgz` in the repository
+- **Location**: `binaries/SAIGEQTL_*_linux-x86_64.tgz` and `binaries/SAIGEQTL_*_macos.tgz` in the downloaded SAIGEQTL repository
 - **No compilation**: Ready-to-install binary eliminates build time and dependencies
 
 ### Managed R Environment
@@ -92,7 +92,6 @@ The binary package includes all required dependencies:
 
 ### Repository Access
 - **Repository**: https://github.com/weizhou0/qtl
-- **Binary Location**: `binaries/` directory in the repository
 - **Version**: Latest stable release (automatically detected)
 
 ## Verification
