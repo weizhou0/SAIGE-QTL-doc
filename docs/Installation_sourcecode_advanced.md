@@ -196,6 +196,7 @@ Ready to run your first analysis? Follow this tutorial:
 **Example command:**
 
 ```bash
+!!! Modify to your own actual paths
 Rscript /path/to/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
     --phenoCol=ENSG00000123456 \
