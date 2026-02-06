@@ -68,7 +68,7 @@ docker run wzhou88/saigeqtl:latest makeGroupFile.R --help
 module load singularity
 
 # Pull Docker image and convert to Singularity format
-# Navigate to the folder to store the singularity image file saigeqtl_latest.sif
+# Navigate to your folder that stores the singularity image file saigeqtl_latest.sif
 PATHTOSIF=/data/wzhougroup/
 cd ${PATHTOSIF}
 singularity pull docker://wzhou88/saigeqtl:latest
@@ -92,6 +92,7 @@ singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv /path/to/sa
 #### Direct Execution to run SAIGE-QTL Functions (Non-interactive)
 
 ```bash
+# Modify to your own path of interest
 singularity exec --bind /data/wzhougroup:/data/wzhougroup --cleanenv saigeqtl_latest.sif step1_fitNULLGLMM_qtl.R --help
 ```
 
@@ -244,7 +245,7 @@ You've successfully set up SAIGE-QTL with Docker or Singularity. Here's how to g
 
 ### Your Command Prefix
 
-All SAIGE-QTL commands will use this format:
+All SAIGE-QTL commands using Docker/Singularity should follow this format:
 
 ```bash
 # For Docker
@@ -267,28 +268,6 @@ Ready to run your first analysis? Follow this tutorial:
 - Running Step 1: Fit the null model
 - Running Step 2: Test genetic variants
 - Running Step 3: Calculate gene-level p-values
-
-**Example command for Docker users:**
-```bash
-# !!!Modify to your actual paths
-docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
-    step1_fitNULLGLMM_qtl.R \
-    --phenoFile=/path_to_phenotype/phenotypes.txt \
-    --phenoCol=ENSG00000123456 \
-    --traitType=count \
-    --outputPrefix=/path_to_output/gene1
-```
-
-**Example command for Singularity users:**
-```bash
-# !!!Modify to your actual paths)
-singularity exec --bind /data/myproject:/data /path/to/saigeqtl_latest.sif \
-    step1_fitNULLGLMM_qtl.R \
-    --phenoFile=/path_to_phenotype/phenotypes.txt \
-    --phenoCol=ENSG00000123456 \
-    --traitType=count \
-    --outputPrefix=/path_to_output/gene1
-```
 
 ### Running on HPC with SLURM
 
