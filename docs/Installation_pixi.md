@@ -111,7 +111,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e 'library(SAIGEQTL); packageVersion("SAIG
 CONDA_OVERRIDE_GLIBC=2.28 pixi run R -e 'library(SAIGEQTL); exists("fitNULLGLMM_multiV")'
 # Expected output: [1] TRUE
 
-# Test help information
+# Test help information when calling script for step 1 
 CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript ./extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
@@ -128,7 +128,7 @@ You've successfully installed SAIGEQTL with Pixi Binary method. The package is n
 All SAIGEQTL commands will use this prefix:
 
 ```bash
-CONDA_OVERRIDE_GLIBC=2.28 pixi run
+CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript [script_name] [options]
 ```
 
 **💡 Tip**: Set an alias to save typing:
@@ -151,17 +151,6 @@ Ready to run your first analysis? Follow this tutorial:
 - Running Step 1: Fit the null model
 - Running Step 2: Test genetic variants
 - Running Step 3: Calculate gene-level p-values
-
-**Example command for Pixi Binary users:**
-```bash
-# !!! Modify to your actual paths
-CONDA_OVERRIDE_GLIBC=2.28 pixi run \
-    Rscript ./extdata/step1_fitNULLGLMM_qtl.R \
-    --phenoFile=phenotypes.txt \
-    --phenoCol=ENSG00000123456 \
-    --traitType=count \
-    --outputPrefix=output/gene1
-```
 
 ### Additional Resources
 
