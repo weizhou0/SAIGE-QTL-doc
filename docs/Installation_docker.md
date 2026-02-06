@@ -271,7 +271,7 @@ Ready to run your first analysis? Follow this tutorial:
 
 **Example command for Docker users:**
 ```bash
-# Step 1 example (modify to your actual paths)
+# !!!Modify to your actual paths
 docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
     step1_fitNULLGLMM_qtl.R \
     --phenoFile=/path_to_phenotype/phenotypes.txt \
@@ -282,7 +282,7 @@ docker run -v /data/myproject:/data wzhou88/saigeqtl:latest \
 
 **Example command for Singularity users:**
 ```bash
-# Step 1 example (modify to your actual paths)
+# !!!Modify to your actual paths)
 singularity exec --bind /data/myproject:/data /path/to/saigeqtl_latest.sif \
     step1_fitNULLGLMM_qtl.R \
     --phenoFile=/path_to_phenotype/phenotypes.txt \
