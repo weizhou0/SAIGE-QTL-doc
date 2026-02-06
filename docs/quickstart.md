@@ -442,7 +442,7 @@ This is especially useful when you've installed SAIGEQTL to a custom location an
 
 ## ✅ Final Output (cis-eQTL)
 
-Your final results file (`gene_1_gene_pvalue.txt`) contains:
+Your final results file (`./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis_genePval`) contains:
 - Gene name
 - ACAT p-value (combined evidence from all variants)
 - Top variant ID
