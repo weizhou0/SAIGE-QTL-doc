@@ -154,7 +154,7 @@ Ready to run your first analysis? Follow this tutorial:
 
 **Example command for Pixi Binary users:**
 ```bash
-# Step 1 example (modify to your actual paths)
+# !!! Modify to your actual paths
 CONDA_OVERRIDE_GLIBC=2.28 pixi run \
     Rscript ./extdata/step1_fitNULLGLMM_qtl.R \
     --phenoFile=phenotypes.txt \
