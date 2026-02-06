@@ -34,7 +34,7 @@ Docker Image provides the **easiest and most reliable** installation method for 
 - **Updates**: Automatically built from latest code
 - **Repository**: Built from https://github.com/weizhou0/SAIGEQTL
 
-### Docker Installation and Usage
+## Docker Installation and Usage
 
 To run SAIGE-QTL functions locally using Docker:
 
