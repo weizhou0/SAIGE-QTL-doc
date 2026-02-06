@@ -137,7 +137,7 @@ CONDA_OVERRIDE_GLIBC=2.28 pixi run Rscript [script_name] [options]
 alias saige-pixi='CONDA_OVERRIDE_GLIBC=2.28 pixi run'
 
 # Then you can run:
-saige-pixi Rscript ./extdata/step1_fitNULLGLMM_qtl.R --help
+saige-pixi Rscript your_path_to_SAIGEQTL_folder/SAIGEQTL/extdata/step1_fitNULLGLMM_qtl.R --help
 ```
 
 ### Quick Start Tutorial
