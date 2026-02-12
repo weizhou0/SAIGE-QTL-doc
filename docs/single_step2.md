@@ -47,7 +47,7 @@ pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R --help
 Define the cis-region for testing:
 ```bash
 regionFile=./input/gene_1_cis_region.txt
-echo -e "2\t300001\t610001" > ${regionFile}
+echo -e "2\t30\t61" > ${regionFile}
 ```
 ### Set Output Prefixes
 ```bash
@@ -115,7 +115,7 @@ pixi run --manifest-path=../pixi.toml Rscript step2_tests_qtl.R \
     --varianceRatioFile=${step1prefix}.varianceRatio.txt \
     --rangestoIncludeFile=${regionFile} \
     --markers_per_chunk=10000 \
-    --condition=2:300096:C:A
+    --condition=2:35:C:A
 ```
 
 **Note**: Conditioning markers must be specified as **chr:pos:ref:alt** and in the same order as stored in the dosage file.
