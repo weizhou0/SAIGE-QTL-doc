@@ -96,7 +96,7 @@ done
 
 To save computation time, you can download pre-computed Step 1 results:
 
-📁 **[Download Step 1 outputs](https://drive.google.com/file/d/1zV4l6f6YUCSJcTwXZUrL2PZ6N0_ly_XU/view?usp=sharing)**
+📁 **[Download Step 1 outputs]([https://drive.google.com/file/d/1zV4l6f6YUCSJcTwXZUrL2PZ6N0_ly_XU/view?usp=sharing](https://drive.google.com/file/d/1tYbDMzb0a9V00BHt9rFX-yV3BynuV-P2/view?usp=sharing))**
 
 Store downloaded files to `./output` directory to skip Step 1 computation.
 
