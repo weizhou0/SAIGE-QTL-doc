@@ -14,6 +14,27 @@ Navigate to the `SAIGEQTL/extdata` directory first:
 cd ./SAIGEQTL/extdata
 ```
 
+```bash
+# run this block ONLY if you haven't run ths previous step 1 tutorial. It is not necessary, only to make sure you have the step1 output for this set-based test to estimate based on.
+pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
+    --useSparseGRMtoFitNULL=FALSE \
+    --useGRMtoFitNULL=FALSE \
+    --phenoFile=./input/seed_1_100_nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_Poisson.txt \
+    --phenoCol=gene_1 \
+    --covarColList=X1,X2,pf1,pf2 \
+    --sampleCovarColList=X1,X2 \
+    --sampleIDColinphenoFile=IND_ID \
+    --traitType=count \
+    --outputPrefix=./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1 \
+    --skipVarianceRatioEstimation=FALSE \
+    --isRemoveZerosinPheno=FALSE \
+    --isCovariateOffset=FALSE \
+    --isCovariateTransform=TRUE \
+    --skipModelFitting=FALSE \
+    --tol=0.00001 \
+    --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
+    --IsOverwriteVarianceRatioFile=TRUE
+```
 
 
 ```
