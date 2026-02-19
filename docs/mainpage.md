@@ -46,6 +46,8 @@ SAIGE-QTL accepts genotype files in multiple standard formats:
 - Including log(total read counts) and percentage of mitochondrial read counts as an offset in the Step 1 null model
 
 ## What's New
+**Version 0.3.5.1** (February 19, 2026):
+- Fixed compatibility issue of making GRM on-the-fly in step1
 
 **Version 0.3.5** (February 2, 2026):
 - Added `--solverMethod` option allow user-specified step 1 null model fitting using either Sherman-Morrison-Woodbury approach (“smw” option) or the original preconditioned conjugate gradient approach (“pcg” option). For data sets with unrelated donors, for which the sparse GRM becomes the identity matrix, SMW further reduces to closed-form block-wise operations with optimal complexity. The default is to automatically detect given phenotype file, if there are multiple cells data for 1 individual and no GRM is provided, it will automatically use SMW approach.
