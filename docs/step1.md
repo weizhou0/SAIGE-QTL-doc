@@ -83,7 +83,8 @@ docker run -w ${WKDIR} wzhou88/saigeqtl:latest \
     --skipModelFitting=FALSE \
     --tol=0.00001 \
     --plinkFile=/usr/local/bin/input/n.indep_100_n.cell_1_01.step1 \
-    --IsOverwriteVarianceRatioFile=TRUE
+    --IsOverwriteVarianceRatioFile=TRUE \
+    --solverMethod=pcg
 ```
 
 #### Singularity Installation
