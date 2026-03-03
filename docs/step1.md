@@ -55,7 +55,8 @@ pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
     --skipModelFitting=FALSE \
     --tol=0.00001 \
     --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
-    --IsOverwriteVarianceRatioFile=TRUE
+    --IsOverwriteVarianceRatioFile=TRUE \
+    --solverMethod=pcg
 ```
 
 #### Docker Installation
@@ -116,7 +117,8 @@ singularity exec \
     --skipModelFitting=FALSE \
     --tol=0.00001 \
     --plinkFile=/usr/local/bin/input/n.indep_100_n.cell_1_01.step1 \
-    --IsOverwriteVarianceRatioFile=TRUE
+    --IsOverwriteVarianceRatioFile=TRUE \
+    --solverMethod=pcg
 ```
 
 ## Input Files
