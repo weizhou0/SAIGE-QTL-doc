@@ -53,10 +53,9 @@ pixi run --manifest-path=../pixi.toml Rscript step1_fitNULLGLMM_qtl.R \
     --isCovariateOffset=FALSE \
     --isCovariateTransform=TRUE \
     --skipModelFitting=FALSE \
-    --tol=0.00001 \
+    --tol=0.02 \
     --plinkFile=./input/n.indep_100_n.cell_1_01.step1 \
-    --IsOverwriteVarianceRatioFile=TRUE \
-    --solverMethod=pcg
+    --IsOverwriteVarianceRatioFile=TRUE
 ```
 
 #### Docker Installation
@@ -82,10 +81,9 @@ docker run -w ${WKDIR} wzhou88/saigeqtl:latest \
     --isCovariateOffset=FALSE \
     --isCovariateTransform=TRUE \
     --skipModelFitting=FALSE \
-    --tol=0.00001 \
+    --tol=0.02 \
     --plinkFile=/usr/local/bin/input/n.indep_100_n.cell_1_01.step1 \
-    --IsOverwriteVarianceRatioFile=TRUE \
-    --solverMethod=pcg
+    --IsOverwriteVarianceRatioFile=TRUE
 ```
 
 #### Singularity Installation
@@ -115,10 +113,9 @@ singularity exec \
     --isCovariateOffset=FALSE \
     --isCovariateTransform=TRUE \
     --skipModelFitting=FALSE \
-    --tol=0.00001 \
+    --tol=0.02 \
     --plinkFile=/usr/local/bin/input/n.indep_100_n.cell_1_01.step1 \
-    --IsOverwriteVarianceRatioFile=TRUE \
-    --solverMethod=pcg
+    --IsOverwriteVarianceRatioFile=TRUE
 ```
 
 ## Input Files
