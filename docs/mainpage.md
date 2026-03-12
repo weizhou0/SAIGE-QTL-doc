@@ -46,6 +46,10 @@ SAIGE-QTL accepts genotype files in multiple standard formats:
 - Including log(total read counts) and percentage of mitochondrial read counts as an offset in the Step 1 null model
 
 ## What's New
+**Version 0.3.5.2** (March 12, 2026):
+- Fixed GRM logs to step1 wrapper
+- Fix GRM fitting on-the-fly with LOCO
+
 **Version 0.3.5.1** (February 19, 2026):
 - Fixed compatibility issue of making GRM on-the-fly in step1
 
