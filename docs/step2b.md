@@ -1,9 +1,8 @@
 ---
 layout: default
 title: "Step 2b: Optional QC"
-nav_order: 1
+nav_exclude: true
 description: "Step 2b: Optional Quality Control for cis-eQTL results."
-parent: cis-eQTL test
 ---
 
 # Step 2b: Optional QC for cis-eQTL Results
@@ -48,8 +47,8 @@ Since the optional quality control is based on parameters calculated from step 1
 
 | Parameter | Description | Example Value |
 |-----------|-------------|---------------|
-| `--SAIGEstep1OutputPrefix` | Path to step1 output filename (no suffix) | `./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1` |
-| `--SAIGEstep2OutputPrefix` | Path to step2 output filename (no suffix) | `./output/nindep_100_ncell_100_lambda_2_tauIntraSample_0.5_gene_1_cis` |
+| `--SAIGEstep1OutputPrefix` | Path to step1 output filename (no suffix) | `./output/nindep_100_ncell`<br>`_100_lambda_2_tauIntraSample_0.5_gene_1` |
+| `--SAIGEstep2OutputPrefix` | Path to step2 output filename (no suffix) | `./output/nindep_100_ncell`<br>`_100_lambda_2_tauIntraSample_0.5_gene_1_cis` |
 | `--gene` | Gene name (for reporting only) | `example_gene` |
 | `--outPrefix` | Output prefix for QC summary | `example_gene_output` |
 | `--sampleIDColinphenoFile` | Sample ID column name | `IND_ID` |
