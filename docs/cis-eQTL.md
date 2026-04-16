@@ -77,8 +77,9 @@ Ready to start your cis-eQTL analysis? Follow these detailed guides:
 
 1. **[Step 1: Null Model Fitting](step1.html)** - Detailed parameter explanations and examples. One model per gene of interest
 2. **[Step 2: Single-Variant Tests](single_step2.html)** - cis-eQTL association testing
-3. **[Step 2: Set-Based Tests](set_step2.html)** - Rare variant burden analysis  
-4. **[Step 3: Gene-Level Analysis](gene_step3.html)** - Combine results across variants
+3. **[Step 2: Set-Based Tests](set_step2.html)** - Rare variant burden analysis
+4. **[Step 2b: Optional QC](step2b.html)** - Quality control for filtering cis-eQTL results (optional, user-specified standards)
+5. **[Step 3: Gene-Level Analysis](gene_step3.html)** - Combine results across variants
 
 ### Alternative Analysis
 - **[Genome-wide eQTL Analysis](genomewide-eQTL.html)** - For comprehensive variant discovery
