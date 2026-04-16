@@ -385,7 +385,6 @@ Quality control based on dispersion and genomic inflation factor from step 1 and
 | `--SAIGEstep2OutputPrefix` | Path to step2 output filename (no suffix) | `./output/nindep_100_ncell`<br>`_100_lambda_2_tauIntraSample_0.5_gene_1_cis` |
 | `--gene` | Gene name (for reporting only) | `example_gene` |
 | `--outPrefix` | Output prefix for QC summary | `example_gene_output` |
-| `--sampleIDColinphenoFile` | Sample ID column name | `IND_ID` |
 | `--isPostStep2QC` | Whether to remove step1 and step2 outputs if they fail QC standards (logical) | `FALSE` |
 | `--outputPrefix` | Prefix for output files | `./output/analysis_gene1` |
 | `--phiUpper` | Upper bound for phi dispersion parameter | User-specified |
