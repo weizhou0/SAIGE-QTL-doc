@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Step 2b: Optional QC"
-nav_order: 9 
+nav_order: 1
 description: "Step 2b: Optional Quality Control for cis-eQTL results."
+parent: cis-eQTL test
 ---
 
 # Step 2b: Optional QC for cis-eQTL Results
