@@ -18,6 +18,7 @@ Comprehensive reference for all command-line parameters in SAIGE-QTL.
 - [createSparseGRM.R](#create-sparse-grm)
 - [step1_fitNULLGLMM_qtl.R](#step1-fit-null-glmm)
 - [step2_tests_qtl.R](#step2-association-tests)
+- [step2b_QC_qtl.R](#step2b-qc)
 - [step3_gene_pvalue_qtl.R](#step3-gene-pvalue)
 - [makeGroupFile.R](#make-group-file)
 
@@ -374,6 +375,7 @@ Performs association tests using the null model from Step 1.
 
 ---
 ## step2b_QC_qtl.R
+{: #step2b-qc }
 
 Quality control based on dispersion and genomic inflation factor from step 1 and 2 results
 
